@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="La Petite Auberge – Restaurant traditionnel à Chêne-Bourg. Cuisine Suisse, Française et Portugaise." />
+  <title>La Petite Auberge – Restaurant Traditionnel à Chêne-Bourg</title>
+
+  <!-- Fonts : Cinzel (titres) + Open Sans (texte) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome + Animate.css + Tailwind -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Open Sans", "sans-serif"],
+            cinzel: ["Cinzel", "serif"]
+          },
+          colors: {
+            aubergeRed: "#B91C1C",
+            aubergeCream: "#FFF8DC",
+            aubergeDark: "#2D2D2D",
+            aubergeAccent: "#B8860B"
+          },
+          keyframes: {
+            fadeIn: {
+              "0%": { opacity: "0" },
+              "100%": { opacity: "1" }
+            },
+            fadeInUp: {
+              "0%": { opacity: "0", transform: "translateY(20px)" },
+              "100%": { opacity: "1", transform: "translateY(0)" }
+            },
+            slideIn: {
+              "0%": { transform: "translateX(-20px)", opacity: "0" },
+              "100%": { transform: "translateX(0)", opacity: "1" }
+            },
+            zoomIn: {
+              "0%": { transform: "scale(1.2)", opacity: "0" },
+              "100%": { transform: "scale(1)", opacity: "1" }
+            },
+            titleIn: {
+              "0%": { transform: "translateY(30px)", opacity: "0" },
+              "100%": { transform: "translateY(0)", opacity: "1" }
+            },
+            expand: {
+              "0%": { transform: "scaleX(0)" },
+              "100%": { transform: "scaleX(1)" }
+            }
+          },
+          animation: {
+            fadeIn: "fadeIn 1s ease-out forwards",
+            fadeInUp: "fadeInUp 0.8s ease-in-out forwards",
+            slideIn: "slideIn 0.5s ease-out forwards",
+            zoomIn: "zoomIn 2s ease-out forwards",
+            titleIn: "titleIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards",
+            expand: "expand 1.5s ease-out forwards"
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Corps en crème, texte foncé */
+    body {
+      background-color: theme('colors.aubergeCream');
+      color: theme('colors.aubergeDark');
+      font-family: 'Open Sans', sans-serif;
+      scroll-behavior: smooth;
+    }
+    /* Titres en Cinzel */
+    h1, h2, h3, h4 {
+      font-family: 'Cinzel', serif;
+    }
+    /* Bouton rouge avec hover doré */
+    .btn-gradient {
+      background-color: theme('colors.aubergeRed');
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .btn-gradient:hover {
+      background-color: theme('colors.aubergeAccent');
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(185, 28, 28, 0.3);
+    }
+    /* Hover sur sections "feature-item" */
+    .feature-item {
+      transition: all 0.3s ease;
+      border-left: 4px solid transparent;
+    }
+    .feature-item:hover {
+      transform: translateY(-5px);
+      border-left: 4px solid theme('colors.aubergeRed');
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    /* Section divider */
+    .section-divider {
+      position: relative;
+      height: 80px;
+      overflow: hidden;
+      background-color: theme('colors.aubergeDark');
+    }
+    .section-divider::before {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; top: 0; height: 100%;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%23FFF8DC' opacity='.25'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' fill='%23FFF8DC' opacity='.5'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23FFF8DC'/%3E%3C/svg%3E");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    /* Hover zoom sur images */
+    .hover-zoom img {
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+    .hover-zoom:hover img {
+      transform: scale(1.1);
+      filter: saturate(1.2);
+    }
+    /* Inputs focus */
+    input:focus, select:focus, textarea:focus {
+      transform: scale(1.01);
+      border-color: theme('colors.aubergeAccent');
+      box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.3);
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    /* Observer sections */
+    .observe-section {
+      opacity: 0;
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      transform: translateY(20px);
+    }
+  </style>
+</head>
+
+<body class="bg-aubergeCream text-aubergeDark">
+
+<!-- SECTION HERO -->
+<section class="relative w-full h-screen min-h-[600px] overflow-hidden hero-section">
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute inset-0 bg-black/40 z-10"></div>
+    <img
+      src="images/auberge-hero.jpg"
+      alt="Façade ou ambiance de La Petite Auberge"
+      class="w-full h-full object-cover object-center animate-zoomIn"
+      id="heroBg"
+    />
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/worn-dots.png')] opacity-10 mix-blend-overlay"></div>
+  </div>
+
+  <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="font-cinzel text-5xl md:text-7xl lg:text-8xl text-white mb-4 font-bold animate-titleIn">
+        <span>La Petite Auberge</span>
+      </h1>
+      <div class="w-24 md:w-32 h-1 bg-aubergeAccent mx-auto mb-6 md:mb-8 overflow-hidden">
+        <div class="h-full bg-aubergeAccent animate-expand origin-left"></div>
+      </div>
+      <p class="text-base md:text-xl lg:text-2xl text-white mb-8 max-w-2xl mx-auto animate-fadeInUp">
+        Retrouvez les saveurs d’autrefois et nos bonnes recettes de grand-mère.<br>
+        Cuisine Suisse, Française et Portugaise.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#reservation" class="btn-gradient px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold text-base md:text-lg shadow-lg hover:shadow-xl">
+          Réserver une table
+        </a>
+        <a href="#contact" class="bg-white/20 backdrop-blur-sm text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold text-base md:text-lg border-2 border-white hover:bg-white/40 shadow-lg hover:shadow-xl transition-all">
+          Nous trouver
+        </a>
+      </div>
+    </div>
+    <a href="#presentation" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white text-2xl md:text-3xl animate-bounce hover:text-aubergeAccent transition-colors">
+      <i class="fas fa-chevron-down"></i>
+    </a>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="section-divider"></div>
+
+<!-- SECTION PRESENTATION -->
+<section id="presentation" class="py-20 px-4 max-w-6xl mx-auto observe-section">
+  <div class="text-center mb-16">
+    <h2 class="font-cinzel text-5xl md:text-6xl text-aubergeRed mb-4 font-bold">Bienvenue à La Petite Auberge</h2>
+    <div class="w-24 h-1 bg-aubergeAccent mx-auto mb-6"></div>
+    <p class="text-xl max-w-3xl mx-auto">
+      Un restaurant traditionnel qui respecte les règles de base de la cuisine. Venez retrouver les saveurs d’autrefois dans une ambiance chaleureuse.
+    </p>
+  </div>
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="feature-item bg-white p-8 rounded-lg shadow-md text-center">
+      <div class="w-full h-48 mb-4 overflow-hidden rounded hover-zoom">
+        <img src="images/cuisine-traditionnelle.jpg" alt="Plat traditionnel" class="w-full h-full object-cover">
+      </div>
+      <div class="text-aubergeRed text-4xl mb-4">
+        <i class="fas fa-utensils"></i>
+      </div>
+      <h3 class="font-cinzel text-2xl mb-4 font-semibold">Cuisine Authentique</h3>
+      <p class="text-gray-700">
+        Des recettes de grand-mère inspirées des traditions Suisses, Françaises et Portugaises.
+      </p>
+    </div>
+    <div class="feature-item bg-white p-8 rounded-lg shadow-md text-center">
+      <div class="w-full h-48 mb-4 overflow-hidden rounded hover-zoom">
+        <img src="images/ambiance-chaleureuse.jpg" alt="Intérieur du restaurant" class="w-full h-full object-cover">
+      </div>
+      <div class="text-aubergeRed text-4xl mb-4">
+        <i class="fas fa-glass-cheers"></i>
+      </div>
+      <h3 class="font-cinzel text-2xl mb-4 font-semibold">Ambiance Conviviale</h3>
+      <p class="text-gray-700">
+        Toute l'équipe vous accueille avec un grand sourire pour un moment agréable.
+      </p>
+    </div>
+    <div class="feature-item bg-white p-8 rounded-lg shadow-md text-center">
+      <div class="w-full h-48 mb-4 overflow-hidden rounded hover-zoom">
+        <img src="images/produits-frais.jpg" alt="Ingrédients frais" class="w-full h-full object-cover">
+      </div>
+      <div class="text-aubergeRed text-4xl mb-4">
+        <i class="fas fa-leaf"></i>
+      </div>
+      <h3 class="font-cinzel text-2xl mb-4 font-semibold">Saveurs d’Antan</h3>
+      <p class="text-gray-700">
+        Le respect des règles de base de la cuisine pour retrouver le bon goût des choses simples.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION NOTRE CUISINE -->
+<section id="notre-cuisine" class="py-20 bg-aubergeDark text-aubergeCream observe-section">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="font-cinzel text-5xl md:text-6xl text-aubergeAccent mb-4 font-bold">Notre Cuisine : Un Voyage de Saveurs</h2>
+      <div class="w-24 h-1 bg-aubergeRed mx-auto mb-6"></div>
+      <p class="text-xl max-w-3xl mx-auto">Le chef s’inspire de ses racines et de ses voyages pour une carte riche en goûts.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="flex flex-col md:flex-row gap-6 items-center">
+        <div class="w-full md:w-1/2 h-64 rounded-lg overflow-hidden shadow-lg hover-zoom">
+          <img src="images/plat-suisse-francais.jpg" alt="Plat traditionnel suisse ou français" class="w-full h-full object-cover">
+        </div>
+        <div class="w-full md:w-1/2">
+          <h3 class="font-cinzel text-3xl mb-3 text-aubergeAccent font-semibold">Tradition Suisse & Française</h3>
+          <p class="mb-4">Les classiques revisités avec passion, des fondues aux plats mijotés qui réchauffent le cœur.</p>
+          <div class="flex items-center text-aubergeAccent">
+            <div class="w-8 h-px bg-aubergeAccent mr-2"></div>
+            <span>Les incontournables</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-6 items-center">
+        <div class="w-full md:w-1/2 h-64 rounded-lg overflow-hidden shadow-lg hover-zoom">
+          <img src="images/plat-portugais.jpg" alt="Spécialité portugaise" class="w-full h-full object-cover">
+        </div>
+        <div class="w-full md:w-1/2">
+          <h3 class="font-cinzel text-3xl mb-3 text-aubergeAccent font-semibold">Touches Portugaises</h3>
+          <p class="mb-4">N’oubliant pas ses origines, le chef vous propose des spécialités ensoleillées pleines de caractère.</p>
+          <div class="flex items-center text-aubergeAccent">
+            <div class="w-8 h-px bg-aubergeAccent mr-2"></div>
+            <span>Les saveurs du Portugal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION RESERVATION -->
+<section id="reservation" class="py-20 bg-aubergeCream observe-section">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+      <div class="md:flex">
+        <div class="md:w-1/2 bg-aubergeRed text-white p-12 flex flex-col justify-center">
+          <h2 class="font-cinzel text-4xl md:text-5xl mb-6 font-bold">Réserver Votre Table</h2>
+          <div class="w-16 h-1 bg-aubergeAccent mb-6"></div>
+          <p class="text-xl mb-8">
+            Contactez-nous pour garantir votre place et vivre une expérience authentique.
+          </p>
+          <div class="space-y-6">
+            <div class="flex items-center">
+              <div class="text-2xl text-aubergeAccent mr-4">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <p class="text-sm text-aubergeAccent uppercase tracking-wider">Par Téléphone</p>
+                <a href="tel:+41223494920" class="text-2xl font-semibold hover:text-aubergeAccent transition-colors">
+                  022 349 49 20
+                </a>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="text-2xl text-aubergeAccent mr-4 mt-1">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div>
+                <p class="text-sm text-aubergeAccent uppercase tracking-wider">Nos Horaires</p>
+                <div class="text-lg space-y-1">
+                  <p>Lun-Mer: 8h00 - 15h00</p>
+                  <p>Jeu-Ven: 8h00 - 15h00 / 18h00 - 00h00</p>
+                  <p>Sam: 11h00 - 15h00 / 18h00 - 00h00</p>
+                  <p>Dim: 11h00 - 15h00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="md:w-1/2 p-12 bg-gray-50">
+          <h3 class="font-cinzel text-2xl mb-6 text-aubergeDark font-semibold">Réservation Rapide via WhatsApp</h3>
+          <form id="reservationForm">
+            <div class="space-y-4">
+              <div>
+                <label class="block text-gray-700 mb-1 font-medium" for="nameField">Nom complet</label>
+                <input type="text" id="nameField" required
+                       class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-aubergeAccent focus:border-transparent">
+              </div>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-gray-700 mb-1 font-medium" for="dateField">Date</label>
+                  <input type="date" id="dateField" required
+                         class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-aubergeAccent focus:border-transparent"
+                         min="2025-03-28" max="2100-12-31">
+                </div>
+                <div>
+                  <label class="block text-gray-700 mb-1 font-medium" for="timeField">Heure</label>
+                  <input type="time" id="timeField" required
+                         class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-aubergeAccent focus:border-transparent">
+                </div>
+              </div>
+              <div>
+                <label class="block text-gray-700 mb-1 font-medium" for="peopleField">Nombre de personnes</label>
+                <select id="peopleField" required
+                        class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-aubergeAccent focus:border-transparent bg-white">
+                  <option value="1">1 personne</option>
+                  <option value="2" selected>2 personnes</option>
+                  <option value="3">3 personnes</option>
+                  <option value="4">4 personnes</option>
+                  <option value="5">5 personnes</option>
+                  <option value="6">6 personnes</option>
+                  <option value="7">7 personnes</option>
+                  <option value="8">8+ personnes (précisez)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-gray-700 mb-1 font-medium" for="messageField">Message (optionnel)</label>
+                <textarea id="messageField" rows="3"
+                          class="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-aubergeAccent focus:border-transparent"
+                          placeholder="Allergies, occasion spéciale, demande particulière..."></textarea>
+              </div>
+              <button type="submit" id="submitReservation"
+                      class="btn-gradient text-white w-full py-3 rounded-full font-semibold mt-4 flex items-center justify-center gap-2">
+                <i class="fab fa-whatsapp"></i> Réserver par WhatsApp
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION CONTACT -->
+<section id="contact" class="py-20 bg-aubergeDark text-aubergeCream observe-section">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="font-cinzel text-5xl md:text-6xl text-aubergeAccent mb-4 font-bold">Nous Trouver & Contacter</h2>
+      <div class="w-24 h-1 bg-aubergeRed mx-auto mb-6"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-cinzel text-2xl mb-2 text-aubergeAccent font-semibold">Adresse</h3>
+          <p class="text-lg opacity-90">
+            2 Avenue du Petit Senn<br>
+            1225 Chêne-Bourg, Suisse
+          </p>
+        </div>
+        <div>
+          <h3 class="font-cinzel text-2xl mb-2 text-aubergeAccent font-semibold">Contact</h3>
+          <p class="text-lg mb-2 opacity-90">
+            <a href="tel:+41223494920" class="hover:text-aubergeAccent transition-colors">
+              <i class="fas fa-phone-alt mr-2"></i> 022 349 49 20
+            </a>
+          </p>
+          <p class="text-lg opacity-90">
+            <a href="mailto:lapetiteaubergedechene@gmail.com" class="hover:text-aubergeAccent transition-colors">
+              <i class="fas fa-envelope mr-2"></i> lapetiteaubergedechene@gmail.com
+            </a>
+          </p>
+        </div>
+        <div>
+          <h3 class="font-cinzel text-2xl mb-2 text-aubergeAccent font-semibold">Horaires d'Ouverture</h3>
+          <div class="text-lg space-y-1 opacity-90">
+            <p><span class="font-semibold">Lun-Mer:</span> 8h00 - 15h00</p>
+            <p><span class="font-semibold">Jeu-Ven:</span> 8h00 - 15h00 & 18h00 - 00h00</p>
+            <p><span class="font-semibold">Sam:</span> 11h00 - 15h00 & 18h00 - 00h00</p>
+            <p><span class="font-semibold">Dim:</span> 11h00 - 15h00</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carte Google Maps (remplacez src) -->
+      <div class="h-96 md:h-full rounded-xl overflow-hidden shadow-2xl min-h-[400px]">
+        <iframe class="w-full h-full"
+                style="border:0"
+                src=""
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div style="display:flex;justify-content:center;align-items:center;height:100%;background:#e0e0e0;color:#555;">
+          Carte Google Maps à intégrer ici
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-aubergeDark text-aubergeCream pt-12 pb-8">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <h3 class="font-cinzel text-3xl text-aubergeAccent mb-4 font-semibold">La Petite Auberge</h3>
+        <p class="mb-4 text-sm opacity-80">
+          Cuisine traditionnelle et saveurs d’autrefois à Chêne-Bourg.  
+          Influences Suisses, Françaises et Portugaises.
+        </p>
+        <address class="not-italic text-sm opacity-80">
+          2 Avenue du Petit Senn<br>
+          1225 Chêne-Bourg<br>
+          Genève, Suisse
+        </address>
+      </div>
+      <div>
+        <h4 class="font-cinzel text-xl font-semibold mb-4">Navigation</h4>
+        <nav>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#presentation" class="hover:text-aubergeAccent">Bienvenue</a></li>
+            <li><a href="#notre-cuisine" class="hover:text-aubergeAccent">Notre Cuisine</a></li>
+            <li><a href="#reservation" class="hover:text-aubergeAccent">Réserver</a></li>
+            <li><a href="#contact" class="hover:text-aubergeAccent">Nous Trouver</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div>
+        <h4 class="font-cinzel text-xl font-semibold mb-4">Contact & Horaires</h4>
+        <ul class="space-y-2 text-sm mb-4">
+          <li>
+            <a href="tel:+41223494920" class="hover:text-aubergeAccent flex items-center">
+              <i class="fas fa-phone-alt mr-2 w-4 text-center opacity-70"></i> 022 349 49 20
+            </a>
+          </li>
+          <li>
+            <a href="mailto:lapetiteaubergedechene@gmail.com" class="hover:text-aubergeAccent flex items-center">
+              <i class="fas fa-envelope mr-2 w-4 text-center opacity-70"></i> lapetiteaubergedechene@gmail.com
+            </a>
+          </li>
+        </ul>
+        <div class="text-sm mb-4 space-y-1">
+          <p><span class="font-semibold opacity-80">Lun-Mer:</span> 8h-15h</p>
+          <p><span class="font-semibold opacity-80">Jeu-Ven:</span> 8h-15h / 18h-00h</p>
+          <p><span class="font-semibold opacity-80">Sam:</span> 11h-15h / 18h-00h</p>
+          <p><span class="font-semibold opacity-80">Dim:</span> 11h-15h</p>
+        </div>
+        <div class="flex space-x-4 mt-4 text-xl">
+          <a href="#" aria-label="Facebook" class="hover:text-aubergeAccent transition-transform hover:scale-110">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" aria-label="Instagram" class="hover:text-aubergeAccent transition-transform hover:scale-110">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-aubergeCream/20 mt-8 pt-6 text-center text-xs opacity-60">
+      <p>© <span id="currentYear"></span> La Petite Auberge. Tous droits réservés.</p>
+      <p class="mt-1">
+        <a href="#top" id="backToTop" class="hover:text-aubergeAccent">Retour en haut <i class="fas fa-arrow-up ml-1"></i></a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+    // Parallaxe légère
+    const heroBg = document.getElementById('heroBg');
+    if (heroBg) {
+      document.addEventListener('scroll', () => {
+        const scrollPos = window.scrollY;
+        heroBg.style.transform = `translateY(${scrollPos * 0.2}px) scale(1.1)`;
+      }, { passive: true });
+    }
+
+    // Apparition sections
+    const sections = document.querySelectorAll('.observe-section');
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      sections.forEach(sec => observer.observe(sec));
+    } else {
+      sections.forEach(sec => {
+        sec.style.opacity = "1";
+        sec.style.transform = "translateY(0)";
+      });
+    }
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href && href !== '#' && document.querySelector(href)) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Formulaire WhatsApp
+    const form = document.getElementById('reservationForm');
+    const submitBtn = document.getElementById('submitReservation');
+    let canSubmit = true;
+
+    if (form && submitBtn) {
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        if (!canSubmit) {
+          alert("Veuillez patienter avant une nouvelle demande.");
+          return;
+        }
+        const nameVal = document.getElementById('nameField').value.trim();
+        const dateVal = document.getElementById('dateField').value;
+        const timeVal = document.getElementById('timeField').value;
+        const peopleVal = document.getElementById('peopleField').value;
+        const msgVal = document.getElementById('messageField').value.trim();
+        const today = new Date().toISOString().split('T')[0];
+
+        if (!nameVal || !dateVal || !timeVal || !peopleVal) {
+          alert('Veuillez remplir tous les champs obligatoires.');
+          return;
+        }
+        if (dateVal < today) {
+          alert('La date ne peut pas être dans le passé.');
+          return;
+        }
+
+        let text = `Bonjour La Petite Auberge,\n\nJe souhaiterais réserver une table.\n\n`;
+        text += `Nom: ${nameVal}\nDate: ${dateVal}\nHeure: ${timeVal}\nNombre de personnes: ${peopleVal}\n`;
+        if (msgVal) text += `Message: ${msgVal}\n`;
+        text += `\nMerci !`;
+
+        const encodedText = encodeURIComponent(text);
+        const phoneNumber = '+41223494920';
+        const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedText}`;
+        window.open(whatsappURL, '_blank');
+
+        canSubmit = false;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner animate-spin mr-2"></i> Envoi...';
+        setTimeout(() => {
+          canSubmit = true;
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fab fa-whatsapp mr-2"></i> Réserver par WhatsApp';
+        }, 8000);
+      });
+    }
+
+    // Date mini
+    const dateField = document.getElementById('dateField');
+    if (dateField) {
+      const todayDate = new Date().toISOString().split('T')[0];
+      dateField.setAttribute('min', todayDate);
+    }
+
+    // Copyright
+    const currentYearSpan = document.getElementById('currentYear');
+    if (currentYearSpan) {
+      currentYearSpan.textContent = new Date().getFullYear();
+    }
+
+    // Bouton retour haut (affichage conditionnel)
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.style.opacity = '1';
+          backToTopBtn.style.visibility = 'visible';
+        } else {
+          backToTopBtn.style.opacity = '0';
+          backToTopBtn.style.visibility = 'hidden';
+        }
+      }, { passive: true });
+      backToTopBtn.style.opacity = '0';
+      backToTopBtn.style.visibility = 'hidden';
+      backToTopBtn.style.transition = 'opacity 0.3s ease, visibility 0.3s ease';
+    }
+
+  });
+</script>
+
+</body>
+</html>
