@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sonny Callegaro | Création Site Web Statique & Design - Genève</title>
     <meta name="description" content="Sonny Callegaro : Création de sites web statiques performants, design graphique et storytelling digital à Genève. Découvrez mes offres pour portfolio, restaurants et PME.">
     <meta name="keywords" content="site web statique, création site web, développeur web genève, web design, portfolio en ligne, sonny callegaro, graphisme, storytelling digital, javascript, react, vuejs">
@@ -590,151 +590,196 @@
         @keyframes gradientShift {
             0% { background-position: 0% center; }
             50% { background-position: 100% center; }
-            100% { background-position: 0% center; }
+            100% { background-position: 0% center;
         }
+        
         @keyframes pulse-opacity {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
-}
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
 
-.animate-pulse-opacity {
-    animation: pulse-opacity 2s infinite;
-}
-/* ===== PARTIE À REMPLACER/COMPLÉTER DANS VOTRE CSS ===== */
+        .animate-pulse-opacity {
+            animation: pulse-opacity 2s infinite;
+        }
+        
+        /* ===== PARTIE À REMPLACER/COMPLÉTER DANS VOTRE CSS ===== */
 
-/* Animation de base */
-@keyframes textReveal {
-  from {
-    background-position: -200% 0;
-    opacity: 0.5;
-  }
-  to {
-    background-position: 200% 0;
-    opacity: 1;
-  }
-}
+        /* Animation de base */
+        @keyframes textReveal {
+          from {
+            background-position: -200% 0;
+            opacity: 0.5;
+          }
+          to {
+            background-position: 200% 0;
+            opacity: 1;
+          }
+        }
 
-/* Classes spécifiques */
-.golden-phi {
-  font-weight: bold;
-  background: linear-gradient(to right, #f59e0b, #fbbf24, #f59e0b);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  display: inline-block;
-}
+        /* Classes spécifiques */
+        .golden-phi {
+          font-weight: bold;
+          background: linear-gradient(to right, #f59e0b, #fbbf24, #f59e0b);
+          background-size: 200% 100%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          display: inline-block;
+        }
 
-/* Style pour tous les éléments highlight */
-[class^="highlight-"] {
-  font-weight: bold;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  background-size: 200% 100%;
-  opacity: 0;
-  transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-  background-position: -200% 0;
-  display: inline-block;
-  padding: 0 2px;
-}
+        /* Style pour tous les éléments highlight */
+        [class^="highlight-"] {
+          font-weight: bold;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          background-size: 200% 100%;
+          opacity: 0;
+          transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+          background-position: -200% 0;
+          display: inline-block;
+          padding: 0 2px;
+        }
 
-/* Animation quand visible */
-[data-scroll-animation].animated [class^="highlight-"] {
-  opacity: 1;
-  background-position: 100% 0;
-}
+        /* Animation quand visible */
+        [data-scroll-animation].animated [class^="highlight-"] {
+          opacity: 1;
+          background-position: 100% 0;
+        }
 
-/* Couleurs spécifiques pour chaque highlight */
-.highlight-name { 
-  background-image: linear-gradient(to right, #a855f7, #ec4899, #a855f7);
-}
+        /* Couleurs spécifiques pour chaque highlight */
+        .highlight-name { 
+          background-image: linear-gradient(to right, #a855f7, #ec4899, #a855f7);
+        }
 
-.highlight-dev { 
-  background-image: linear-gradient(to right, #06b6d4, #3b82f6, #06b6d4);
-}
+        .highlight-dev { 
+          background-image: linear-gradient(to right, #06b6d4, #3b82f6, #06b6d4);
+        }
 
-.highlight-story { 
-  background-image: linear-gradient(to right, #ec4899, #8b5cf6, #ec4899);
-}
+        .highlight-story { 
+          background-image: linear-gradient(to right, #ec4899, #8b5cf6, #ec4899);
+        }
 
-.highlight-study { 
-  background-image: linear-gradient(to right, #10b981, #059669, #10b981);
-}
+        .highlight-study { 
+          background-image: linear-gradient(to right, #10b981, #059669, #10b981);
+        }
 
-.highlight-school { 
-  background-image: linear-gradient(to right, #0ea5e9, #06b6d4, #0ea5e9);
-}
+        .highlight-school { 
+          background-image: linear-gradient(to right, #0ea5e9, #06b6d4, #0ea5e9);
+        }
 
-.highlight-role { 
-  background-image: linear-gradient(to right, #ef4444, #f97316, #ef4444);
-}
+        .highlight-role { 
+          background-image: linear-gradient(to right, #ef4444, #f97316, #ef4444);
+        }
 
-.highlight-visibility { 
-  background-image: linear-gradient(to right, #8b5cf6, #7c3aed, #8b5cf6);
-}
+        .highlight-visibility { 
+          background-image: linear-gradient(to right, #8b5cf6, #7c3aed, #8b5cf6);
+        }
 
-.highlight-design { 
-  background-image: linear-gradient(to right, #06b6d4, #3b82f6, #06b6d4);
-}
+        .highlight-design { 
+          background-image: linear-gradient(to right, #06b6d4, #3b82f6, #06b6d4);
+        }
 
-.highlight-tech { 
-  background-image: linear-gradient(to right, #10b981, #059669, #10b981);
-}
+        .highlight-tech { 
+          background-image: linear-gradient(to right, #10b981, #059669, #10b981);
+        }
 
-.highlight-narration { 
-  background-image: linear-gradient(to right, #ec4899, #8b5cf6, #ec4899);
-}
+        .highlight-narration { 
+          background-image: linear-gradient(to right, #ec4899, #8b5cf6, #ec4899);
+        }
 
-.highlight-impact { 
-  background-image: linear-gradient(to right, #8b5cf6, #7c3aed, #8b5cf6);
-}
+        .highlight-impact { 
+          background-image: linear-gradient(to right, #8b5cf6, #7c3aed, #8b5cf6);
+        }
 
-.golden-ratio {
-  background: linear-gradient(to right, #f59e0b, #fbbf24, #f59e0b);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-}
+        .golden-ratio {
+          background: linear-gradient(to right, #f59e0b, #fbbf24, #f59e0b);
+          background-size: 200% 100%;
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
 
-/* Animation des sections */
-.slide-in-left {
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: all 0.8s ease-out;
-}
+        /* Animation des sections */
+        .slide-in-left {
+          opacity: 0;
+          transform: translateX(-30px);
+          transition: all 0.8s ease-out;
+        }
 
-.slide-in-right {
-  opacity: 0;
-  transform: translateX(30px);
-  transition: all 0.8s ease-out;
-}
+        .slide-in-right {
+          opacity: 0;
+          transform: translateX(30px);
+          transition: all 0.8s ease-out;
+        }
 
-.slide-in-top {
-  opacity: 0;
-  transform: translateY(-30px);
-  transition: all 0.8s ease-out;
-}
+        .slide-in-top {
+          opacity: 0;
+          transform: translateY(-30px);
+          transition: all 0.8s ease-out;
+        }
 
-.is-visible {
-  opacity: 1;
-  transform: translateX(0) translateY(0);
-}
+        .is-visible {
+          opacity: 1;
+          transform: translateX(0) translateY(0);
+        }
 
-/* Style spécifique pour la section about */
-.about-section {
-  position: relative;
-}
+        /* Style spécifique pour la section about */
+        .about-section {
+          position: relative;
+        }
 
-.about-section p {
-  line-height: 1.8;
-}
+        .about-section p {
+          line-height: 1.8;
+        }
 
-/* Animation séquentielle des spans */
-.about-section [class^="highlight-"] {
-  --i: 0;
-  animation-delay: calc(var(--i) * 0.1s);
-}
+        /* Animation séquentielle des spans */
+        .about-section [class^="highlight-"] {
+          --i: 0;
+          animation-delay: calc(var(--i) * 0.1s);
+        }
+        
+        /* Styles pour le menu mobile amélioré */
+        @media (max-width: 768px) {
+            /* Menu mobile */
+            .mobile-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                padding: 2rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+            
+            .mobile-menu.active {
+                transform: translateY(0);
+            }
+            
+            /* Ajustements généraux */
+            .section {
+                padding: 6vh 5vw;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            /* Formulaire */
+            #contact .grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            /* Cartes projets */
+            .project-card {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body class="relative">
@@ -811,7 +856,9 @@
                     <span class="text-main-stroke animate__animated animate__fadeIn animate__delay-2s">Storyteller</span>
                 </h1>
                 <p class="text-xl text-white/80 mb-8 max-w-lg">
-                    Je transforme vos idées en visuels percutants, vos histoires en expériences digitales, où chaque élément suit la divine proportion.
+                    Je crée des sites web clés en main pour particuliers et petits commerces, 
+                    avec un design moderne et une gestion simplifiée. Pas de CMS complexe à apprendre, 
+                    juste une solution efficace qui vous ressemble.
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <a href="#contact" class="px-8 py-3 bg-main rounded-full font-bold btn-hover glow-effect flex items-center">
@@ -914,35 +961,20 @@
                         <span class="golden-phi">φ</span> 
                         Je m'appelle <span class="highlight-name animate-highlight">Sonny Callegaro</span>. Je suis un 
                         <span class="highlight-dev animate-highlight">
-                            🧑‍💻 développeur full-stack
-                        </span> passionné par le <span class="highlight-story animate-highlight">📖 storytelling digital</span>.
+                            développeur full-stack 🧑‍💻 
+                        </span> passionné par le <span class="highlight-story animate-highlight"> storytelling digital 📖</span>.
                         
                         Actuellement en <span class="highlight-study animate-highlight">
-                            🎓 3ème année d'informatique de gestion
-                        </span> à la <span class="highlight-school animate-highlight">🏛️ HEG Genève</span> 
-                        et <span class="highlight-role animate-highlight">👑 président</span> de l'association estudiantine, 
+                             3ème année d'informatique de gestion 🎓
+                        </span> à la <span class="highlight-school animate-highlight">HEG Genève 🏛️ </span> 
+                        et <span class="highlight-role animate-highlight"> président</span> de l'association estudiantine, 
                         je mets mes compétences techniques et créatives au service de votre <span class="highlight-visibility animate-highlight">✨ visibilité en ligne</span>.
                     </p>
                     
                     <p class="text-lg mb-8">
-                        Mon approche combine 
-                        <span class="highlight-design animate-highlight">
-                            🎨 design harmonieux
-                        </span> 
-                        (basé sur le 
-                        <span class="golden-ratio animate-highlight">
-                            🌟 Nombre d'Or φ
-                        </span>), 
-                        <span class="highlight-tech animate-highlight">
-                            ⚙️ technologies web modernes
-                        </span> 
-                        et 
-                        <span class="highlight-narration animate-highlight">
-                            ✍️ narrations captivantes
-                        </span> 
-                        pour créer des solutions web qui <span class="highlight-impact animate-highlight">
-                            🚀 racontent votre histoire avec impact
-                        </span>.
+                        Plutôt qu'un site surchargé de fonctionnalités inutiles, je vous propose 
+                        l'essentiel : une vitrine professionnelle, facile à mettre à jour, 
+                        qui présente vraiment ce que vous faites. Comme le site de la pizzeria LeBorgia à Genève, qui avait besoin d'un site web pour augmenter ses commandes.
                     </p>
                 </div>
                 
@@ -1236,163 +1268,135 @@
         </div>
     </section>
 
-    <!-- Work Section avec effets de hover améliorés -->
-    <section id="work" class="section relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-16 slide-in-left">
-                <h2 class="text-4xl md:text-6xl font-bold mb-4 text-main">Projets Récents</h2>
-                <p class="text-xl text-white/80 max-w-2xl">
-                    Voici quelques-unes de mes réalisations, incluant le site de l'association étudiante, un portfolio particulier et le site du restaurant du Borgia.
-                </p>
-            </div>
-            
-            <div class="space-y-32">
-                <!-- Project 1 avec effets améliorés -->
-                <div class="grid md:grid-cols-2 gap-8 items-center group">
-                    <div class="slide-in-left relative">
+ <!-- Work Section avec effets de hover améliorés -->
+<!-- Work Section avec boutons discrets -->
+<section id="work" class="section relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-16 slide-in-left">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4 text-main">Projets Récents</h2>
+            <p class="text-xl text-white/80 max-w-2xl">
+                Voici quelques-unes de mes réalisations, incluant le site de la Pizzeria Le Borgia et le portfolio Marie Kondo & Swiss Design.
+            </p>
+        </div>
+        
+        <div class="space-y-32">
+            <!-- Projet 1 - Pizzeria Le Borgia -->
+            <div class="grid md:grid-cols-2 gap-8 items-center group">
+                <div class="slide-in-left relative">
+                    <a href="https://leborgia.netlify.app/" target="_blank" class="block hover:no-underline">
                         <div class="relative group-hover:scale-95 transition-transform duration-500 card-3d">
                             <div class="absolute -inset-2 border-main rounded-2xl transform rotate-3 opacity-70 group-hover:rotate-0 transition-all duration-500"></div>
                             <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
-                            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                                 alt="Aperçu du site web pour l'association étudiante"
-                                 class="relative w-full h-auto object-cover rounded-xl z-10 group-hover:brightness-110 transition-all duration-500">
+                            <img src="LeBorgia.jpg"  
+                                 alt="Site web du restaurant Le Borgia"
+                                 class="relative w-full h-auto object-cover rounded-xl z-10 group-hover:brightness-110 transition-all duration-500 cursor-pointer">
                         </div>
-                        
-                        <!-- Stack technologique avec tooltips -->
-                        <div class="flex -space-x-2 mt-4">
-                           
-                        </div>
-                    </div>
-                    <div class="slide-in-right">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold mr-4">01</div>
-                            <h3 class="text-3xl font-bold text-main">Site Association Étudiante</h3>
-                        </div>
-                        <p class="text-lg mb-6">
-                            Site web dynamique pour une association étudiante, avec gestion d'événements et formulaire d'inscription.
-                        </p>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-main-accent mr-2"></i>
-                                <span>Design basé sur le nombre d'or</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-main-accent mr-2"></i>
-                                <span>Calendrier interactif</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-main-accent mr-2"></i>
-                                <span>Formulaire de contact WhatsApp</span>
-                            </li>
-                        </ul>
-                        <a href="#" class="inline-flex items-center text-main group font-medium">
-                            Voir le projet
-                            <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-                        </a>
-                        
-                        <!-- Badges de projet -->
-                        <div class="flex flex-wrap gap-2 mt-4">
-                            <span class="badge"><i class="fas fa-mobile-alt mr-1"></i> Responsive</span>
-                            <span class="badge"><i class="fas fa-bolt mr-1"></i> Rapide</span>
-                            <span class="badge"><i class="fas fa-lock mr-1"></i> Sécurisé</span>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-                
-                <!-- Project 2 avec effets améliorés -->
-                <div class="grid md:grid-cols-2 gap-8 items-center group">
-                    <div class="order-2 md:order-1 slide-in-left">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold mr-4">02</div>
-                            <h3 class="text-3xl font-bold text-main">Portfolio Professionnel</h3>
-                        </div>
-                        <p class="text-lg mb-6">
-                            Portfolio élégant pour un professionnel indépendant, mettant en valeur ses compétences et réalisations.
-                        </p>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-main-accent mr-2"></i>
-                                <span>Design responsive</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-main-accent mr-2"></i>
-                                <span>CV interactif</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-main-accent mr-2"></i>
-                                <span>Mise à jour facile sans CMS</span>
-                            </li>
-                        </ul>
-                        <a href="#" class="inline-flex items-center text-main group font-medium">
-                            Voir le projet
-                            <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-                        </a>
-                        
-                        <!-- Badges de projet -->
-                        <div class="flex flex-wrap gap-2 mt-4">
-                            <span class="badge"><i class="fas fa-paint-brush mr-1"></i> Design</span>
-                            <span class="badge"><i class="fas fa-user-tie mr-1"></i> Professionnel</span>
-                        </div>
+                <div class="slide-in-right">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold mr-4">01</div>
+                        <h3 class="text-3xl font-bold text-main">Pizzeria Le Borgia</h3>
                     </div>
-                    <div class="order-1 md:order-2 slide-in-right relative">
+                    <p class="text-lg mb-6">
+                        Site vitrine complet pour une pizzeria genevoise avec menu interactif, galerie photo et réservation en ligne.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-main-accent mr-2"></i>
+                            <span>Menu interactif avec filtres</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-main-accent mr-2"></i>
+                            <span>Galerie photo professionnelle</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-main-accent mr-2"></i>
+                            <span>Système de réservation intégré</span>
+                        </li>
+                    </ul>
+                    
+                    <!-- Badges -->
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="badge"><i class="fas fa-mobile-alt mr-1"></i> Responsive</span>
+                        <span class="badge"><i class="fas fa-bolt mr-1"></i> Rapide</span>
+                        <span class="badge"><i class="fas fa-utensils mr-1"></i> Restaurant</span>
+                        <span class="badge"><i class="fas fa-camera mr-1"></i> Galerie</span>
+                    </div>
+                    
+                    <!-- Bouton discret -->
+                    <a href="https://leborgia.netlify.app/" target="_blank" 
+                       class="inline-flex items-center text-white/70 hover:text-main-light transition-all duration-300 border-b border-transparent hover:border-main-light pb-1">
+                        <span class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M8 3L13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <span>Visiter le site</span>
+                    </a>
+                </div>
+            </div>
+        
+            <!-- Projet 2 - Marie Kondo -->
+            <div class="grid md:grid-cols-2 gap-8 items-center group">
+                <div class="order-2 md:order-1 slide-in-left">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold mr-4">02</div>
+                        <h3 class="text-3xl font-bold text-main">Marie Kondo & Swiss Design</h3>
+                    </div>
+                    <p class="text-lg mb-6">
+                        Portfolio minimaliste pour une designer d'intérieur, combinant esthétique suisse et approche Marie Kondo.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-main-accent mr-2"></i>
+                            <span>Galerie organisée par projets</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-main-accent mr-2"></i>
+                            <span>Design épuré et responsive</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-main-accent mr-2"></i>
+                            <span>Formulaire de contact intégré</span>
+                        </li>
+                    </ul>
+                    
+                    <!-- Badges -->
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="badge"><i class="fas fa-paint-brush mr-1"></i> Design</span>
+                        <span class="badge"><i class="fas fa-user-tie mr-1"></i> Professionnel</span>
+                        <span class="badge"><i class="fas fa-mobile-alt mr-1"></i> Responsive</span>
+                        <span class="badge"><i class="fas fa-palette mr-1"></i> Minimaliste</span>
+                    </div>
+                    
+                    <!-- Bouton discret -->
+                    <a href="https://mariekondoandswissdesign.netlify.app/" target="_blank" 
+                       class="inline-flex items-center text-white/70 hover:text-main-light transition-all duration-300 border-b border-transparent hover:border-main-light pb-1">
+                        <span class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M8 3L13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <span>Visiter le site</span>
+                    </a>
+                </div>
+                <div class="order-1 md:order-2 slide-in-right relative">
+                    <a href="https://mariekondoandswissdesign.netlify.app/" target="_blank" class="block hover:no-underline">
                         <div class="relative group-hover:scale-95 transition-transform duration-500 card-3d">
                             <div class="absolute -inset-2 border-main rounded-2xl transform -rotate-3 opacity-70 group-hover:rotate-0 transition-all duration-500"></div>
                             <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
-                            <img src="https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                                 alt="Capture d'écran du portfolio professionnel créé"
-                                 class="relative w-full h-auto object-cover rounded-xl z-10 group-hover:brightness-110 transition-all duration-500">
+                            <img src="mariekondo.jpg" 
+                                 alt="Portfolio de Marie Kondo & Swiss Design"
+                                 class="relative w-full h-auto object-cover rounded-xl z-10 group-hover:brightness-110 transition-all duration-500 cursor-pointer">
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Project 3 avec effets améliorés -->
-                <div class="grid md:grid-cols-2 gap-8 items-center group">
-                    <div class="slide-in-left relative">
-                        <div class="relative group-hover:scale-95 transition-transform duration-500 card-3d">
-                            <div class="absolute -inset-2 border-main rounded-2xl transform rotate-3 opacity-70 group-hover:rotate-0 transition-all duration-500"></div>
-                            <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                                 alt="Présentation du site web pour le restaurant Le Borgia"
-                                 class="relative w-full h-auto object-cover rounded-xl z-10 group-hover:brightness-110 transition-all duration-500">
-                        </div>
-                    </div>
-                    <div class="slide-in-right">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold mr-4">03</div>
-                            <h3 class="text-3xl font-bold text-main">Site Restaurant du Borgia</h3>
-                        </div>
-                        <p class="text-lg mb-6">
-                            Solution complète pour un restaurant, incluant menu interactif, galerie photo et système de réservation.
-                        </p>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-main-accent mr-2"></i>
-                                <span>Menu détaillé avec filtres</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-main-accent mr-2"></i>
-                                <span>Galerie photo professionnelle</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-main-accent mr-2"></i>
-                                <span>Système de réservation intégré</span>
-                            </li>
-                        </ul>
-                        <a href="#" class="inline-flex items-center text-main group font-medium">
-                            Voir le projet
-                            <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-                        </a>
-                        
-                        <!-- Badges de projet -->
-                        <div class="flex flex-wrap gap-2 mt-4">
-                            <span class="badge"><i class="fas fa-utensils mr-1"></i> Restaurant</span>
-                            <span class="badge"><i class="fas fa-camera mr-1"></i> Galerie</span>
-                            <span class="badge"><i class="fas fa-calendar-check mr-1"></i> Réservation</span>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
-            
+        </div>
+        
             <!-- Call to action projets avec effet de lumière -->
             <div class="mt-32 text-center slide-in-left" style="transition-delay: 0.2s">
                 <h3 class="text-2xl md:text-4xl font-bold mb-6">Un projet en tête ?</h3>
@@ -1503,36 +1507,23 @@
                     </div>
                     
                     <!-- Étape 3 -->
-                    <div class="relative mb-16 md:flex items-center">
-                        <div class="md:w-1/2 md:pr-16 mb-8 md:mb-0 md:text-right slide-in-left" style="transition-delay: 0.4s">
+                    <div class="relative md:flex items-center">
+                        <div class="md:w-1/2 md:pr-16 mb-8 md:mb-0 slide-in-left" style="transition-delay: 0.4s">
                             <div class="inline-block bg-main-accent/10 border border-main-accent/30 px-4 py-2 rounded-full text-sm text-main-light mb-2 flex items-center">
-                                <i class="fas fa-chart-line mr-1"></i> Étape 3
+                                <i class="fas fa-code mr-1"></i> Étape 3
                             </div>
-                            <h4 class="text-2xl font-bold mb-2">Évolution</h4>
+                            <h4 class="text-2xl font-bold mb-2">Développement</h4>
                             <p class="text-white/80">
-                                Une fois le kit de base en place, nous voyons ensemble si vous souhaitez des fonctionnalités supplémentaires ou des ajustements.
+                                Je développe votre site avec des technologies modernes, en assurant une expérience utilisateur optimale sur tous les appareils et un suivi de la sécurité et de la performance.
                             </p>
                         </div>
-                        <div class="hidden md:block md:w-1/2"></div>
+                        <div class="hidden md:block md:w-1/2 md:pl-16"></div>
                         <div class="absolute left-1/2 transform -translate-x-1/2 md:translate-x-0 w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold z-10 shadow-lg">
                             3
                         </div>
                     </div>
                     
-                    <!-- Étape 4 -->
-                    <div class="relative md:flex items-center">
-                        <div class="hidden md:block md:w-1/2 md:pr-16"></div>
-                        <div class="md:w-1/2 md:pl-16 mb-8 md:mb-0 slide-in-right" style="transition-delay: 0.6s">
-                            <div class="inline-block bg-main-accent/10 border border-main-accent/30 px-4 py-2 rounded-full text-sm text-main-light mb-2 flex items-center">
-                                <i class="fas fa-rocket mr-1"></i> Étape 4
-                            </div>
-                            <h4 class="text-2xl font-bold mb-2">Autonomie</h4>
-                            <p class="text-white/80">
-                                Je vous forme sur les mises à jour simples pour que vous soyez autonome, ou je m'en charge pour vous si vous préférez.
-                            </p>
-                        </div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 md:translate-x-0 w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold z-10 shadow-lg">
-                            4
+                 
                         </div>
                     </div>
                 </div>
@@ -1605,12 +1596,12 @@
                                 SD
                             </div>
                             <div>
-                                <div class="font-bold">Sarah Dupont</div>
-                                <div class="text-sm text-white/60">CEO, Nova Design</div>
+                                <div class="font-bold">Davide</div>
+                                <div class="text-sm text-white/60">Audit en optimisation fiscale</div>
                             </div>
                         </div>
                         <p class="text-white/80 italic">
-                            "Sonny a su créer un site web simple mais parfaitement adapté à mes besoins, sans me noyer sous des fonctionnalités inutiles. Enfin une solution accessible pour les indépendants comme moi !"
+                            "Sonny et son expertise m'ont réellement épatés"
                         </p>
                         <div class="flex mt-4">
                             <i class="fas fa-star text-yellow-400"></i>
@@ -1634,8 +1625,38 @@
                 </div>
             </div>
 
-            <!-- FORMULAIRE WHATSAPP amélioré avec effets -->
+            <!-- FORMULAIRE CLASSIQUE amélioré avec effets -->
             <div class="slide-in-right">
+              <form id="classicForm" class="bg-white/5 p-8 rounded-xl backdrop-blur-sm border border-white/10 hover:border-main-accent/30 transition-all duration-500 card-3d mb-12">
+                  <h3 class="text-2xl font-bold mb-6 text-main flex items-center">
+                      <i class="fas fa-envelope mr-2"></i> Envoyez-moi un message
+                  </h3>
+                  
+                  <!-- Nom -->
+                  <div class="mb-6">
+                      <label for="name" class="block mb-2 text-white/80">Votre nom *</label>
+                      <input type="text" id="name" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-main-accent transition">
+                  </div>
+                  
+                  <!-- Email -->
+                  <div class="mb-6">
+                      <label for="email" class="block mb-2 text-white/80">Votre email *</label>
+                      <input type="email" id="email" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-main-accent transition">
+                  </div>
+                  
+                  <!-- Message -->
+                  <div class="mb-6">
+                      <label for="message" class="block mb-2 text-white/80">Votre message *</label>
+                      <textarea id="message" rows="4" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-main-accent transition" placeholder="Décrivez votre projet..."></textarea>
+                  </div>
+                  
+                  <!-- Bouton d'envoi -->
+                  <button type="submit" class="w-full bg-main-gradient py-3 rounded-lg font-bold btn-hover glow-effect transition">
+                      Envoyer le message
+                  </button>
+              </form>
+
+              <!-- FORMULAIRE WHATSAPP existant -->
               <form id="whatsappForm" class="bg-white/5 p-8 rounded-xl backdrop-blur-sm border border-white/10 hover:border-main-accent/30 transition-all duration-500 card-3d">
                   <h3 class="text-2xl font-bold mb-6 text-main flex items-center">
                       <i class="fab fa-whatsapp mr-2"></i> Contact WhatsApp
@@ -1651,9 +1672,6 @@
                       </div>
                   </div>
 
-                
-
-                  
                   <!-- Message -->
                   <div class="mb-6">
                       <label for="messageField" class="block mb-2 text-white/80">Votre message</label>
@@ -1833,6 +1851,16 @@
         </div>
     </section>
 
+    <!-- Boutons CTA flottants -->
+    <div class="fixed bottom-6 right-6 flex flex-col space-y-3 z-50">
+        <a href="#contact" class="w-14 h-14 bg-main-gradient rounded-full flex items-center justify-center shadow-lg glow-effect animate-pulse-opacity">
+            <i class="fas fa-envelope text-xl"></i>
+        </a>
+        <a href="tel:+41799139344" class="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg animate-pulse-opacity" style="animation-delay: 0.5s">
+            <i class="fas fa-phone text-xl"></i>
+        </a>
+    </div>
+
     <script>
       // Remplacer tout le script existant par ceci :
 document.addEventListener('DOMContentLoaded', function() {
@@ -1869,211 +1897,174 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { threshold: 0.3 });
 
     if (aboutSection) observer.observe(aboutSection);
-});
 
-// Initialisation
-document.addEventListener('DOMContentLoaded', () => {
-  new ScrollAnimator();
-});
-        document.addEventListener('DOMContentLoaded', function() {
-            // 1. Système de niveau gamifié
-            const levelElement = document.querySelector('.level-indicator');
-            if (levelElement) {
-                let currentLevel = parseInt(localStorage.getItem('userLevel')) || 0;
-                currentLevel++;
-                localStorage.setItem('userLevel', currentLevel);
-                
-                const levelText = levelElement.previousElementSibling;
-                const levelProgress = levelElement.querySelector('.level-progress');
-                
-                if (levelText) levelText.textContent = `Niveau ${currentLevel}`;
-                if (levelProgress) {
-                    const progress = Math.min(100, (currentLevel % 10) * 10);
-                    levelProgress.style.width = `${progress}%`;
-                }
-            }
-    
-            // 2. Animations au scroll
-            const animateOnScroll = () => {
-                // Animation des éléments
-                document.querySelectorAll('.slide-in-left, .slide-in-right, .slide-in-top').forEach(element => {
-                    if (element.getBoundingClientRect().top < window.innerHeight * 0.75) {
-                        element.classList.add('is-visible');
-                    }
-                });
-                
-                // Barre de progression de défilement
-                const scrollProgress = document.getElementById('nav-progress');
-                if (scrollProgress) {
-                    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-                    scrollProgress.style.width = (window.scrollY / scrollHeight) * 100 + '%';
-                }
-            };
-            
-            animateOnScroll();
-            window.addEventListener('scroll', animateOnScroll);
-            
-            // 3. Menu mobile
-            const mobileMenuButton = document.querySelector('button.md\\:hidden');
-            const mobileMenu = document.querySelector('.hidden.md\\:flex');
-            if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('hidden');
-                    mobileMenu.classList.toggle('flex');
-                    mobileMenu.classList.toggle('flex-col');
-                    mobileMenu.classList.toggle('absolute');
-                    mobileMenu.classList.toggle('top-16');
-                    mobileMenu.classList.toggle('left-0');
-                    mobileMenu.classList.toggle('w-full');
-                    mobileMenu.classList.toggle('bg-black');
-                    mobileMenu.classList.toggle('p-4');
-                    mobileMenu.classList.toggle('space-y-4');
-                    mobileMenu.classList.toggle('space-x-8');
-                    mobileMenu.classList.toggle('border-t');
-                    mobileMenu.classList.toggle('border-white/10');
-                });
-            }
-    
-            // 4. Formulaire WhatsApp
-            const whatsappForm = document.getElementById('whatsappForm');
-            const submitBtn = document.getElementById('submitBtn');
-            if (whatsappForm && submitBtn) {
-                let canSubmit = true;
-    
-                whatsappForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    if (!canSubmit) {
-                        alert("Veuillez patienter avant un nouvel envoi.");
-                        return;
-                    }
-    
-                    const nameVal = document.getElementById('nameField').value.trim();
-                    const msgVal = document.getElementById('messageField').value.trim();
-    
-                    if (!nameVal || !msgVal) {
-                        alert("Merci de saisir au moins votre nom et un message.");
-                        return;
-                    }
-    
-                    const text = `Bonjour, je m'appelle ${nameVal}.\n -> ${msgVal}\n\nMerci !`;
-                    const phoneNumber = '+41799139344';
-                    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
-    
-                    window.open(whatsappURL, '_blank');
-                    createConfetti();
-                    
-                    // Feedback visuel
-                    submitBtn.innerHTML = `<i class="fas fa-check-circle mr-2"></i> Message envoyé !`;
-                    submitBtn.classList.replace('bg-main-gradient', 'bg-green-500');
-                    canSubmit = false;
-                    submitBtn.disabled = true;
-    
-                    setTimeout(() => {
-                        canSubmit = true;
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = `<i class="fab fa-whatsapp mr-2"></i> Envoyer sur WhatsApp`;
-                        submitBtn.classList.replace('bg-green-500', 'bg-main-gradient');
-                        whatsappForm.reset();
-                    }, 8000);
-                });
-            }
-    
-            // 5. Effets de particules
-            function createParticles(containerId, count = 30) {
-                const container = document.getElementById(containerId);
-                if (!container) return;
-                
-                for (let i = 0; i < count; i++) {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    particle.style.cssText = `
-                        width: ${Math.random() * 5 + 1}px;
-                        height: ${Math.random() * 5 + 1}px;
-                        left: ${Math.random() * 100}%;
-                        bottom: -${Math.random() * 5 + 1}px;
-                        background: ${['#3ddc97', '#5ef0c1', '#2cca61', '#217a4a', '#ff6b6b', '#4cc9f0', '#f8961e'][Math.floor(Math.random() * 7)]};
-                        opacity: ${Math.random() * 0.5 + 0.1};
-                        animation-duration: ${Math.random() * 20 + 10}s;
-                        animation-delay: ${Math.random() * 5}s;
-                    `;
-                    container.appendChild(particle);
-                }
-            }
-    
-            // 6. Confetti
-            function createConfetti() {
-                const colors = ['#3ddc97', '#5ef0c1', '#2cca61', '#217a4a', '#ff6b6b', '#4cc9f0', '#f8961e'];
-                
-                for (let i = 0; i < 100; i++) {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    confetti.style.cssText = `
-                        left: ${Math.random() * 100}vw;
-                        width: ${Math.random() * 10 + 5}px;
-                        height: ${Math.random() * 10 + 5}px;
-                        border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
-                        background-color: ${colors[Math.floor(Math.random() * colors.length)]};
-                        animation-duration: ${Math.random() * 3 + 2}s;
-                        animation-delay: ${Math.random() * 0.5}s;
-                    `;
-                    document.body.appendChild(confetti);
-                    setTimeout(() => confetti.remove(), (Math.random() * 3 + 2) * 1000);
-                }
-            }
-    
-            // 7. Effet de morphing
-            document.querySelectorAll('.morph-effect').forEach(el => {
-                setInterval(() => {
-                    el.style.borderRadius = `${Math.random() * 50}% ${Math.random() * 50}% ${Math.random() * 50}% ${Math.random() * 50}% / ${Math.random() * 50}% ${Math.random() * 50}% ${Math.random() * 50}% ${Math.random() * 50}%`;
-                }, 3000);
-            });
-    
-            // 8. Effet de parallaxe
-            window.addEventListener('scroll', () => {
-                document.querySelectorAll('.parallax').forEach(el => {
-                    el.style.backgroundPositionY = `-${window.scrollY * 0.3}px`;
-                });
-            });
-    
-            // 9. Tooltips
-            document.querySelectorAll('.custom-tooltip').forEach(el => {
-                el.addEventListener('mouseenter', function() {
-                    const tooltipElement = document.createElement('div');
-                    tooltipElement.className = 'tooltip-element';
-                    tooltipElement.textContent = this.getAttribute('data-tooltip');
-                    document.body.appendChild(tooltipElement);
-                    
-                    const rect = this.getBoundingClientRect();
-                    tooltipElement.style.cssText = `
-                        position: absolute;
-                        left: ${rect.left + rect.width/2}px;
-                        top: ${rect.top - 40}px;
-                        transform: translateX(-50%);
-                        pointer-events: none;
-                        opacity: 0;
-                        transition: all 0.3s ease;
-                    `;
-                    
-                    setTimeout(() => {
-                        tooltipElement.style.opacity = '1';
-                        tooltipElement.style.transform = 'translateX(-50%) translateY(-10px)';
-                    }, 10);
-                    
-                    this._tooltipElement = tooltipElement;
-                });
-                
-                el.addEventListener('mouseleave', function() {
-                    if (this._tooltipElement) {
-                        this._tooltipElement.remove();
-                        delete this._tooltipElement;
-                    }
-                });
-            });
-    
-            // Initialisation
-            createParticles('particles-js', 50);
-            createParticles('footer-particles', 30);
+    // Menu mobile amélioré
+    const menuButton = document.querySelector('button.md\\:hidden');
+    const mobileMenu = document.querySelector('.hidden.md\\:flex');
+
+    if (menuButton && mobileMenu) {
+        // Transforme le menu existant en menu mobile
+        mobileMenu.classList.add('mobile-menu');
+        
+        menuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            this.classList.toggle('text-main-accent');
         });
+        
+        // Ferme le menu quand on clique sur un lien
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuButton.classList.remove('text-main-accent');
+            });
+        });
+    }
+
+    // Formulaire classique
+    const classicForm = document.getElementById('classicForm');
+    if (classicForm) {
+        classicForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!name || !email || !message) {
+                alert("Veuillez remplir tous les champs obligatoires");
+                return;
+            }
+            
+            // Ici vous devriez ajouter le code pour envoyer le formulaire
+            // Par exemple avec fetch() vers un endpoint backend
+            
+            // Feedback visuel
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Message envoyé !';
+            submitBtn.classList.replace('bg-main-gradient', 'bg-green-500');
+            
+            // Réinitialiser après 3 secondes
+            setTimeout(() => {
+                submitBtn.innerHTML = 'Envoyer le message';
+                submitBtn.classList.replace('bg-green-500', 'bg-main-gradient');
+                classicForm.reset();
+            }, 3000);
+        });
+    }
+
+    // Formulaire WhatsApp
+    const whatsappForm = document.getElementById('whatsappForm');
+    const submitBtn = document.getElementById('submitBtn');
+    if (whatsappForm && submitBtn) {
+        let canSubmit = true;
+
+        whatsappForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (!canSubmit) {
+                alert("Veuillez patienter avant un nouvel envoi.");
+                return;
+            }
+
+            const nameVal = document.getElementById('nameField').value.trim();
+            const msgVal = document.getElementById('messageField').value.trim();
+
+            if (!nameVal || !msgVal) {
+                alert("Merci de saisir au moins votre nom et un message.");
+                return;
+            }
+
+            const text = `Bonjour, je m'appelle ${nameVal}.\n -> ${msgVal}\n\nMerci !`;
+            const phoneNumber = '+41799139344';
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
+
+            window.open(whatsappURL, '_blank');
+            createConfetti();
+            
+            // Feedback visuel
+            submitBtn.innerHTML = `<i class="fas fa-check-circle mr-2"></i> Message envoyé !`;
+            submitBtn.classList.replace('bg-main-gradient', 'bg-green-500');
+            canSubmit = false;
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                canSubmit = true;
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fab fa-whatsapp mr-2"></i> Envoyer sur WhatsApp`;
+                submitBtn.classList.replace('bg-green-500', 'bg-main-gradient');
+                whatsappForm.reset();
+            }, 8000);
+        });
+    }
+
+    // Effets de particules
+    function createParticles(containerId, count = 30) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        for (let i = 0; i < count; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.cssText = `
+                width: ${Math.random() * 5 + 1}px;
+                height: ${Math.random() * 5 + 1}px;
+                left: ${Math.random() * 100}%;
+                bottom: -${Math.random() * 5 + 1}px;
+                background: ${['#3ddc97', '#5ef0c1', '#2cca61', '#217a4a', '#ff6b6b', '#4cc9f0', '#f8961e'][Math.floor(Math.random() * 7)]};
+                opacity: ${Math.random() * 0.5 + 0.1};
+                animation-duration: ${Math.random() * 20 + 10}s;
+                animation-delay: ${Math.random() * 5}s;
+            `;
+            container.appendChild(particle);
+        }
+    }
+
+    // Confetti
+    function createConfetti() {
+        const colors = ['#3ddc97', '#5ef0c1', '#2cca61', '#217a4a', '#ff6b6b', '#4cc9f0', '#f8961e'];
+        
+        for (let i = 0; i < 100; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.cssText = `
+                left: ${Math.random() * 100}vw;
+                width: ${Math.random() * 10 + 5}px;
+                height: ${Math.random() * 10 + 5}px;
+                border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
+                background-color: ${colors[Math.floor(Math.random() * colors.length)]};
+                animation-duration: ${Math.random() * 3 + 2}s;
+                animation-delay: ${Math.random() * 0.5}s;
+            `;
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), (Math.random() * 3 + 2) * 1000);
+        }
+    }
+
+    // Effet de morphing
+    document.querySelectorAll('.morph-effect').forEach(el => {
+        setInterval(() => {
+            el.style.borderRadius = `${Math.random() * 50}% ${Math.random() * 50}% ${Math.random() * 50}% ${Math.random() * 50}% / ${Math.random() * 50}% ${Math.random() * 50}% ${Math.random() * 50}% ${Math.random() * 50}%`;
+        }, 3000);
+    });
+
+    // Effet de parallaxe
+    window.addEventListener('scroll', () => {
+        document.querySelectorAll('.parallax').forEach(el => {
+            el.style.backgroundPositionY = `-${window.scrollY * 0.3}px`;
+        });
+    });
+
+    // Barre de progression de défilement
+    window.addEventListener('scroll', () => {
+        const scrollProgress = document.getElementById('nav-progress');
+        if (scrollProgress) {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            scrollProgress.style.width = (window.scrollY / scrollHeight) * 100 + '%';
+        }
+    });
+
+    // Initialisation
+    createParticles('particles-js', 50);
+});
     </script>
 
     <footer class="py-12 text-center text-white/80 mt-16 bg-secondary">
