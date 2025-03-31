@@ -10,6 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("VOTRE_CLE_PUBLIQUE_EMAILJS");
+        })();
+    </script>
 
     <style>
         :root {
@@ -393,8 +399,19 @@
             height: 100%;
             background: var(--main-gradient);
             border-radius: 3px;
-            width: 75%; /* Ajuster selon le niveau */
+            width: 0%;
             position: relative;
+            transition: width 0.5s ease-out;
+        }
+        
+        .level-progress.animate-progress {
+            animation: progressPulse 1s ease-out;
+        }
+        
+        @keyframes progressPulse {
+            0% { transform: scaleX(1); }
+            50% { transform: scaleX(1.05); }
+            100% { transform: scaleX(1); }
         }
         
         .level-progress::after {
@@ -824,7 +841,7 @@
                 
                 <!-- Indicateur de niveau (gamification) -->
                 <div class="flex items-center ml-4">
-                    <div class="text-xs mr-2">your views = 0</div>
+                    <div class="text-xs mr-2">Vues  <span id="viewCount">0</span></div>
                     <div class="level-indicator">
                         <div class="level-progress" style="width: 0%"></div>
                     </div>
@@ -858,7 +875,7 @@
                 <p class="text-xl text-white/80 mb-8 max-w-lg">
                     Je crée des sites web clés en main pour particuliers et petits commerces, 
                     avec un design moderne et une gestion simplifiée. Pas de CMS complexe à apprendre, 
-                    juste une solution efficace qui vous ressemble.
+                    juste une solution efficace qui vous ressemble et un suivi personnalisé.
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <a href="#contact" class="px-8 py-3 bg-main rounded-full font-bold btn-hover glow-effect flex items-center">
@@ -921,7 +938,7 @@
                     <div>
                         <div class="flex justify-between mb-1">
                             <span class="text-sm font-medium text-main-light">Design Graphique</span>
-                            <span class="text-sm text-white/60">13000h d'expérience</span>
+                            <span class="text-sm text-white/60">2 ans d'expérience</span>
                         </div>
                         <div class="w-full bg-white/10 rounded-full h-2.5">
                             <div class="bg-main-gradient h-2.5 rounded-full" style="width: 100%">
@@ -932,7 +949,7 @@
                     <div>
                         <div class="flex justify-between mb-1">
                             <span class="text-sm font-medium text-main-light">Développement</span>
-                            <span class="text-sm text-white/60">14000h d'expérience</span>
+                            <span class="text-sm text-white/60">5 ans d'expérience</span>
                         </div>
                         <div class="w-full bg-white/10 rounded-full h-2.5">
                             <div class="bg-main-gradient h-2.5 rounded-full" style="width: 100%"></div>
@@ -942,7 +959,7 @@
                     <div>
                         <div class="flex justify-between mb-1">
                             <span class="text-sm font-medium text-main-light">Photographie et Vidéo</span>
-                            <span class="text-sm text-white/60">11000h d'expérience</span>
+                            <span class="text-sm text-white/60">3 ans d'expérience</span>
                         </div>
                         <div class="w-full bg-white/10 rounded-full h-2.5">
                             <div class="bg-main-gradient h-2.5 rounded-full" style="width: 100%"></div>
@@ -965,10 +982,10 @@
                         </span> passionné par le <span class="highlight-story animate-highlight"> storytelling digital 📖</span>.
                         
                         Actuellement en <span class="highlight-study animate-highlight">
-                             3ème année d'informatique de gestion 🎓
-                        </span> à la <span class="highlight-school animate-highlight">HEG Genève 🏛️ </span> 
+                             3ème année d'informatique de gestion 
+                        </span> à la <span class="highlight-school animate-highlight">HEG Genève 🎓 </span> 
                         et <span class="highlight-role animate-highlight"> président</span> de l'association estudiantine, 
-                        je mets mes compétences techniques et créatives au service de votre <span class="highlight-visibility animate-highlight">✨ visibilité en ligne</span>.
+                        je mets mes compétences techniques et créatives au service de votre <span class="highlight-visibility animate-highlight"> visibilité en ligne✨</span>.
                     </p>
                     
                     <p class="text-lg mb-8">
@@ -1464,70 +1481,204 @@
                 </div>
             </div>
             
-            <!-- Processus de travail avec timeline verticale améliorée -->
-            <div class="mt-32">
-                <h3 class="text-3xl md:text-4xl font-bold mb-12 text-center text-main">Mon Processus</h3>
+   <!-- Processus de travail avec timeline verticale améliorée -->
+<div class="mt-32">
+    <h3 class="text-3xl md:text-4xl font-bold mb-12 text-center text-main">Mon Processus</h3>
+    
+    <div class="relative">
+        <!-- Ligne de temps améliorée -->
+        <div class="absolute left-1/2 h-full w-1 bg-gradient-to-b from-main-accent via-main-color to-main-light transform -translate-x-1/2 hidden md:block"></div>
+        
+        <!-- Étape 1 - Découverte -->
+        <div class="relative mb-16 md:flex items-center">
+            <div class="md:w-1/2 md:pr-16 mb-8 md:mb-0 md:text-right slide-in-left">
+                <div class="inline-block bg-main-accent/10 border border-main-accent/30 px-4 py-2 rounded-full text-sm text-main-light mb-2 flex items-center">
+                    <i class="fas fa-search mr-1"></i> Étape 1
+                </div>
+                <h4 class="text-2xl font-bold mb-2">Découverte & Analyse</h4>
+                <p class="text-white/80 mb-4">
+                    Nous déterminons ensemble la solution la plus adaptée à vos besoins parmi mes 3 offres.
+                </p>
+                <div class="p-4 bg-main-accent/5 rounded-lg border border-main-accent/20">
+                    <h5 class="font-bold text-main-light mb-2 flex items-center">
+                        <i class="fas fa-clock mr-2"></i>Délais indicatifs
+                    </h5>
+                    <ul class="text-sm space-y-2">
+                        <li class="flex items-start">
+                            <span class="bg-blue-200/20 text-blue-200 px-2 py-1 rounded-full text-xs font-bold mr-2">OFFRE 1</span>
+                            <span>Livré en quelques jours</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-green-200/20 text-green-200 px-2 py-1 rounded-full text-xs font-bold mr-2">OFFRE 2</span>
+                            <span>1-2 semaines (inclut séance photo)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-purple-200/20 text-purple-200 px-2 py-1 rounded-full text-xs font-bold mr-2">OFFRE 3</span>
+                            <span>Sur devis selon complexité</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="hidden md:block md:w-1/2"></div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 md:translate-x-0 w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold z-10 shadow-lg">
+                1
+            </div>
+        </div>
+        
+        <!-- Étape 2 - Solution -->
+        <div class="relative mb-16 md:flex items-center">
+            <div class="hidden md:block md:w-1/2 md:pr-16"></div>
+            <div class="md:w-1/2 md:pl-16 mb-8 md:mb-0 slide-in-right" style="transition-delay: 0.2s">
+                <div class="inline-block bg-main-accent/10 border border-main-accent/30 px-4 py-2 rounded-full text-sm text-main-light mb-2 flex items-center">
+                    <i class="fas fa-tools mr-1"></i> Étape 2
+                </div>
+                <h4 class="text-2xl font-bold mb-2">Solution sur mesure</h4>
                 
-                <div class="relative">
-                    <!-- Ligne de temps améliorée -->
-                    <div class="absolute left-1/2 h-full w-1 bg-gradient-to-b from-main-accent via-main-color to-main-light transform -translate-x-1/2 hidden md:block"></div>
-                    
-                    <!-- Étape 1 -->
-                    <div class="relative mb-16 md:flex items-center">
-                        <div class="md:w-1/2 md:pr-16 mb-8 md:mb-0 md:text-right slide-in-left">
-                            <div class="inline-block bg-main-accent/10 border border-main-accent/30 px-4 py-2 rounded-full text-sm text-main-light mb-2 flex items-center">
-                                <i class="fas fa-search mr-1"></i> Étape 1
-                            </div>
-                            <h4 class="text-2xl font-bold mb-2">Découverte</h4>
-                            <p class="text-white/80">
-                                Nous discutons de votre activité, vos besoins et votre histoire pour définir le kit de survie digital minimaliste dont vous avez besoin.
-                            </p>
+                <!-- Cartes des offres -->
+                <div class="grid gap-6 mt-6">
+                    <!-- Offre 1 -->
+                    <div class="p-5 bg-blue-900/20 rounded-xl border border-blue-200/30 relative">
+                        <div class="absolute -top-2 -right-2 bg-blue-200 text-blue-900 px-2 py-1 rounded-full text-xs font-bold">
+                            ULTRA RAPIDE
                         </div>
-                        <div class="hidden md:block md:w-1/2"></div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 md:translate-x-0 w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold z-10 shadow-lg">
-                            1
+                        <h5 class="text-lg font-bold text-blue-200 mb-2">The Minimalist (450 CHF)</h5>
+                        <ul class="text-sm space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-bolt text-blue-200 text-xs mt-1 mr-2"></i>
+                                <span>Livraison express en quelques jours</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-mobile-alt text-blue-200 text-xs mt-1 mr-2"></i>
+                                <span>Site responsive clé en main</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-200 text-xs mt-1 mr-2"></i>
+                                <span>Idéal pour besoins simples</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Offre 2 -->
+                    <div class="p-5 bg-green-900/20 rounded-xl border border-green-200/30 relative">
+                        <div class="absolute -top-2 -right-2 bg-green-200 text-green-900 px-2 py-1 rounded-full text-xs font-bold">
+                            AVEC SUIVI
+                        </div>
+                        <h5 class="text-lg font-bold text-green-200 mb-2">Site Web + Updates (~1400 CHF + 50 CHF/mois)</h5>
+                        <ul class="text-sm space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-camera text-green-200 text-xs mt-1 mr-2"></i>
+                                <span>Séance photo incluse (1-2 semaines)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-sync-alt text-green-200 text-xs mt-1 mr-2"></i>
+                                <span>Mises à jour mensuelles</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-shield-alt text-green-200 text-xs mt-1 mr-2"></i>
+                                <span>Suivi technique inclus</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Offre 3 -->
+                    <div class="p-5 bg-purple-900/20 rounded-xl border border-purple-200/30">
+                        <h5 class="text-lg font-bold text-purple-200 mb-2">Solution Premium (sur devis)</h5>
+                        <ul class="text-sm space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-cogs text-purple-200 text-xs mt-1 mr-2"></i>
+                                <span>Délai variable selon complexité</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-tachometer-alt text-purple-200 text-xs mt-1 mr-2"></i>
+                                <span>Solution backend personnalisée</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-calendar-check text-purple-200 text-xs mt-1 mr-2"></i>
+                                <span>Planning adapté à votre projet</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 md:translate-x-0 w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold z-10 shadow-lg">
+                2
+            </div>
+        </div>
+        
+        <!-- Étape 3 - Livraison -->
+        <div class="relative md:flex items-center">
+            <div class="md:w-1/2 md:pr-16 mb-8 md:mb-0 slide-in-left" style="transition-delay: 0.4s">
+                <div class="inline-block bg-main-accent/10 border border-main-accent/30 px-4 py-2 rounded-full text-sm text-main-light mb-2 flex items-center">
+                    <i class="fas fa-rocket mr-1"></i> Étape 3
+                </div>
+                <h4 class="text-2xl font-bold mb-2">Livraison & Suivi</h4>
+                
+                <div class="grid gap-6">
+                    <!-- Processus de livraison -->
+                    <div class="p-5 bg-white/5 rounded-xl border border-white/10">
+                        <h5 class="font-bold text-main-light mb-3 flex items-center">
+                            <i class="fas fa-truck mr-2"></i>Livraison
+                        </h5>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-blue-200/20 text-blue-200 rounded-full w-6 h-6 flex items-center justify-center mr-3">
+                                    1
+                                </div>
+                                <div>
+                                    <h6 class="font-medium text-blue-200">The Minimalist</h6>
+                                    <p class="text-xs text-white/70">Livré et mis en ligne en quelques jours</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-green-200/20 text-green-200 rounded-full w-6 h-6 flex items-center justify-center mr-3">
+                                    2
+                                </div>
+                                <div>
+                                    <h6 class="font-medium text-green-200">Site Web + Updates</h6>
+                                    <p class="text-xs text-white/70">Livraison en 1-2 semaines avec séance photo dédiée</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 bg-purple-200/20 text-purple-200 rounded-full w-6 h-6 flex items-center justify-center mr-3">
+                                    3
+                                </div>
+                                <div>
+                                    <h6 class="font-medium text-purple-200">Solution Premium</h6>
+                                    <p class="text-xs text-white/70">Livraison échelonnée selon le planning défini</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Étape 2 -->
-                    <div class="relative mb-16 md:flex items-center">
-                        <div class="hidden md:block md:w-1/2 md:pr-16"></div>
-                        <div class="md:w-1/2 md:pl-16 mb-8 md:mb-0 slide-in-right" style="transition-delay: 0.2s">
-                            <div class="inline-block bg-main-accent/10 border border-main-accent/30 px-4 py-2 rounded-full text-sm text-main-light mb-2 flex items-center">
-                                <i class="fas fa-tools mr-1"></i> Étape 2
+                    <!-- Suivi post-livraison -->
+                    <div class="p-5 bg-white/5 rounded-xl border border-white/10">
+                        <h5 class="font-bold text-main-light mb-3 flex items-center">
+                            <i class="fas fa-headset mr-2"></i>Suivi Post-Livraison
+                        </h5>
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-blue-200 mt-0.5 mr-2"></i>
+                                <span class="text-sm">Offre 1 : <span class="text-blue-200">Sécurité et hebergment garantis</span></span>
                             </div>
-                            <h4 class="text-2xl font-bold mb-2">Kit de Survie</h4>
-                            <p class="text-white/80">
-                                Je réalise la version basique mais professionnelle de votre site web, avec juste l'essentiel pour vous lancer en ligne.
-                            </p>
-                        </div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 md:translate-x-0 w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold z-10 shadow-lg">
-                            2
-                        </div>
-                    </div>
-                    
-                    <!-- Étape 3 -->
-                    <div class="relative md:flex items-center">
-                        <div class="md:w-1/2 md:pr-16 mb-8 md:mb-0 slide-in-left" style="transition-delay: 0.4s">
-                            <div class="inline-block bg-main-accent/10 border border-main-accent/30 px-4 py-2 rounded-full text-sm text-main-light mb-2 flex items-center">
-                                <i class="fas fa-code mr-1"></i> Étape 3
+                            <div class="flex items-start">
+                                <i class="fas fa-star text-yellow-400 mt-0.5 mr-2"></i>
+                                <span class="text-sm">Offre 2 : <span class="text-green-200">Mises à jour mensuelles et suivi continu</span></span>
                             </div>
-                            <h4 class="text-2xl font-bold mb-2">Développement</h4>
-                            <p class="text-white/80">
-                                Je développe votre site avec des technologies modernes, en assurant une expérience utilisateur optimale sur tous les appareils et un suivi de la sécurité et de la performance.
-                            </p>
-                        </div>
-                        <div class="hidden md:block md:w-1/2 md:pl-16"></div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 md:translate-x-0 w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold z-10 shadow-lg">
-                            3
-                        </div>
-                    </div>
-                    
-                 
+                            <div class="flex items-start">
+                                <i class="fas fa-cog text-purple-200 mt-0.5 mr-2"></i>
+                                <span class="text-sm">Offre 3 : <span class="text-purple-200">Maintenance sur mesure selon contrat</span></span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="hidden md:block md:w-1/2 md:pl-16"></div>
+            <div class="absolute left-1/2 transform -translate-x-1/2 md:translate-x-0 w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold z-10 shadow-lg">
+                3
+            </div>
+        </div>
+    </div>
+</div>
             
             <!-- Citation finale avec effet de lumière -->
             <div class="mt-24 text-center slide-in-top" style="transition-delay: 0.8s">
@@ -1544,8 +1695,9 @@
     </section>
 
     <!-- Contact Section avec formulaire amélioré -->
-    <section id="contact" class="section relative bg-black/50 parallax" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
-        <div class="absolute inset-0 bg-black/60"></div>
+    <section id="contact" class="section relative">
+        <div class="absolute inset-0 bg-[url('galaxy.jpg')] bg-cover bg-center bg-fixed"></div>
+        <div class="absolute inset-0 bg-black/70"></div>
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center h-full relative z-10">
             <div class="slide-in-left">
                 <h2 class="text-4xl md:text-6xl font-bold mb-6 text-main">Travaillons Ensemble</h2>
@@ -1596,12 +1748,12 @@
                                 SD
                             </div>
                             <div>
-                                <div class="font-bold">Davide</div>
-                                <div class="text-sm text-white/60">Audit en optimisation fiscale</div>
+                                <div class="font-bold">Jean-Daniel</div>
+                                <div class="text-sm text-white/60">Responsable de Formation à l'IFAGE</div>
                             </div>
                         </div>
                         <p class="text-white/80 italic">
-                            "Sonny et son expertise m'ont réellement épatés"
+                            "Sonny et son assiduité m'ont réellement épatés"
                         </p>
                         <div class="flex mt-4">
                             <i class="fas fa-star text-yellow-400"></i>
@@ -1615,7 +1767,7 @@
                     <!-- Indicateur de satisfaction client -->
                     <div class="mt-6 bg-white/5 p-4 rounded-lg border border-white/10">
                         <div class="flex justify-between mb-2">
-                            <span class="text-sm font-medium">photographie et vidéo</span>
+                            <span class="text-sm font-medium">solution web</span>
                             <span class="text-sm font-bold text-main-light">100%</span>
                         </div>
                         <div class="w-full bg-white/10 rounded-full h-2">
@@ -1625,105 +1777,104 @@
                 </div>
             </div>
 
-            <!-- FORMULAIRE CLASSIQUE amélioré avec effets -->
+            <!-- FORMULAIRE CLASSIQUE amélioré avec ouverture de l'application mail -->
             <div class="slide-in-right">
-              <form id="classicForm" class="bg-white/5 p-8 rounded-xl backdrop-blur-sm border border-white/10 hover:border-main-accent/30 transition-all duration-500 card-3d mb-12">
-                  <h3 class="text-2xl font-bold mb-6 text-main flex items-center">
-                      <i class="fas fa-envelope mr-2"></i> Envoyez-moi un message
-                  </h3>
-                  
-                  <!-- Nom -->
-                  <div class="mb-6">
-                      <label for="name" class="block mb-2 text-white/80">Votre nom *</label>
-                      <input type="text" id="name" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-main-accent transition">
-                  </div>
-                  
-                  <!-- Email -->
-                  <div class="mb-6">
-                      <label for="email" class="block mb-2 text-white/80">Votre email *</label>
-                      <input type="email" id="email" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-main-accent transition">
-                  </div>
-                  
-                  <!-- Message -->
-                  <div class="mb-6">
-                      <label for="message" class="block mb-2 text-white/80">Votre message *</label>
-                      <textarea id="message" rows="4" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-main-accent transition" placeholder="Décrivez votre projet..."></textarea>
-                  </div>
-                  
-                  <!-- Bouton d'envoi -->
-                  <button type="submit" class="w-full bg-main-gradient py-3 rounded-lg font-bold btn-hover glow-effect transition">
-                      Envoyer le message
-                  </button>
-              </form>
+                <div class="bg-white/5 p-8 rounded-xl backdrop-blur-sm border border-white/10 hover:border-main-accent/30 transition-all duration-500 card-3d mb-12">
+                    <h3 class="text-2xl font-bold mb-6 text-main flex items-center">
+                        <i class="fas fa-envelope mr-2"></i> Envoyez-moi un email
+                    </h3>
+                    
+                    <!-- Nom -->
+                    <div class="mb-6">
+                        <label for="name" class="block mb-2 text-white/80">Votre nom *</label>
+                        <input type="text" id="name" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-main-accent transition">
+                    </div>
+                    
+                    <!-- Sujet -->
+                    <div class="mb-6">
+                        <label for="subject" class="block mb-2 text-white/80">Sujet *</label>
+                        <input type="text" id="subject" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-main-accent transition">
+                    </div>
+                    
+                    <!-- Message -->
+                    <div class="mb-6">
+                        <label for="message" class="block mb-2 text-white/80">Votre message *</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-main-accent transition" placeholder="Décrivez votre projet..."></textarea>
+                    </div>
+                    
+                    <!-- Bouton d'envoi -->
+                    <button type="button" id="sendEmailBtn" class="w-full bg-main-gradient py-3 rounded-lg font-bold btn-hover glow-effect transition">
+                        Ouvrir l'application mail
+                    </button>
+                </div>
 
-              <!-- FORMULAIRE WHATSAPP existant -->
-              <form id="whatsappForm" class="bg-white/5 p-8 rounded-xl backdrop-blur-sm border border-white/10 hover:border-main-accent/30 transition-all duration-500 card-3d">
-                  <h3 class="text-2xl font-bold mb-6 text-main flex items-center">
-                      <i class="fab fa-whatsapp mr-2"></i> Contact WhatsApp
-                  </h3>
+                <!-- FORMULAIRE WHATSAPP existant -->
+                <form id="whatsappForm" class="bg-white/5 p-8 rounded-xl backdrop-blur-sm border border-white/10 hover:border-main-accent/30 transition-all duration-500 card-3d">
+                    <h3 class="text-2xl font-bold mb-6 text-main flex items-center">
+                        <i class="fab fa-whatsapp mr-2"></i> Contact WhatsApp
+                    </h3>
 
-                  <!-- Nom -->
-                  <div class="mb-6">
-                      <label for="nameField" class="block mb-2 text-white/80">Votre nom</label>
-                      <div class="relative">
-                          <input type="text" id="nameField"
-                                 class="w-full px-4 py-3 bg-white/5 border border-white/10 focus:outline-none focus:border-main-accent rounded-lg transition-all duration-300 pl-10">
-                          <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-white/50"></i>
-                      </div>
-                  </div>
+                    <!-- Nom -->
+                    <div class="mb-6">
+                        <label for="nameField" class="block mb-2 text-white/80">Votre nom</label>
+                        <div class="relative">
+                            <input type="text" id="nameField"
+                                   class="w-full px-4 py-3 bg-white/5 border border-white/10 focus:outline-none focus:border-main-accent rounded-lg transition-all duration-300 pl-10">
+                            <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-white/50"></i>
+                        </div>
+                    </div>
 
-                  <!-- Message -->
-                  <div class="mb-6">
-                      <label for="messageField" class="block mb-2 text-white/80">Votre message</label>
-                      <div class="relative">
-                          <textarea id="messageField" rows="4"
-                                    class="w-full px-4 py-3 bg-white/5 border border-white/10 focus:outline-none focus:border-main-accent rounded-lg transition-all duration-300 pl-10"
-                                    placeholder="Décrivez votre projet..."></textarea>
-                          <i class="fas fa-comment-dots absolute left-3 top-4 transform -translate-y-1/2 text-white/50"></i>
-                      </div>
-                  </div>
+                    <!-- Message -->
+                    <div class="mb-6">
+                        <label for="messageField" class="block mb-2 text-white/80">Votre message</label>
+                        <div class="relative">
+                            <textarea id="messageField" rows="4"
+                                      class="w-full px-4 py-3 bg-white/5 border border-white/10 focus:outline-none focus:border-main-accent rounded-lg transition-all duration-300 pl-10"
+                                      placeholder="Décrivez votre projet..."></textarea>
+                            <i class="fas fa-comment-dots absolute left-3 top-4 transform -translate-y-1/2 text-white/50"></i>
+                        </div>
+                    </div>
 
-                  <!-- Bouton d'envoi avec logo WhatsApp -->
-                  <button type="submit"
-                          id="submitBtn"
-                          class="w-full bg-main-gradient py-3 rounded-lg font-bold btn-hover glow-effect transition-all duration-300 flex items-center justify-center">
-                      <i class="fab fa-whatsapp mr-2"></i> Envoyer sur WhatsApp
-                  </button>
-                  
-                  <!-- Confidentialité -->
-                  <div class="text-xs text-white/50 mt-4 flex items-center">
-                      <i class="fas fa-lock mr-1"></i> En cliquant sur "Envoyer", vous acceptez notre politique de confidentialité.
-                  </div>
-              </form>
-              
-              <!-- Autres méthodes de contact -->
-              <div class="mt-8 text-center">
-                  <p class="text-white/60 mb-4">Ou contactez-moi directement</p>
-                  <div class="flex justify-center space-x-4">
-                      <a href="mailto:sonnybox@hotmail.com" class="px-6 py-2 border border-white/10 rounded-full hover:bg-main-accent/10 hover:border-main-accent/30 transition flex items-center">
-                          <i class="fas fa-envelope mr-2"></i> Email
-                      </a>
-                      <a href="tel:+41799139344" class="px-6 py-2 border border-white/10 rounded-full hover:bg-main-accent/10 hover:border-main-accent/30 transition flex items-center">
-                          <i class="fas fa-phone mr-2"></i> Appel
-                      </a>
-                  </div>
-              </div>
-              
-              <!-- CTA de réseaux sociaux -->
-              <div class="mt-8 bg-main-accent/10 p-4 rounded-lg border border-main-accent/30 text-center">
-                  <p class="text-sm text-white/80 mb-2">Suivez-moi sur les réseaux</p>
-                  <div class="flex justify-center space-x-4">
-                      <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-main-accent/20 transition text-main-light hover:text-white">
-                          <i class="fab fa-instagram"></i>
-                      </a>
-                      <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-main-accent/20 transition text-main-light hover:text-white">
-                          <i class="fab fa-dribbble"></i>
-                      </a>
-                      <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-main-accent/20 transition text-main-light hover:text-white">
-                          <i class="fab fa-behance"></i>
-                      </a>
-                  </div>
-              </div>
+                    <!-- Bouton d'envoi avec logo WhatsApp -->
+                    <button type="submit"
+                            id="submitBtn"
+                            class="w-full bg-main-gradient py-3 rounded-lg font-bold btn-hover glow-effect transition-all duration-300 flex items-center justify-center">
+                        <i class="fab fa-whatsapp mr-2"></i> Envoyer sur WhatsApp
+                    </button>
+                    
+                    <!-- Confidentialité -->
+                    <div class="text-xs text-white/50 mt-4 flex items-center">
+                        <i class="fas fa-lock mr-1"></i> En cliquant sur "Envoyer", vous acceptez notre politique de confidentialité.
+                    </div>
+                </form>
+                
+                <!-- Autres méthodes de contact -->
+                <div class="mt-8 text-center">
+                    <p class="text-white/60 mb-4">Ou contactez-moi directement</p>
+                    <div class="flex justify-center space-x-4">
+                 
+                        </a>
+                        <a href="tel:+41799139344" class="px-6 py-2 border border-white/10 rounded-full hover:bg-main-accent/10 hover:border-main-accent/30 transition flex items-center">
+                            <i class="fas fa-phone mr-2"></i> Appel
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- CTA de réseaux sociaux -->
+                <div class="mt-8 bg-main-accent/10 p-4 rounded-lg border border-main-accent/30 text-center">
+                    <p class="text-sm text-white/80 mb-2">Suivez-moi sur les réseaux</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-main-accent/20 transition text-main-light hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-main-accent/20 transition text-main-light hover:text-white">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-main-accent/20 transition text-main-light hover:text-white">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -2064,6 +2215,74 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialisation
     createParticles('particles-js', 50);
+
+    // Gestion du compteur de vues
+    let viewCount = parseInt(localStorage.getItem('viewCount')) || 0;
+    const lastViewTime = parseInt(localStorage.getItem('lastViewTime')) || 0;
+    const currentTime = Date.now();
+    const timeBetweenViews = 1000; // 1 secondes minimum entre chaque vue
+
+    // Vérifier si assez de temps s'est écoulé depuis la dernière vue
+    if (currentTime - lastViewTime > timeBetweenViews) {
+        viewCount++;
+        localStorage.setItem('viewCount', viewCount);
+        localStorage.setItem('lastViewTime', currentTime);
+        
+        // Mettre à jour l'affichage
+        const viewCountElement = document.getElementById('viewCount');
+        if (viewCountElement) {
+            viewCountElement.textContent = viewCount;
+        }
+
+        // Calculer et mettre à jour la jauge de progression
+        const levelProgress = document.querySelector('.level-progress');
+        if (levelProgress) {
+            // Calculer le pourcentage de progression (max 100%)
+            const progress = Math.min((viewCount % 100) / 100 * 100, 100);
+            levelProgress.style.width = `${progress}%`;
+            
+            // Ajouter une classe pour l'animation
+            levelProgress.classList.add('animate-progress');
+            
+            // Retirer la classe après l'animation
+            setTimeout(() => {
+                levelProgress.classList.remove('animate-progress');
+            }, 1000);
+        }
+    }
+
+    // Gestion du formulaire mail
+    const sendEmailBtn = document.getElementById('sendEmailBtn');
+    if (sendEmailBtn) {
+        sendEmailBtn.addEventListener('click', function() {
+            const name = document.getElementById('name').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!name || !subject || !message) {
+                alert("Veuillez remplir tous les champs obligatoires");
+                return;
+            }
+            
+            // Créer le lien mailto avec les informations pré-remplies
+            const email = 'sonnybox@hotmail.com';
+            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Bonjour Sonny,\n\nJe m'appelle ${name}.\n\n${message}\n\nCordialement,\n${name}`)}`;
+            
+            // Ouvrir le client de messagerie
+            window.location.href = mailtoLink;
+            
+            // Feedback visuel
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Application mail ouverte !';
+            this.classList.replace('bg-main-gradient', 'bg-green-500');
+            
+            // Réinitialiser après 3 secondes
+            setTimeout(() => {
+                this.innerHTML = originalText;
+                this.classList.replace('bg-green-500', 'bg-main-gradient');
+            }, 3000);
+        });
+    }
 });
     </script>
 
