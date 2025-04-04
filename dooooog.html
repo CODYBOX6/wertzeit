@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hologramme Système Solaire</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #000; color: #fff; font-family: sans-serif; }
+        canvas { display: block; }
+        #info { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.5); padding: 5px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <div id="info">Système Solaire Holographique</div>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.163.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.163.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+        import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+        import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+
+        let scene, camera, renderer, controls, composer;
+        let sun, planets = [];
+        const textureLoader = new THREE.TextureLoader();
+        const clock = new THREE.Clock();
+
+        // --- CONSTANTES (Échelles et vitesses artistiques, PAS RÉALISTES !) ---
+        const SUN_RADIUS = 5;
+        const PLANET_SCALE_FACTOR = 0.5; // Facteur pour réduire la taille des planètes
+        const ORBIT_SCALE_FACTOR = 1.5;  // Facteur pour espacer les orbites
+
+        const planetData = [
+            { name: 'Mercure', radius: 0.38 * PLANET_SCALE_FACTOR, texture: '/* chemin/vers/texture_mercure.jpg */', distance: 8 * ORBIT_SCALE_FACTOR, speed: 0.04, rotationSpeed: 0.01 },
+            { name: 'Vénus', radius: 0.95 * PLANET_SCALE_FACTOR, texture: '/* chemin/vers/texture_venus.jpg */', distance: 12 * ORBIT_SCALE_FACTOR, speed: 0.02, rotationSpeed: 0.005 },
+            { name: 'Terre', radius: 1.0 * PLANET_SCALE_FACTOR, texture: '/* chemin/vers/texture_terre.jpg */', distance: 17 * ORBIT_SCALE_FACTOR, speed: 0.01, rotationSpeed: 0.05 },
+            { name: 'Mars', radius: 0.53 * PLANET_SCALE_FACTOR, texture: '/* chemin/vers/texture_mars.jpg */', distance: 22 * ORBIT_SCALE_FACTOR, speed: 0.008, rotationSpeed: 0.048 },
+            { name: 'Jupiter', radius: 11.2 * PLANET_SCALE_FACTOR, texture: '/* chemin/vers/texture_jupiter.jpg */', distance: 35 * ORBIT_SCALE_FACTOR, speed: 0.004, rotationSpeed: 0.1 },
+            { name: 'Saturne', radius: 9.45 * PLANET_SCALE_FACTOR, texture: '/* chemin/vers/texture_saturne.jpg */', distance: 50 * ORBIT_SCALE_FACTOR, speed: 0.003, rotationSpeed: 0.09, hasRings: true, ringTexture: '/* chemin/vers/texture_anneaux_saturne.png */' },
+            { name: 'Uranus', radius: 4.0 * PLANET_SCALE_FACTOR, texture: '/* chemin/vers/texture_uranus.jpg */', distance: 65 * ORBIT_SCALE_FACTOR, speed: 0.002, rotationSpeed: 0.03 },
+            { name: 'Neptune', radius: 3.88 * PLANET_SCALE_FACTOR, texture: '/* chemin/vers/texture_neptune.jpg */', distance: 80 * ORBIT_SCALE_FACTOR, speed: 0.001, rotationSpeed: 0.035 },
+        ];
+
+        function init() {
+            // --- Scène ---
+            scene = new THREE.Scene();
+
+            // --- Caméra ---
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 30, 60); // Position initiale pour voir le système
+
+            // --- Renderer ---
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // Alpha pour fond transparent si besoin
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            // renderer.toneMapping = THREE.ReinhardToneMapping; // Optionnel pour gérer les hautes lumières du bloom
+            // renderer.toneMappingExposure = Math.pow(0.9, 4.0); // Ajuster l'exposition
+            document.body.appendChild(renderer.domElement);
+
+            // --- Contrôles ---
+            controls = new OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+
+            // --- Lumières ---
+            // Le soleil sera la source principale de lumière via son matériau emissif
+            // Ajouter une lumière ambiante très faible pour déboucher les ombres
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.2);
+            scene.add(ambientLight);
+
+            // --- Post-Processing (Bloom pour l'effet Hologramme) ---
+            const renderScene = new RenderPass(scene, camera);
+            const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
+            // Ajustez ces valeurs pour l'effet désiré :
+            bloomPass.threshold = 0.1; // Luminosité minimale pour déclencher le bloom (plus bas = plus de bloom)
+            bloomPass.strength = 0.8;  // Intensité du bloom
+            bloomPass.radius = 0.5;    // Flou du bloom
+
+            composer = new EffectComposer(renderer);
+            composer.addPass(renderScene);
+            composer.addPass(bloomPass);
+
+            // --- Création des Objets ---
+            createSun();
+            createPlanets();
+            createStarfield(); // Ajouter un fond étoilé pour l'ambiance
+
+            // --- Redimensionnement ---
+            window.addEventListener('resize', onWindowResize);
+
+            // --- Lancement ---
+            animate();
+        }
+
+        function createSun() {
+            const sunTexture = textureLoader.load('/* chemin/vers/texture_soleil.jpg */'); // Texture du soleil
+            const geometry = new THREE.SphereGeometry(SUN_RADIUS, 64, 64);
+            // Matériau simple et lumineux, insensible aux lumières de la scène
+            const material = new THREE.MeshBasicMaterial({
+                map: sunTexture,
+                color: 0xffffee, // Teinte légèrement jaune
+                blending: THREE.AdditiveBlending, // Pour contribuer fortement au bloom
+                depthWrite: false,
+            });
+            sun = new THREE.Mesh(geometry, material);
+            scene.add(sun);
+
+            // Ajouter une lumière ponctuelle au centre pour éclairer les planètes (optionnel mais aide)
+            const pointLight = new THREE.PointLight(0xffffff, 3, 500); // Intensité forte, portée large
+             sun.add(pointLight); // Attacher la lumière au soleil
+        }
+
+        function createPlanets() {
+            planetData.forEach(data => {
+                // Créer un groupe pour gérer l'orbite
+                const orbitGroup = new THREE.Group();
+                scene.add(orbitGroup);
+
+                // Créer la planète
+                const geometry = new THREE.SphereGeometry(data.radius, 32, 32);
+                const texture = textureLoader.load(data.texture);
+                const material = new THREE.MeshStandardMaterial({
+                     map: texture,
+                     roughness: 0.8,
+                     metalness: 0.1,
+                     // Pour un effet plus "hologramme", on peut jouer avec :
+                     // emissive: 0x111122, // Légère lueur bleue ?
+                     // emissiveIntensity: 0.1,
+                     // transparent: true,
+                     // opacity: 0.95
+                 });
+                const planet = new THREE.Mesh(geometry, material);
+                planet.position.x = data.distance; // Placer à la distance orbitale initiale sur l'axe X
+
+                // Ajouter des anneaux pour Saturne
+                if (data.hasRings) {
+                    const ringTexture = textureLoader.load(data.ringTexture);
+                    const ringGeometry = new THREE.RingGeometry(data.radius * 1.2, data.radius * 2.2, 64);
+                    // Orienter les anneaux
+                    ringGeometry.rotateX(-Math.PI / 2);
+                     // Rendre les deux faces visibles et gérer la transparence de la texture PNG
+                    const ringMaterial = new THREE.MeshBasicMaterial({
+                        map: ringTexture,
+                        side: THREE.DoubleSide,
+                        transparent: true,
+                        opacity: 0.8,
+                         blending: THREE.AdditiveBlending, // Pour effet lumineux
+                         depthWrite: false,
+                    });
+                    const rings = new THREE.Mesh(ringGeometry, ringMaterial);
+                    planet.add(rings); // Attacher les anneaux à la planète
+                }
+
+                orbitGroup.add(planet); // Ajouter la planète au groupe d'orbite
+
+                // Dessiner l'orbite (optionnel)
+                const orbitCurve = new THREE.EllipseCurve(
+                    0, 0,           // Centre X, Y
+                    data.distance, data.distance, // Rayon X, Y (orbite circulaire ici)
+                    0, 2 * Math.PI, // Angle début, fin
+                    false,          // Sens horaire
+                    0               // Rotation
+                );
+                const points = orbitCurve.getPoints(200); // Nb de segments
+                const orbitGeometry = new THREE.BufferGeometry().setFromPoints(points);
+                const orbitMaterial = new THREE.LineBasicMaterial({
+                    color: 0x00ffff, // Cyan pour l'hologramme
+                    transparent: true,
+                    opacity: 0.3,
+                    blending: THREE.AdditiveBlending, // Effet lumineux
+                    depthWrite: false,
+                });
+                const orbitLine = new THREE.Line(orbitGeometry, orbitMaterial);
+                orbitLine.rotation.x = Math.PI / 2; // Orienter l'orbite horizontalement
+                scene.add(orbitLine); // Ajouter directement à la scène
+
+                // Stocker pour l'animation
+                planets.push({ mesh: planet, orbitGroup: orbitGroup, speed: data.speed, rotationSpeed: data.rotationSpeed });
+            });
+        }
+
+         function createStarfield() {
+            const starVertices = [];
+            for (let i = 0; i < 10000; i++) {
+                const x = THREE.MathUtils.randFloatSpread(1000); // Étaler sur une grande zone
+                const y = THREE.MathUtils.randFloatSpread(1000);
+                const z = THREE.MathUtils.randFloatSpread(1000);
+                starVertices.push(x, y, z);
+            }
+            const starGeometry = new THREE.BufferGeometry();
+            starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+            const starMaterial = new THREE.PointsMaterial({
+                color: 0x77aaff, // Bleu pâle pour les étoiles
+                size: 0.5,
+                blending: THREE.AdditiveBlending, // Important pour l'effet lumineux/holo
+                transparent: true,
+                opacity: 0.5,
+                depthWrite: false,
+                sizeAttenuation: true
+            });
+            const stars = new THREE.Points(starGeometry, starMaterial);
+            scene.add(stars);
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            composer.setSize(window.innerWidth, window.innerHeight); // Important pour le post-processing
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const delta = clock.getDelta(); // Temps écoulé depuis la dernière frame
+
+            // Rotation du soleil (lent)
+            sun.rotation.y += 0.002 * delta * 60; // *60 pour normaliser un peu si delta varie
+
+            // Animation des planètes
+            planets.forEach(p => {
+                // Révolution autour du soleil (rotation du groupe d'orbite)
+                p.orbitGroup.rotation.y += p.speed * delta * 10; // Vitesse orbitale (*10 pour accélérer visuellement)
+
+                // Rotation de la planète sur elle-même
+                p.mesh.rotation.y += p.rotationSpeed * delta * 60;
+            });
+
+            controls.update();
+            // renderer.render(scene, camera); // Remplacé par le rendu via composer
+            composer.render(); // Utiliser le composer pour appliquer le bloom
+        }
+
+        init();
+    </script>
+</body>
+</html>

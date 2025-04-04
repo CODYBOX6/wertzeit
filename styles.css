@@ -901,3 +901,20 @@ body {
     0%, 100% { text-shadow: 0 0 10px rgba(61, 220, 151, 0.5); }
     50% { text-shadow: 0 0 15px rgba(61, 220, 151, 0.8); }
 }
+
+/* Correction pour mobile */
+@media (max-width: 768px), (-webkit-touch-callout: none) {
+    [class^="highlight-"] {
+        -webkit-text-fill-color: initial;
+        background-image: none !important;
+        color: var(--main-color);
+        opacity: 1 !important;
+        background-position: 0 0 !important;
+    }
+    
+    /* Forcer l'état visible sur mobile */
+    .slide-in-left, .slide-in-right, .slide-in-top {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
