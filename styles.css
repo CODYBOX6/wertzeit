@@ -917,4 +917,40 @@ body {
         opacity: 1 !important;
         transform: none !important;
     }
+    /*ajouts
+    /* Dans ton CSS */
+@keyframes glitch {
+    0% { text-shadow: 2px 0 #ff6b6b, -2px 0 #4cc9f0; }
+    25% { text-shadow: -2px 0 #ff6b6b, 2px 0 #4cc9f0; }
+    50% { text-shadow: 2px 0 #8b5cf6, -2px 0 #3ddc97; }
+    100% { text-shadow: 2px 0 #ff6b6b, -2px 0 #4cc9f0; }
+  }
+  
+  .glitch-title {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .glitch-title::before, 
+  .glitch-title::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+  }
+  
+  .glitch-title::before {
+    color: #ff6b6b;
+    animation: glitch 3s infinite alternate-reverse;
+    z-index: -1;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  }
+  
+  .glitch-title::after {
+    color: #4cc9f0;
+    animation: glitch 2s infinite alternate;
+    z-index: -2;
+    clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+  }
 }
