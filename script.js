@@ -1,94 +1,87 @@
-// script.js
 document.addEventListener('DOMContentLoaded', function() {
     // Animation au scroll
     const animateOnScroll = () => {
         document.querySelectorAll('.slide-in-left, .slide-in-right, .slide-in-top').forEach(element => {
             const elementTop = element.getBoundingClientRect().top;
             const elementVisible = 150;
-            
             if (elementTop < window.innerHeight - elementVisible) {
                 element.classList.add('is-visible');
             }
         });
     };
-    
-    // Initial trigger
     animateOnScroll();
     window.addEventListener('scroll', animateOnScroll);
-    
-    // Animation spécifique pour les highlights
+
+    // Highlights (dans la section #about)
     const aboutSection = document.querySelector('#about');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const highlights = entry.target.querySelectorAll('[class^="highlight-"]');
-                highlights.forEach((el, index) => {
-                    setTimeout(() => {
-                        el.style.opacity = '1';
-                        el.style.backgroundPosition = '100% 0';
-                        el.classList.add('animated');
-                    }, index * 150);
-                });
-            }
-        });
-    }, { 
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
+    if (aboutSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const highlights = entry.target.querySelectorAll('[class^="highlight-"]');
+                    highlights.forEach((el, index) => {
+                        setTimeout(() => {
+                            el.style.opacity = '1';
+                            el.style.backgroundPosition = '100% 0';
+                            el.classList.add('animated');
+                        }, index * 150);
+                    });
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        observer.observe(aboutSection);
+    }
 
-    if (aboutSection) observer.observe(aboutSection);
+    // Nouveau menu mobile - version simplifiée et moderne
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
 
-    // Menu mobile amélioré
-    const menuButton = document.querySelector('button.md\\:hidden');
-    const mobileMenu = document.querySelector('.hidden.md\\:flex');
-    
-    if (menuButton && mobileMenu) {
-        // Transforme le menu existant en menu mobile
-        mobileMenu.classList.add('mobile-menu');
-        
-        menuButton.addEventListener('click', function() {
-            mobileMenu.classList.toggle('active');
-            this.classList.toggle('text-main-accent');
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         });
-        
+
+        if (closeMobileMenu) {
+            closeMobileMenu.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
+            });
+        }
+
         // Ferme le menu quand on clique sur un lien
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                menuButton.classList.remove('text-main-accent');
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
             });
         });
     }
 
-    // Formulaire WhatsApp
+    // Formulaire WhatsApp (inchangé)
     const whatsappForm = document.getElementById('whatsappForm');
     const submitBtn = document.getElementById('submitBtn');
     if (whatsappForm && submitBtn) {
         let canSubmit = true;
-
         whatsappForm.addEventListener('submit', function(e) {
             e.preventDefault();
             if (!canSubmit) {
                 alert("Veuillez patienter avant un nouvel envoi.");
                 return;
             }
-
             const nameVal = document.getElementById('nameField').value.trim();
             const msgVal = document.getElementById('messageField').value.trim();
-
             if (!nameVal || !msgVal) {
                 alert("Merci de saisir au moins votre nom et un message.");
                 return;
             }
-
             const text = `Bonjour, je m'appelle ${nameVal}.\n -> ${msgVal}\n\nMerci !`;
             const phoneNumber = '+41799139344';
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
-
             window.open(whatsappURL, '_blank');
             createConfetti();
-            
-            // Feedback visuel
+
             submitBtn.innerHTML = `<i class="fas fa-check-circle mr-2"></i> Message envoyé !`;
             submitBtn.classList.replace('bg-main-gradient', 'bg-green-500');
             canSubmit = false;
@@ -104,11 +97,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Effets de particules
+    // Particules (inchangé)
     function createParticles(containerId, count = 30) {
         const container = document.getElementById(containerId);
         if (!container) return;
-        
         for (let i = 0; i < count; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
@@ -117,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 height: ${Math.random() * 5 + 1}px;
                 left: ${Math.random() * 100}%;
                 bottom: -${Math.random() * 5 + 1}px;
-                background: ${['#3ddc97', '#5ef0c1', '#2cca61', '#217a4a', '#ff6b6b', '#4cc9f0', '#f8961e'][Math.floor(Math.random() * 7)]};
+                background: ${['#3ddc97','#5ef0c1','#2cca61','#217a4a','#ff6b6b','#4cc9f0','#f8961e'][Math.floor(Math.random()*7)]};
                 opacity: ${Math.random() * 0.5 + 0.1};
                 animation-duration: ${Math.random() * 20 + 10}s;
                 animation-delay: ${Math.random() * 5}s;
@@ -126,10 +118,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Confetti
+    // Confetti (inchangé)
     function createConfetti() {
-        const colors = ['#3ddc97', '#5ef0c1', '#2cca61', '#217a4a', '#ff6b6b', '#4cc9f0', '#f8961e'];
-        
+        const colors = ['#3ddc97','#5ef0c1','#2cca61','#217a4a','#ff6b6b','#4cc9f0','#f8961e'];
         for (let i = 0; i < 100; i++) {
             const confetti = document.createElement('div');
             confetti.className = 'confetti';
@@ -147,21 +138,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Effet de morphing
+    // Morphing (inchangé)
     document.querySelectorAll('.morph-effect').forEach(el => {
         setInterval(() => {
-            el.style.borderRadius = `${Math.random() * 50}% ${Math.random() * 50}% ${Math.random() * 50}% ${Math.random() * 50}% / ${Math.random() * 50}% ${Math.random() * 50}% ${Math.random() * 50}% ${Math.random() * 50}%`;
+            el.style.borderRadius = `
+                ${Math.random()*50}% ${Math.random()*50}% ${Math.random()*50}% ${Math.random()*50}% / 
+                ${Math.random()*50}% ${Math.random()*50}% ${Math.random()*50}% ${Math.random()*50}%`;
         }, 3000);
     });
 
-    // Effet de parallaxe
-    window.addEventListener('scroll', () => {
-        document.querySelectorAll('.parallax').forEach(el => {
-            el.style.backgroundPositionY = `-${window.scrollY * 0.3}px`;
-        });
-    });
-
-    // Barre de progression de défilement
+    // Barre défilement (adaptée pour mobile)
     window.addEventListener('scroll', () => {
         const scrollProgress = document.getElementById('nav-progress');
         if (scrollProgress) {
@@ -170,70 +156,47 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Initialisation
-    createParticles('particles-js', 50);
-
-    // Gestion du compteur de vues
+    // Compteur de vues (inchangé)
     let viewCount = parseInt(localStorage.getItem('viewCount')) || 0;
     const lastViewTime = parseInt(localStorage.getItem('lastViewTime')) || 0;
     const currentTime = Date.now();
-    const timeBetweenViews = 1000; // 1 secondes minimum entre chaque vue
-
-    // Vérifier si assez de temps s'est écoulé depuis la dernière vue
+    const timeBetweenViews = 1000; 
     if (currentTime - lastViewTime > timeBetweenViews) {
         viewCount++;
         localStorage.setItem('viewCount', viewCount);
         localStorage.setItem('lastViewTime', currentTime);
-        
-        // Mettre à jour l'affichage
         const viewCountElement = document.getElementById('viewCount');
-        if (viewCountElement) {
-            viewCountElement.textContent = viewCount;
-        }
-
-        // Calculer et mettre à jour la jauge de progression
+        if (viewCountElement) { viewCountElement.textContent = viewCount; }
         const levelProgress = document.querySelector('.level-progress');
         if (levelProgress) {
-            // Calculer le pourcentage de progression (max 100%)
             const progress = Math.min((viewCount % 100) / 100 * 100, 100);
             levelProgress.style.width = `${progress}%`;
-            
-            // Ajouter une classe pour l'animation
             levelProgress.classList.add('animate-progress');
-            
-            // Retirer la classe après l'animation
             setTimeout(() => {
                 levelProgress.classList.remove('animate-progress');
             }, 1000);
         }
     }
 
-    // Gestion du formulaire mail
+    // Formulaire mail (inchangé)
     const sendEmailBtn = document.getElementById('sendEmailBtn');
     if (sendEmailBtn) {
         sendEmailBtn.addEventListener('click', function() {
             const name = document.getElementById('name').value.trim();
             const subject = document.getElementById('subject').value.trim();
             const message = document.getElementById('message').value.trim();
-            
             if (!name || !subject || !message) {
                 alert("Veuillez remplir tous les champs obligatoires");
                 return;
             }
-            
-            // Créer le lien mailto avec les informations pré-remplies
             const email = 'sonnybox@hotmail.com';
-            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Bonjour Sonny,\n\nJe m'appelle ${name}.\n\n${message}\n\nCordialement,\n${name}`)}`;
-            
-            // Ouvrir le client de messagerie
+            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+                `Bonjour,\n\nJe m'appelle ${name}.\n\n${message}\n\nCordialement,\n${name}`
+            )}`;
             window.location.href = mailtoLink;
-            
-            // Feedback visuel
             const originalText = this.innerHTML;
             this.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Application mail ouverte !';
             this.classList.replace('bg-main-gradient', 'bg-green-500');
-            
-            // Réinitialiser après 3 secondes
             setTimeout(() => {
                 this.innerHTML = originalText;
                 this.classList.replace('bg-green-500', 'bg-main-gradient');
@@ -241,27 +204,68 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Toggle pour l'option vidéo
+    // Toggle option vidéo (inchangé)
     const videoTrigger = document.querySelector('.js-video-option-trigger');
     if (videoTrigger) {
         videoTrigger.addEventListener('click', function(e) {
-            e.stopPropagation(); // Empêche la fermeture immédiate
+            e.stopPropagation();
             const details = document.querySelector('.js-video-option-details');
             this.classList.toggle('active');
             details.classList.toggle('open');
             details.classList.toggle('hidden');
         });
     }
-
-    // Ferme les détails quand on clique ailleurs
     document.addEventListener('click', function(e) {
         const trigger = document.querySelector('.js-video-option-trigger');
         const details = document.querySelector('.js-video-option-details');
-        
         if (trigger && details && !trigger.contains(e.target) && !details.contains(e.target)) {
             trigger.classList.remove('active');
             details.classList.remove('open');
             details.classList.add('hidden');
         }
     });
+
+    // NavLink actif (adapté pour mobile)
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('text-main-light');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('text-main-light');
+            }
+        });
+    });
+
+    // Animation des badges (inchangé)
+    const badges = document.querySelectorAll('.badge');
+    if (badges.length) {
+        badges.forEach((badge, index) => {
+            badge.style.opacity = '0';
+            badge.style.transform = 'translateY(20px)';
+            badge.style.transition = `all 0.5s ease ${index * 0.1}s`;
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            observer.observe(badge);
+        });
+    }
+
+    // Crée des particules (inchangé)
+    createParticles('particles-js', 50);
 });

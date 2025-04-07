@@ -588,23 +588,6 @@ body {
     }
 }
 
-@keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-@keyframes pulse-opacity {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
-}
-
-.animate-pulse-opacity {
-    animation: pulse-opacity 2s infinite;
-}
-
-/* ===== PARTIE À REMPLACER/COMPLÉTER DANS VOTRE CSS ===== */
-
 /* Effet Glow pour les offres */
 .glow-offer {
     position: relative;
@@ -615,9 +598,8 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: inherit; /* Utilise le border-radius de la carte */
-    padding: 1px; /* Épaisseur de la bordure glow */
-    /* Dégradé générique pour commencer */
+    border-radius: inherit;
+    padding: 1px;
     background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
     -webkit-mask: 
         linear-gradient(#fff 0 0) content-box, 
@@ -637,12 +619,11 @@ body {
 
 .glow-offer:hover::before {
     opacity: 1;
-    animation: offer-glow 3s infinite; /* Ajout de l'animation */
+    animation: offer-glow 3s infinite;
 }
 
 .glow-offer:hover {
     transform: translateY(-5px);
-    /* Utilisation d'une ombre générique pour commencer */
     box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
 }
 
@@ -780,9 +761,8 @@ body {
     animation-delay: calc(var(--i) * 0.1s);
 }
 
-/* Styles pour le menu mobile amélioré */
+/* Menu mobile amélioré */
 @media (max-width: 768px) {
-    /* Menu mobile */
     .mobile-menu {
         position: fixed;
         top: 80px;
@@ -917,40 +897,144 @@ body {
         opacity: 1 !important;
         transform: none !important;
     }
-    /*ajouts
-    /* Dans ton CSS */
+}
+
+/* Ajouts */
 @keyframes glitch {
     0% { text-shadow: 2px 0 #ff6b6b, -2px 0 #4cc9f0; }
     25% { text-shadow: -2px 0 #ff6b6b, 2px 0 #4cc9f0; }
     50% { text-shadow: 2px 0 #8b5cf6, -2px 0 #3ddc97; }
     100% { text-shadow: 2px 0 #ff6b6b, -2px 0 #4cc9f0; }
-  }
+}
   
-  .glitch-title {
+.glitch-title {
     position: relative;
     display: inline-block;
-  }
+}
   
-  .glitch-title::before, 
-  .glitch-title::after {
+.glitch-title::before, 
+.glitch-title::after {
     content: attr(data-text);
     position: absolute;
     top: 0;
     left: 0;
     opacity: 0.8;
-  }
+}
   
-  .glitch-title::before {
+.glitch-title::before {
     color: #ff6b6b;
     animation: glitch 3s infinite alternate-reverse;
     z-index: -1;
     clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-  }
+}
   
-  .glitch-title::after {
+.glitch-title::after {
     color: #4cc9f0;
     animation: glitch 2s infinite alternate;
     z-index: -2;
     clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
-  }
+
+
+    /* Ajouts pour les badges améliorés */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.badge:hover {
+    transform: translateY(-3px);
+    background: var(--main-gradient);
+    color: black;
+    box-shadow: 0 6px 12px rgba(61, 220, 151, 0.2);
+}
+
+.badge i {
+    margin-right: 6px;
+    font-size: 0.9em;
+}
+
+/* Animation pour le texte principal */
+.text-main-stroke {
+    position: relative;
+    display: inline-block;
+}
+
+.text-main-stroke::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--main-gradient);
+    transition: width 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.slide-in-left.is-visible .text-main-stroke::after {
+    width: 100%;
+}
+/* Typographie épurée */
+h1 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: -0.5px;
+}
+
+/* Animation subtile pour les spans */
+h1 span {
+    display: inline-block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+h1:hover span {
+    transform: translateY(-2px);
+    opacity: 1;
+}
+
+/* Ligne de séparation élégante */
+.divider-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(61, 220, 151, 0.8), transparent);
+}
+
+/* Bouton sobre avec transition */
+.cta-button {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+/* Transition douce pour le menu mobile */
+#mobileMenu {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#mobileMenu.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#mobileMenu:not(.hidden) {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Empêche le clignotement au chargement sur mobile */
+@media (max-width: 767px) {
+    nav {
+        display: none !important;
+    }
+}
 }
