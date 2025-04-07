@@ -96,100 +96,111 @@
         </div>
     </section>
 
-    <!-- About Section améliorée avec cartes 3D -->
-    <section id="about" class="section relative section-transition">
-        <div class="golden-spiral" style="left: -30vmin; bottom: -30vmin;"></div>
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="slide-in-right">
-                <h2 class="text-4xl md:text-6xl font-bold mb-6 text-main flex items-center justify-center">
-                    <span class="mr-3">👋</span> 
-                    <span class="bg-gradient-to-r from-main to-main-light bg-clip-text text-transparent">Qui suis-je ?</span>
+    <!-- About Section - Version épurée et intégrée -->
+    <section id="about" class="section relative py-20">
+        <div class="absolute inset-0 bg-gradient-to-br from-black/70 to-main-accent/10 opacity-30"></div>
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <!-- Titre centré et plus discret -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-main">
+                    À Propos
                 </h2>
-                
-                <div class="about-section" data-scroll-animation>
-                    <p class="text-lg mb-6 text-white/90">
-                        <span class="golden-phi">φ</span> 
-                        Je m'appelle <span class="highlight-name animate-highlight">Sonny Callegaro</span>. Je suis un 
-                        <span class="highlight-dev animate-highlight">
-                            développeur full-stack suisse 
-                        </span> 🧑‍💻🇨🇭 passionné par le <span class="highlight-story animate-highlight"> storytelling digital 
-                        </span>.
-                        
-                        📖.
-    
-                        Actuellement en <span class="font-bold">3ème année d'informatique de gestion</span> à la <span class="font-bold">HEG Genève</span> 🎓 
-                        et <span class="font-bold">président</span> de l'association estudiantine, 
-                        je mets mes compétences techniques et créatives au service de votre <span class="font-bold">visibilité en ligne</span>✨.
-                    </p>
-                    
-                    <p class="text-lg mb-8 text-white/90">
-                        Plutôt qu'un site surchargé de fonctionnalités inutiles, je vous propose 
-                        l'essentiel : une vitrine professionnelle, facile à mettre à jour, 
-                        qui présente vraiment ce que vous faites. Comme le site de la pizzeria LeBorgia à Genève, qui avait besoin d'un site web pour augmenter ses commandes.
-                    </p>
+                <div class="w-16 h-1 bg-main mx-auto"></div>
+                <p class="text-white/80 text-lg mt-4 max-w-2xl mx-auto">
+                    Minimalisme digital, performance technique et storytelling impactant.
+                </p>
+            </div>
+
+            <!-- Contenu centré -->
+            <div class="max-w-5xl mx-auto space-y-12">
+                <!-- Bloc Présentation -->
+                <div class="bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-sm card-3d">
+                    <h3 class="text-2xl font-bold mb-4 text-main flex items-center">
+                        <i class="fas fa-user-tie mr-3"></i> Présentation
+                    </h3>
+                    <div class="space-y-4 text-white/90">
+                        <p>
+                            <span class="text-main font-medium">Sonny Callegaro</span>, développeur full-stack et designer suisse basé à Genève.
+                        </p>
+                        <p>
+                            Actuellement en 3ème année d'informatique de gestion à la HEG Genève, je combine expertise technique et sens artistique pour créer des expériences digitales mémorables.
+                        </p>
+                        <p>
+                            Président de l'association estudiantine, j'ai développé une approche pragmatique centrée sur les besoins réels des utilisateurs.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- Expertise technique avec icônes -->
-                <div class="mb-8 p-6 bg-white/5 rounded-xl border border-white/10 hover:border-main-accent/30 transition-all duration-300 card-3d">
+                <!-- Bloc Philosophie -->
+                <div class="bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-sm card-3d">
                     <h3 class="text-2xl font-bold mb-4 text-main flex items-center">
-                        <i class="fas fa-cogs mr-2"></i> Expertise technique
+                        <i class="fas fa-lightbulb mr-3"></i> Philosophie
                     </h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-main-accent mr-2 mt-0.5"></i>
-                            <span>Zéro dépendance à un CMS, aucun abonnement, aucun frais caché</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-main-accent mr-2 mt-0.5"></i>
-                            <span>Développement en code pur : JavaScript Vanilla, Tailwind.css Vue.js ou React</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-main-accent mr-2 mt=0.5"></i>
-                            <span>Sites ultra-performants, rapides et sécurisés</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-main-accent mr-2 mt-0.5"></i>
-                            <span>Hébergement et maintenance entièrement garantis et géré par moi (Vous devez seulement payer le nom de domaine pour des questions de propriété intellectuelle = 10-20 CHF/an)</span>
-                        </li>
-                    </ul>
+                    <div class="space-y-4 text-white/90">
+                        <p>
+                            Je crée des <span class="text-main font-medium">solutions web épurées</span> qui mettent l'accent sur l'essentiel : performance, accessibilité et expérience utilisateur.
+                        </p>
+                        <p>
+                            Contrairement aux approches CMS traditionnelles, mes réalisations en code pur offrent :
+                        </p>
+                        <ul class="space-y-3 pl-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-main-accent mr-2 mt-1"></i>
+                                <span>Une rapidité de chargement optimale</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-main-accent mr-2 mt-1"></i>
+                                <span>Une maintenance simplifiée</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-main-accent mr-2 mt-1"></i>
+                                <span>Une sécurité renforcée</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                
-                <!-- Mises à jour rapides -->
-                <div class="mb-8 p-6 bg-white/5 rounded-xl border border-main-accent/30 hover:border-main-light/30 transition-all duration-300 card-3d">
-                    <h3 class="text-2xl font-bold mb-4 text-main flex items-center">
-                        <i class="fas fa-bolt mr-2"></i> Mises à jour ultra rapides
-                    </h3>
-                    <p class="text-white/90">
-                        Grâce à mon expertise technique, toute modification mineure demandée (ex. carte restaurant, année sur un CV, informations textuelles...) est effectuée et visible en ligne dans la journée.
-                    </p>
+
+                <!-- Bloc Expertise -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm card-3d">
+                        <h3 class="text-xl font-bold mb-3 text-main flex items-center">
+                            <i class="fas fa-laptop-code mr-2"></i> Technique
+                        </h3>
+                        <p class="text-white/90 text-sm">
+                            Développement en JavaScript Vanilla, Vue.js et React. Hébergement optimisé avec Netlify/Vercel. Intégration continue et déploiements instantanés.
+                        </p>
+                    </div>
+                    <div class="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm card-3d">
+                        <h3 class="text-xl font-bold mb-3 text-main flex items-center">
+                            <i class="fas fa-paint-brush mr-2"></i> Design
+                        </h3>
+                        <p class="text-white/90 text-sm">
+                            Approche minimaliste inspirée du design suisse. Typographie soignée, espacement généreux et hiérarchie visuelle claire.
+                        </p>
+                    </div>
+                    <div class="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm card-3d">
+                        <h3 class="text-xl font-bold mb-3 text-main flex items-center">
+                            <i class="fas fa-book-open mr-2"></i> Storytelling
+                        </h3>
+                        <p class="text-white/90 text-sm">
+                            Mise en récit de votre activité pour créer un lien émotionnel avec votre audience. Scénarisation du parcours utilisateur.
+                        </p>
+                    </div>
+                    <div class="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm card-3d">
+                        <h3 class="text-xl font-bold mb-3 text-main flex items-center">
+                            <i class="fas fa-chart-line mr-2"></i> Résultats
+                        </h3>
+                        <p class="text-white/90 text-sm">
+                            Sites conçus pour convertir. Analyse des metrics et itérations basées sur les données réelles d'utilisation.
+                        </p>
+                    </div>
                 </div>
-                
-                <!-- Grille de services avec hover -->
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="p-4 bg-white/5 rounded-xl hover:bg-main-accent/10 transition-all duration-300 border border-white/5 hover:border-main-accent/30 card-3d">
-                        <h3 class="font-bold mb-2 text-main flex items-center">
-                            <i class="fas fa-globe mr-2"></i> Sites Web
-                        </h3>
-                        <p class="text-sm text-white/90">Simples, efficaces et sans CMS complexe</p>
-                    </div>
-                    <div class="p-4 bg-white/5 rounded-xl hover:bg-main-accent/10 transition-all duration-300 border border-white/5 hover:border-main-accent/30 card-3d">
-                        <h3 class="font-bold mb-2 text-main flex items-center">
-                            <i class="fas fa-share-alt mr-2"></i> Réseaux Sociaux
-                        </h3>
-                        <p class="text-sm text-white/90">Contenu visuel impactant</p>
-                    </div>
-                    <div class="p-4 bg-white/5 rounded-xl hover:bg-main-accent/10 transition-all duration-300 border border-white/5 hover:border-main-accent/30 card-3d">
-                        <h3 class="font-bold mb-2 text-main flex items-center">
-                            <i class="fas fa-palette mr-2"></i> Identité Visuelle
-                        </h3>
-                        <p class="text-sm text-white/90">Logo et charte graphique</p>
-                    </div>
-                    <div class="p-4 bg-white/5 rounded-xl hover:bg-main-accent/10 transition-all duration-300 border border-white/5 hover:border-main-accent/30 card-3d">
-                        <h3 class="font-bold mb-2 text-main flex items-center">
-                            <i class="fas fa-book-open mr-2"></i> Story
-                        </h3>
-                        <p class="text-sm text-white/90">Mise en récit de votre activité</p>
-                    </div>
+
+                <!-- CTA -->
+                <div class="text-center pt-8">
+                    <a href="#contact" class="inline-flex items-center px-6 py-3 bg-main-gradient rounded-full font-medium btn-hover glow-effect">
+                        <i class="fas fa-paper-plane mr-2"></i> Discutons de votre projet
+                    </a>
                 </div>
             </div>
         </div>
