@@ -1033,3 +1033,27 @@ a {
 .text-xs {
   font-size: 0.9rem !important; /* Augmenté de 0.75rem à 0.9rem */
 }
+
+/* Animation des projets au scroll */
+.project-card {
+    transition: all 0.5s ease;
+}
+
+.project-card.is-visible {
+    transform: scale(0.95) rotate(0deg);
+}
+
+.project-card.is-visible img {
+    filter: brightness(1.1);
+}
+
+.project-card.is-visible .border-main {
+    transform: rotate(0deg);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .project-card.is-visible {
+        transform: scale(0.95);
+    }
+}

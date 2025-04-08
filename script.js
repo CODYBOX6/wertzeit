@@ -178,29 +178,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Formulaire mail (inchangé)
+    // Formulaire mail (modifié pour redirection)
     const sendEmailBtn = document.getElementById('sendEmailBtn');
     if (sendEmailBtn) {
         sendEmailBtn.addEventListener('click', function() {
-            const name = document.getElementById('name').value.trim();
-            const subject = document.getElementById('subject').value.trim();
-            const message = document.getElementById('message').value.trim();
-            if (!name || !subject || !message) {
-                alert("Veuillez remplir tous les champs obligatoires");
-                return;
+            const emailSection = document.querySelector('.bg-white\\/5.p-8.rounded-xl.backdrop-blur-sm.border.border-white\\/10');
+            if (emailSection) {
+                emailSection.scrollIntoView({ behavior: 'smooth' });
             }
-            const email = 'sonnybox@hotmail.com';
-            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-                `Bonjour,\n\nJe m'appelle ${name}.\n\n${message}\n\nCordialement,\n${name}`
-            )}`;
-            window.location.href = mailtoLink;
-            const originalText = this.innerHTML;
-            this.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Application mail ouverte !';
-            this.classList.replace('bg-main-gradient', 'bg-green-500');
-            setTimeout(() => {
-                this.innerHTML = originalText;
-                this.classList.replace('bg-green-500', 'bg-main-gradient');
-            }, 3000);
         });
     }
 
@@ -268,4 +253,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Crée des particules (inchangé)
     createParticles('particles-js', 50);
+
+    // Animation des projets au scroll
+    const projectCards = document.querySelectorAll('.project-card');
+    const projectObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            } else {
+                entry.target.classList.remove('is-visible');
+            }
+        });
+    }, {
+        threshold: 0.3,
+        rootMargin: '0px 0px -100px 0px'
+    });
+
+    projectCards.forEach(card => {
+        projectObserver.observe(card);
+    });
 });
