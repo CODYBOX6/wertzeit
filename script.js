@@ -32,33 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(aboutSection);
     }
 
-    // Nouveau menu mobile - version simplifiée et moderne
-    const mobileMenuButton = document.getElementById('mobileMenuButton');
-    const closeMobileMenu = document.getElementById('closeMobileMenu');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', function() {
-            mobileMenu.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        });
-
-        if (closeMobileMenu) {
-            closeMobileMenu.addEventListener('click', function() {
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = '';
-            });
-        }
-
-        // Ferme le menu quand on clique sur un lien
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = '';
-            });
-        });
-    }
-
     // Formulaire WhatsApp (inchangé)
     const whatsappForm = document.getElementById('whatsappForm');
     const submitBtn = document.getElementById('submitBtn');
@@ -155,6 +128,27 @@ document.addEventListener('DOMContentLoaded', function() {
             scrollProgress.style.width = (window.scrollY / scrollHeight) * 100 + '%';
         }
     });
+
+    // Ajout de la fonctionnalité de clic sur la jauge de progression
+    const progressContainer = document.querySelector('.progress-container');
+    if (progressContainer) {
+        progressContainer.addEventListener('click', (e) => {
+            const rect = progressContainer.getBoundingClientRect();
+            const clickPosition = e.clientX - rect.left;
+            const containerWidth = rect.width;
+            const percentage = (clickPosition / containerWidth) * 100;
+            
+            // Calculer la position de défilement correspondante
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPosition = (percentage / 100) * scrollHeight;
+            
+            // Défiler vers la position calculée
+            window.scrollTo({
+                top: scrollPosition,
+                behavior: 'smooth'
+            });
+        });
+    }
 
     // Compteur de vues (inchangé)
     let viewCount = parseInt(localStorage.getItem('viewCount')) || 0;

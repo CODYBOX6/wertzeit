@@ -22,41 +22,12 @@
     <!-- Pattern de feuilles amélioré -->
     <div class="leaf-pattern"></div>
 
-    <!-- Navigation - Masquée sur mobile -->
-    <nav class="hidden md:flex fixed w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
-        <!-- Contenu existant de votre navbar -->
+    <!-- Navigation - Uniquement la jauge de progression -->
+    <nav class="fixed w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
         <div class="progress-container">
             <div class="progress-bar" id="nav-progress"></div>
         </div>
-        
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Votre logo et liens... -->
-        </div>
     </nav>
-
-    <!-- Menu burger pour mobile -->
-    <div class="md:hidden fixed top-4 right-4 z-50">
-        <button id="mobileMenuButton" class="p-2 text-white focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-        </button>
-    </div>
-
-    <!-- Menu mobile (apparaît au clic) -->
-    <div id="mobileMenu" class="hidden fixed inset-0 bg-black/90 z-40 backdrop-blur-lg flex flex-col items-center justify-center p-8">
-        <button id="closeMobileMenu" class="absolute top-6 right-6 text-white p-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
-        
-        <div class="space-y-8 text-center">
-            <a href="#about" class="block text-2xl text-white hover:text-main transition">À propos</a>
-            <a href="#work" class="block text-2xl text-white hover:text-main transition">Projets</a>
-            <a href="#contact" class="block text-2xl text-white hover:text-main transition">Contact</a>
-        </div>
-    </div>
 
     <!-- Hero Section améliorée avec effets de lumière -->
     <section class="section flex items-center justify-center relative overflow-hidden">
@@ -109,8 +80,8 @@
                 <p class="text-2xl text-white mt-4 max-w-2xl mx-auto">
                     Minimalisme digital, performance technique et storytelling impactant.
                 </p>
-            </div>
-
+                </div>
+                
             <!-- Contenu centré -->
             <div class="max-w-5xl mx-auto space-y-12">
                 <!-- Bloc Présentation -->
@@ -128,9 +99,9 @@
                         <p>
                             Président de l'association estudiantine, j'ai développé des contacts clés et une empathie du besoin réel de nos partenaires (bars, restaurants, cafés, etc.).  📈
                         </p>
+                        </div>
                     </div>
-                </div>
-
+                    
                 <!-- Bloc Philosophie -->
                 <div class="bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-sm card-3d">
                     <h3 class="text-4xl font-bold mb-4 text-main flex items-center">
@@ -144,22 +115,22 @@
                             Contrairement aux approches CMS (wordpress, wix, etc.) traditionnelles, mes réalisations en code pur offrent :
                         </p>
                         <ul class="space-y-3 pl-4">
-                            <li class="flex items-start">
+                        <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-2 mt-1"></i>
                                 <span>Une rapidité de chargement et une ergonomie optimale sur smartphone qui fait cruellement défaut à wordpress</span>
-                            </li>
-                            <li class="flex items-start">
+                        </li>
+                        <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-2 mt-1"></i>
                                 <span>Un déploiement instantané et une maintenance simplifiée via mes outils de développement</span>
-                            </li>
-                            <li class="flex items-start">
+                        </li>
+                        <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-2 mt-1"></i>
                                 <span>Une sécurité renforcée grâce à mes connaissances en cybersécurité</span>
-                            </li>
-                        </ul>
+                        </li>
+                    </ul>
                     </div>
                 </div>
-
+                
                 <!-- Bloc Expertise -->
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm card-3d">
@@ -168,8 +139,8 @@
                         </h3>
                         <p class="text-white/90 text-sm">
                             Développement en JavaScript Vanilla, Vue.js et React. Hébergement optimisé avec Netlify/Vercel. Intégration continue et déploiements instantanés via GitHub.
-                        </p>
-                    </div>
+                    </p>
+                </div>
                     <div class="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm card-3d">
                         <h3 class="text-xl font-bold mb-3 text-main flex items-center">
                             <i class="fas fa-paint-brush mr-2"></i> Design
@@ -195,7 +166,7 @@
                         </p>
                     </div>
                 </div>
-
+                
                 <!-- CTA -->
                 <div class="text-center pt-8">
                     <a href="#contact" class="inline-flex items-center px-6 py-3 bg-main-gradient rounded-full font-medium btn-hover glow-effect">
@@ -228,27 +199,27 @@
                             Parfait pour auto-entrepreneurs et petits commerces
                         </p>
                         <ul class="space-y-3 mb-8 flex-grow">
-                            <li class="flex items-start">
+                        <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-2 mt-0.5"></i>
                                 <span>4 sections essentielles</span>
-                            </li>
-                            <li class="flex items-start">
+                        </li>
+                        <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-2 mt-0.5"></i>
                                 <span>Services + mini-galerie</span>
-                            </li>
-                            <li class="flex items-start">
+                        </li>
+                        <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-2 mt-0.5"></i>
                                 <span>Contact (email ou WhatsApp)</span>
-                            </li>
-                            <li class="flex items-start">
+                        </li>
+                        <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-2 mt-0.5"></i>
                                 <span>Liens réseaux sociaux</span>
-                            </li>
-                            <li class="flex items-start">
+                        </li>
+                        <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-2 mt-0.5"></i>
                                 <span>Hébergement 1 an</span>
-                            </li>
-                            <li class="flex items-start">
+                        </li>
+                        <li class="flex items-start">
                                 <i class="fas fa-plus-circle text-main-accent mr-2 mt-0.5"></i>
                                 <span>Option Email + WhatsApp : +50 CHF</span>
                             </li>
@@ -259,8 +230,8 @@
                             <li class="flex items-start">
                                 <i class="fas fa-code text-main-accent mr-2 mt-0.5"></i>
                                 <span>Transfert du code : 100 CHF</span>
-                            </li>
-                        </ul>
+                        </li>
+                    </ul>
                         
                         <!-- Badge inclus -->
                         <div class="p-4 bg-blue-900/10 rounded-lg border border-blue-200/20 mt-4">
@@ -291,27 +262,27 @@
                             Restaurants, cafés, coiffeurs, boutiques et artisans
                         </p>
                         <ul class="space-y-3 mb-8 flex-grow">
-                            <li class="flex items-start">
+                        <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-2 mt-0.5"></i>
                                 <span>6 sections avancées</span>
-                            </li>
-                            <li class="flex items-start">
+                        </li>
+                        <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-2 mt-0.5"></i>
                                 <span>Menu/Galerie produits</span>
-                            </li>
-                            <li class="flex items-start">
+                        </li>
+                        <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-2 mt-0.5"></i>
                                 <span>Carte Google Maps intégrée</span>
-                            </li>
-                            <li class="flex items-start">
+                        </li>
+                        <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-2 mt-0.5"></i>
                                 <span>Avis clients Google</span>
-                            </li>
-                            <li class="flex items-start">
+                        </li>
+                        <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-2 mt-0.5"></i>
                                 <span>Instagram feed auto</span>
-                            </li>
-                            <li class="flex items-start">
+                        </li>
+                        <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-2 mt-0.5"></i>
                                 <span>Déplacement photo inclus</span>
                             </li>
@@ -332,17 +303,17 @@
                                     <li class="flex items-start">
                                         <i class="fas fa-film text-main-accent mr-2 mt-0.5"></i>
                                         <span>Montage vidéo</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <li class="flex items-start">
+                        </li>
+                    </ul>
+                </div>
+                        <li class="flex items-start">
                                 <i class="fas fa-sync-alt text-main-accent mr-2 mt-0.5"></i>
                                 <span>Renouvellement : 400 CHF/an</span>
-                            </li>
-                            <li class="flex items-start">
+                        </li>
+                        <li class="flex items-start">
                                 <i class="fas fa-code text-main-accent mr-2 mt-0.5"></i>
                                 <span>Transfert complet(doc + instructions pour dev qui reprendrait le code): 400 CHF</span>
-                            </li>
+                        </li>
                         </ul>
                         
                         <!-- Garantie améliorée -->
@@ -351,28 +322,28 @@
                                 <i class="fas fa-handshake mr-2"></i> Garantie de satisfaction
                             </h4>
                             <ul class="text-sm space-y-2 text-white/90">
-                                <li class="flex items-start">
+                        <li class="flex items-start">
                                     <i class="fas fa-bolt text-green-200 text-xs mt-1 mr-2"></i>
                                     <span>Modifications mineures sous 1h ouvrée après validation</span>
-                                </li>
-                                <li class="flex items-start">
+                        </li>
+                        <li class="flex items-start">
                                     <i class="fas fa-unlock text-green-200 text-xs mt-1 mr-2"></i>
                                     <span>Code 100% portable (aucun lock-in)</span>
-                                </li>
-                                <li class="flex items-start">
+                        </li>
+                        <li class="flex items-start">
                                     <i class="fas fa-book text-green-200 text-xs mt-1 mr-2"></i>
                                     <span>Documentation technique incluse</span>
-                                </li>
-                            </ul>
+                        </li>
+                    </ul>
                         </div>
                     </div>
                     <div class="offer-button mt-6">
                         <a href="#contact" class="w-full px-6 py-3 bg-main-gradient rounded-lg font-bold btn-hover glow-effect text-center block" aria-label="Solution la plus choisie">
                             Solution la plus choisie
-                        </a>
-                    </div>
+                    </a>
                 </div>
-                
+            </div>
+            
                 <!-- Offre 3 - E-Commerce -->
                 <div class="offer-card glow-offer bg-white/5 p-8 rounded-2xl border border-red-200/30 backdrop-blur-sm hover:shadow-lg transition-all duration-500 card-3d h-full">
                     <div class="offer-content flex flex-col h-full">
@@ -427,9 +398,9 @@
                     <div class="offer-button mt-6">
                         <a href="#contact" class="w-full px-6 py-3 bg-main-gradient rounded-lg font-bold btn-hover glow-effect text-center block" aria-label="Demander un devis">
                             Demander un devis
-                        </a>
-                    </div>
-                </div>
+                </a>
+            </div>
+        </div>
             </div>
             
             <!-- Nouvelle section "Engagements" -->
@@ -443,13 +414,13 @@
                         </div>
                         <p class="text-white/90">
                             Toute modification demandée avant 16h est en ligne le jour même. Un changement urgent ? Appelez-moi directement.
-                        </p>
-                    </div>
+                </p>
+            </div>
                     
                     <div class="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-main-accent/30 transition-all">
                         <div class="text-main text-2xl mb-3 flex items-center">
                             <i class="fas fa-lock-open mr-2"></i> Transparence
-                        </div>
+                </div>
                         <p class="text-white/90">
                             Vous conservez à tout moment l'accès au code source. Pas de contrat à durée déterminée, pas de frais cachés.
                         </p>
@@ -462,8 +433,8 @@
                         <p class="text-white/90">
                             Même si vous changez de prestataire, je m'assure que votre nouveau développeur ait tout le nécessaire pour prendre le relais.
                         </p>
-                    </div>
                 </div>
+            </div>
             
                 <!-- CTA final -->
                 <div class="mt-12 text-center">
@@ -493,12 +464,12 @@
                     <div class="slide-in-left relative">
                         <a href="https://leborgia.netlify.app/" target="_blank" class="block hover:no-underline" aria-label="Voir le site de la Pizzeria Le Borgia">
                             <div class="relative group-hover:scale-95 transition-transform duration-500 card-3d">
-                                <div class="absolute -inset-2 border-main rounded-2xl transform rotate-3 opacity-70 group-hover:rotate-0 transition-all duration-500"></div>
-                                <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
+                            <div class="absolute -inset-2 border-main rounded-2xl transform rotate-3 opacity-70 group-hover:rotate-0 transition-all duration-500"></div>
+                            <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
                                 <img src="LeBorgia.jpg"  
                                      alt="Site web du restaurant Le Borgia"
                                      class="relative w-full h-auto object-cover rounded-xl z-10 group-hover:brightness-110 transition-all duration-500 cursor-pointer">
-                            </div>
+                        </div>
                         </a>
                     </div>
                     <div class="slide-in-right">
@@ -540,7 +511,7 @@
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                                     <path d="M8 3L13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
+                            </svg>
                             </span>
                             <span>Visiter le site</span>
                         </a>
@@ -588,7 +559,7 @@
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                                     <path d="M8 3L13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
+                            </svg>
                             </span>
                             <span>Visiter le site</span>
                         </a>
@@ -596,12 +567,12 @@
                     <div class="order-1 md:order-2 slide-in-right relative">
                         <a href="https://mariekondoandswissdesign.netlify.app/" target="_blank" class="block hover:no-underline" aria-label="Voir le portfolio Marie Kondo & Swiss Design">
                             <div class="relative group-hover:scale-95 transition-transform duration-500 card-3d">
-                                <div class="absolute -inset-2 border-main rounded-2xl transform -rotate-3 opacity-70 group-hover:rotate-0 transition-all duration-500"></div>
-                                <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
+                            <div class="absolute -inset-2 border-main rounded-2xl transform -rotate-3 opacity-70 group-hover:rotate-0 transition-all duration-500"></div>
+                            <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
                                 <img src="mariekondo.jpg" 
                                      alt="Portfolio de Marie Kondo & Swiss Design"
                                      class="relative w-full h-auto object-cover rounded-xl z-10 group-hover:brightness-110 transition-all duration-500 cursor-pointer">
-                            </div>
+                        </div>
                         </a>
                     </div>
                 </div>
@@ -712,20 +683,20 @@
                         <i class="fas fa-envelope mr-2"></i> Envoyez-moi un email
                     </h3>
 
-                    <!-- Nom -->
-                    <div class="mb-6">
+                  <!-- Nom -->
+                  <div class="mb-6">
                         <label for="name" class="block mb-2 text-white/90">Votre nom *</label>
                         <input type="text" id="name" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-main-accent transition">
-                    </div>
+                  </div>
 
                     <!-- Sujet -->
-                    <div class="mb-6">
+                  <div class="mb-6">
                         <label for="subject" class="block mb-2 text-white/90">Sujet *</label>
                         <input type="text" id="subject" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-main-accent transition">
-                    </div>
+                  </div>
 
                     <!-- Message -->
-                    <div class="mb-6">
+                  <div class="mb-6">
                         <label for="message" class="block mb-2 text-white/90">Votre message *</label>
                         <textarea id="message" rows="4" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-main-accent transition" placeholder="Décrivez votre projet..."></textarea>
                     </div>
@@ -750,37 +721,37 @@
                                    class="w-full px-4 py-3 bg-white/5 border border-white/10 focus:outline-none focus:border-main-accent rounded-lg transition-all duration-300 pl-10">
                             <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-white/50"></i>
                         </div>
-                    </div>
+                  </div>
 
-                    <!-- Message -->
-                    <div class="mb-6">
+                  <!-- Message -->
+                  <div class="mb-6">
                         <label for="messageField" class="block mb-2 text-white/90">Votre message</label>
                         <div class="relative">
-                            <textarea id="messageField" rows="4"
+                      <textarea id="messageField" rows="4"
                                       class="w-full px-4 py-3 bg-white/5 border border-white/10 focus:outline-none focus:border-main-accent rounded-lg transition-all duration-300 pl-10"
-                                      placeholder="Décrivez votre projet..."></textarea>
+                                placeholder="Décrivez votre projet..."></textarea>
                             <i class="fas fa-comment-dots absolute left-3 top-4 transform -translate-y-1/2 text-white/50"></i>
                         </div>
-                    </div>
+                  </div>
 
-                    <!-- Bouton d'envoi avec logo WhatsApp -->
-                    <button type="submit"
-                            id="submitBtn"
+                  <!-- Bouton d'envoi avec logo WhatsApp -->
+                  <button type="submit"
+                          id="submitBtn"
                             class="w-full bg-main-gradient py-3 rounded-lg font-bold btn-hover glow-effect transition-all duration-300 flex items-center justify-center"
                             aria-label="Envoyer sur WhatsApp">
                         <i class="fab fa-whatsapp mr-2"></i> Envoyer sur WhatsApp
-                    </button>
+                  </button>
                   
                     <!-- Confidentialité -->
                     <div class="text-xs text-white/50 mt-4 flex items-center">
                         <i class="fas fa-lock mr-1"></i> En cliquant sur "Envoyer", vous acceptez notre politique de confidentialité.
-                    </div>
-                </form>
+                  </div>
+              </form>
               
                 <!-- Autres méthodes de contact -->
-                <div class="mt-8 text-center">
-                    <p class="text-white/60 mb-4">Ou contactez-moi directement</p>
-                    <div class="flex justify-center space-x-4">
+              <div class="mt-8 text-center">
+                  <p class="text-white/60 mb-4">Ou contactez-moi directement</p>
+                  <div class="flex justify-center space-x-4">
                         <a href="tel:+41799139344" class="px-6 py-2 border border-white/10 rounded-full hover:bg-main-accent/10 hover:border-main-accent/30 transition flex items-center" aria-label="Appeler">
                             <i class="fas fa-phone mr-2"></i> Appel
                         </a>
@@ -799,9 +770,9 @@
                         </a>
                         <a href="#" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-main-accent/20 transition text-main-light hover:text-white" aria-label="Behance">
                             <i class="fab fa-behance"></i>
-                        </a>
-                    </div>
-                </div>
+                      </a>
+                  </div>
+              </div>
             </div>
         </div>
     </section>
@@ -818,11 +789,11 @@
                 <div class="skill-card">
                     <i class="fab fa-python text-4xl mb-2"></i>
                     <span>Python</span>
-                </div>
+                        </div>
                 <div class="skill-card">
                     <i class="fab fa-java text-4xl mb-2"></i>
                     <span>Java</span>
-                </div>
+                    </div>
                 <div class="skill-card">
                     <i class="fab fa-js-square text-4xl mb-2"></i>
                     <span>JavaScript</span>
@@ -844,15 +815,15 @@
                 <div class="skill-card">
                     <i class="fab fa-react text-4xl mb-2"></i>
                     <span>React</span>
-                </div>
+                    </div>
                 <div class="skill-card">
                     <i class="fab fa-vuejs text-4xl mb-2"></i>
                     <span>Vue.js</span>
-                </div>
+                    </div>
                 <div class="skill-card">
                     <i class="fas fa-database text-4xl mb-2"></i>
                     <span>Django</span>
-                </div>
+                    </div>
                 <div class="skill-card">
                     <i class="fab fa-laravel text-4xl mb-2"></i>
                     <span>Laravel</span>
@@ -874,7 +845,7 @@
                 <div class="skill-card">
                     <i class="fas fa-database text-4xl mb-2"></i>
                     <span>Redis</span>
-                </div>
+            </div>
             
                 <!-- Outils & Environnements -->
                 <div class="skill-card">
@@ -884,11 +855,11 @@
                 <div class="skill-card">
                     <i class="fab fa-docker text-4xl mb-2"></i>
                     <span>Docker</span>
-                </div>
+            </div>
                 <div class="skill-card">
                     <i class="fab fa-jenkins text-4xl mb-2"></i>
                     <span>Jenkins</span>
-                </div>
+        </div>
                 <div class="skill-card">
                     <i class="fas fa-tools text-4xl mb-2"></i>
                     <span>Maven</span>
