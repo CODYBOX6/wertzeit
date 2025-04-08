@@ -266,24 +266,4 @@ document.addEventListener('DOMContentLoaded', function() {
     projectCards.forEach(card => {
         projectObserver.observe(card);
     });
-
-    // Effet de parallaxe pour les titres
-    const titles = document.querySelectorAll('.hero-title');
-    let lastScrollY = window.scrollY;
-
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-        const scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
-        const scrollDiff = Math.abs(currentScrollY - lastScrollY);
-
-        titles.forEach((title, index) => {
-            const speed = 0.1 + (index * 0.05); // Vitesse différente pour chaque titre
-            const offset = scrollDiff * speed * (scrollDirection === 'down' ? 1 : -1);
-            
-            title.style.transform = `translateY(${offset}px)`;
-            title.style.opacity = 1 - (scrollDiff * 0.01); // Légère variation d'opacité
-        });
-
-        lastScrollY = currentScrollY;
-    });
 });
