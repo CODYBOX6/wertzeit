@@ -845,6 +845,36 @@ body {
     transform: scale(1.2);
 }
 
+/* Style pour l'option Pareto */
+.js-pareto-option-trigger {
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.js-pareto-option-trigger::after {
+    content: "+";
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+    color: var(--main-color);
+}
+
+.js-pareto-option-trigger.active::after {
+    content: "-";
+}
+
+.js-pareto-option-trigger:hover {
+    transform: translateX(5px);
+}
+
+.js-pareto-option-trigger i {
+    transition: transform 0.3s ease;
+}
+
+.js-pareto-option-trigger:hover i {
+    transform: scale(1.2);
+}
+
 .js-video-option-details {
     max-height: 0;
     overflow: hidden;

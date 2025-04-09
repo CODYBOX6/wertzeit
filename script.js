@@ -241,13 +241,35 @@ document.addEventListener('DOMContentLoaded', function() {
             details.classList.toggle('hidden');
         });
     }
+    
+    // Toggle option Pareto
+    const paretoTrigger = document.querySelector('.js-pareto-option-trigger');
+    if (paretoTrigger) {
+        paretoTrigger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const details = document.querySelector('.js-pareto-option-details');
+            this.classList.toggle('active');
+            details.classList.toggle('open');
+            details.classList.toggle('hidden');
+        });
+    }
+    
     document.addEventListener('click', function(e) {
-        const trigger = document.querySelector('.js-video-option-trigger');
-        const details = document.querySelector('.js-video-option-details');
-        if (trigger && details && !trigger.contains(e.target) && !details.contains(e.target)) {
-            trigger.classList.remove('active');
-            details.classList.remove('open');
-            details.classList.add('hidden');
+        const videoTrigger = document.querySelector('.js-video-option-trigger');
+        const videoDetails = document.querySelector('.js-video-option-details');
+        const paretoTrigger = document.querySelector('.js-pareto-option-trigger');
+        const paretoDetails = document.querySelector('.js-pareto-option-details');
+        
+        if (videoTrigger && videoDetails && !videoTrigger.contains(e.target) && !videoDetails.contains(e.target)) {
+            videoTrigger.classList.remove('active');
+            videoDetails.classList.remove('open');
+            videoDetails.classList.add('hidden');
+        }
+        
+        if (paretoTrigger && paretoDetails && !paretoTrigger.contains(e.target) && !paretoDetails.contains(e.target)) {
+            paretoTrigger.classList.remove('active');
+            paretoDetails.classList.remove('open');
+            paretoDetails.classList.add('hidden');
         }
     });
 
