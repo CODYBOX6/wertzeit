@@ -129,24 +129,71 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Ajout de la fonctionnalité de clic sur la jauge de progression
+    // Ajout de la fonctionnalité de déplacement du curseur sur la jauge de progression
     const progressContainer = document.querySelector('.progress-container');
     if (progressContainer) {
-        progressContainer.addEventListener('click', (e) => {
+        let isDragging = false;
+        
+        // Fonction pour mettre à jour la position de défilement
+        const updateScrollPosition = (clientX) => {
             const rect = progressContainer.getBoundingClientRect();
-            const clickPosition = e.clientX - rect.left;
+            const clickPosition = clientX - rect.left;
             const containerWidth = rect.width;
-            const percentage = (clickPosition / containerWidth) * 100;
+            const percentage = Math.max(0, Math.min(100, (clickPosition / containerWidth) * 100));
             
             // Calculer la position de défilement correspondante
             const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
             const scrollPosition = (percentage / 100) * scrollHeight;
             
-            // Défiler vers la position calculée
+            // Défiler vers la position calculée avec un comportement instantané
             window.scrollTo({
                 top: scrollPosition,
-                behavior: 'smooth'
+                behavior: 'auto'
             });
+        };
+        
+        // Événement mousedown pour commencer le glissement
+        progressContainer.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            updateScrollPosition(e.clientX);
+        });
+        
+        // Événement mousemove pour suivre le curseur avec requestAnimationFrame
+        let rafId = null;
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                if (rafId) {
+                    cancelAnimationFrame(rafId);
+                }
+                rafId = requestAnimationFrame(() => {
+                    updateScrollPosition(e.clientX);
+                });
+            }
+        });
+        
+        // Événement mouseup pour arrêter le glissement
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+        });
+        
+        // Événement mouseleave pour arrêter le glissement si le curseur quitte la fenêtre
+        document.addEventListener('mouseleave', () => {
+            isDragging = false;
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+        });
+        
+        // Conserver l'événement click pour la compatibilité
+        progressContainer.addEventListener('click', (e) => {
+            if (!isDragging) {
+                updateScrollPosition(e.clientX);
+            }
         });
     }
 
