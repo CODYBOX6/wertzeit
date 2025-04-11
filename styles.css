@@ -208,6 +208,7 @@ body {
 .glow-effect {
     position: relative;
     z-index: 1;
+    box-shadow: none !important;
 }
 
 .glow-effect::after {
@@ -435,6 +436,7 @@ body {
     filter: blur(20px);
     opacity: 0.3;
     z-index: 0;
+    display: none !important;
 }
 
 /* Effet de morphing */
@@ -1086,4 +1088,11 @@ a {
     .project-card.is-visible {
         transform: scale(0.95);
     }
+}
+
+/* Désactivation des effets de luminosité */
+.bg-gradient-to-br, 
+.bg-gradient-to-b,
+.bg-main-accent\/10 {
+    display: none !important;
 }

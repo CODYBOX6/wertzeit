@@ -1,384 +1,106 @@
-tu peux extraire l animation golden ratio de ce code stp et me donner les 3 bouts de code a mettre dans les 3 fichier de mon code pour que ca marche html css et js <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spirale Dorée - Golden Ratio</title>
+    <title>Testeur de couleurs</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        .section {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .halo {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.15;
-            z-index: 0;
-            animation: float 12s ease-in-out infinite;
-        }
-        
-        .halo:nth-child(2) {
-            animation-delay: 3s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-20px) translateX(20px); }
-        }
-        
-        .slide-in-left {
-            animation: slideIn 1s ease-out forwards;
-            opacity: 0;
-        }
-        
-        @keyframes slideIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .btn-hover {
+        .color-option {
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
-        
-        .btn-hover:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
-        }
-        
-        .glow-effect {
-            box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
-        }
-        
-        .golden-spiral-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            pointer-events: none;
-        }
-        
-        .golden-spiral {
-            position: absolute;
-            right: -30vmin;
-            top: -30vmin;
-            width: 80vmin;
-            height: 80vmin;
-        }
-        
-        /* Animation de pulsation */
-        .pulse {
-            animation: pulse 8s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.7; }
-            50% { transform: scale(1.05); opacity: 0.9; }
-        }
-        
-        /* Effet doré */
-        .gold-gradient {
-            background: linear-gradient(135deg, #f6e27a 0%, #f6ad49 30%, #d17d46 70%, #8a5a44 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .color-option:hover {
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body>
-    <!-- Hero Section améliorée avec effets de lumière -->
-    <section class="section flex items-center justify-center relative overflow-hidden">
-        <!-- Effet de particules amélioré -->
-        <div class="particles" id="particles-js"></div>
+<body class="bg-black min-h-screen flex flex-col items-center justify-center p-6">
+    <div class="max-w-2xl w-full text-center">
+        <!-- Titre principal - Couleur changeante -->
+        <h1 id="title" class="text-5xl md:text-6xl font-bold mb-8 transition-colors duration-500">
+            Mon Titre Élégant
+        </h1>
         
-        <!-- Effets de halo -->
-        <div class="halo w-64 h-64 bg-red-500" style="top: 20%; left: 10%;"></div>
-        <div class="halo w-96 h-96 bg-blue-400" style="bottom: 10%; right: 15%;"></div>
+        <!-- Bouton pour changer la couleur -->
+        <button id="colorToggle" class="px-6 py-3 bg-gray-800 hover:bg-gray-700 rounded-full mb-12 transition">
+            Changer la couleur du titre
+        </button>
         
-        <!-- Conteneur pour la spirale dorée -->
-        <div class="golden-spiral-container">
-            <canvas id="goldenSpiral" class="golden-spiral pulse"></canvas>
+        <!-- Options de couleurs -->
+        <div class="grid grid-cols-5 gap-4" id="colorOptions" style="display: none;">
+            <!-- Couleurs pertinentes pour fond noir -->
+            <div class="color-option w-12 h-12 rounded-full bg-[#E5E7E6] cursor-pointer" data-color="text-[#E5E7E6]"></div> <!-- Argent -->
+            <div class="color-option w-12 h-12 rounded-full bg-[#A4B8A8] cursor-pointer" data-color="text-[#A4B8A8]"></div> <!-- Vert grisé -->
+            <div class="color-option w-12 h-12 rounded-full bg-[#5D7B94] cursor-pointer" data-color="text-[#5D7B94]"></div> <!-- Bleu acier -->
+            <div class="color-option w-12 h-12 rounded-full bg-[#C4A45A] cursor-pointer" data-color="text-[#C4A45A]"></div> <!-- Or mat -->
+            <div class="color-option w-12 h-12 rounded-full bg-[#A3B8C5] cursor-pointer" data-color="text-[#A3B8C5]"></div> <!-- Bleu glacier -->
+            
+            <div class="color-option w-12 h-12 rounded-full bg-[#D4AF37] cursor-pointer" data-color="text-[#D4AF37]"></div> <!-- Or -->
+            <div class="color-option w-12 h-12 rounded-full bg-[#7C908E] cursor-pointer" data-color="text-[#7C908E]"></div> <!-- Vert argenté -->
+            <div class="color-option w-12 h-12 rounded-full bg-[#B89F67] cursor-pointer" data-color="text-[#B89F67]"></div> <!-- Or rose -->
+            <div class="color-option w-12 h-12 rounded-full bg-[#5C8D7E] cursor-pointer" data-color="text-[#5C8D7E]"></div> <!-- Vert luxe -->
+            <div class="color-option w-12 h-12 rounded-full bg-[#F0EDE5] cursor-pointer" data-color="text-[#F0EDE5]"></div> <!-- Émail blanc -->
         </div>
-        
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="slide-in-left text-center">
-                <h1 class="text-[3.3rem] md:text-[4rem] font-light mb-6 leading-none tracking-tight">
-                    <span class="text-white block opacity-90">Design.</span>
-                    <span class="gold-gradient block mt-2 opacity-95">Code.</span>
-                    <span class="text-white block mt-2 opacity-90">Narrate.</span>
-                </h1>
-                
-                <div class="w-16 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto my-6 opacity-90"></div>
-                
-                <p class="text-2xl text-white mb-8 max-w-2xl mx-auto leading-relaxed">
-                    Minimaliste. Performant. Sans compromis.
-                </p>
-                <div class="flex flex-wrap gap-4 justify-center">
-                    <a href="#contact" class="px-6 py-2 text-base bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-full font-bold btn-hover glow-effect flex items-center" aria-label="Contactez-moi">
-                        contact 📈 <i class=""></i>
-                    </a>
-                    <a href="#work" class="px-6 py-2 text-base border border-white/30 rounded-full hover:bg-white/5 transition font-medium hover:border-yellow-500 flex items-center" aria-label="Voir mes réalisations">
-                        Voir mes réalisations 🌌 <i class=""></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <script>
-        // Initialisation des particules
-        document.addEventListener('DOMContentLoaded', function() {
-            if (document.getElementById('particles-js')) {
-                particlesJS('particles-js', {
-                    "particles": {
-                        "number": {
-                            "value": 80,
-                            "density": {
-                                "enable": true,
-                                "value_area": 800
-                            }
-                        },
-                        "color": {
-                            "value": "#f59e0b"
-                        },
-                        "shape": {
-                            "type": "circle",
-                            "stroke": {
-                                "width": 0,
-                                "color": "#000000"
-                            }
-                        },
-                        "opacity": {
-                            "value": 0.5,
-                            "random": true,
-                            "anim": {
-                                "enable": true,
-                                "speed": 1,
-                                "opacity_min": 0.1,
-                                "sync": false
-                            }
-                        },
-                        "size": {
-                            "value": 3,
-                            "random": true,
-                            "anim": {
-                                "enable": true,
-                                "speed": 2,
-                                "size_min": 0.1,
-                                "sync": false
-                            }
-                        },
-                        "line_linked": {
-                            "enable": true,
-                            "distance": 150,
-                            "color": "#f59e0b",
-                            "opacity": 0.2,
-                            "width": 1
-                        },
-                        "move": {
-                            "enable": true,
-                            "speed": 1,
-                            "direction": "none",
-                            "random": true,
-                            "straight": false,
-                            "out_mode": "out",
-                            "bounce": false,
-                            "attract": {
-                                "enable": true,
-                                "rotateX": 600,
-                                "rotateY": 1200
-                            }
-                        }
-                    },
-                    "interactivity": {
-                        "detect_on": "canvas",
-                        "events": {
-                            "onhover": {
-                                "enable": true,
-                                "mode": "grab"
-                            },
-                            "onclick": {
-                                "enable": true,
-                                "mode": "push"
-                            },
-                            "resize": true
-                        },
-                        "modes": {
-                            "grab": {
-                                "distance": 140,
-                                "line_linked": {
-                                    "opacity": 0.5
-                                }
-                            },
-                            "bubble": {
-                                "distance": 400,
-                                "size": 40,
-                                "duration": 2,
-                                "opacity": 8,
-                                "speed": 3
-                            },
-                            "repulse": {
-                                "distance": 200,
-                                "duration": 0.4
-                            },
-                            "push": {
-                                "particles_nb": 4
-                            },
-                            "remove": {
-                                "particles_nb": 2
-                            }
-                        }
-                    },
-                    "retina_detect": true
-                });
-            }
-
-            // Animation de la spirale dorée
-            const canvas = document.getElementById('goldenSpiral');
-            const ctx = canvas.getContext('2d');
-            
-            // Ajuster la taille du canvas
-            function resizeCanvas() {
-                const container = canvas.parentElement;
-                canvas.width = container.offsetWidth;
-                canvas.height = container.offsetHeight;
-                drawGoldenSpiral();
-            }
-            
-            // Couleurs dorées
-            const goldColors = [
-                '#FFD700', // or
-                '#FFEC8B', // or clair
-                '#EEC900', // or moyen
-                '#CD9B1D', // or foncé
-                '#8B6914'  // or très foncé
-            ];
-            
-            // Dessiner la spirale dorée
-            function drawGoldenSpiral() {
-                const width = canvas.width;
-                const height = canvas.height;
-                const centerX = width * 0.8;
-                const centerY = height * 0.2;
-                const maxRadius = Math.min(width, height) * 0.6;
-                const goldenRatio = 1.61803398875;
-                let radius = 2;
-                let angle = 0;
-                let rotation = 0;
-                
-                ctx.clearRect(0, 0, width, height);
-                
-                // Animation
-                rotation += 0.005;
-                
-                // Dessiner la spirale
-                ctx.save();
-                ctx.translate(centerX, centerY);
-                ctx.rotate(rotation);
-                
-                let points = [];
-                while (radius < maxRadius) {
-                    angle += Math.PI / 6;
-                    radius = radius * goldenRatio;
-                    
-                    const x = Math.cos(angle) * radius;
-                    const y = Math.sin(angle) * radius;
-                    
-                    points.push({x, y, radius});
-                }
-                
-                // Dessiner les arcs de la spirale
-                for (let i = 0; i < points.length - 1; i++) {
-                    const p1 = points[i];
-                    const p2 = points[i + 1];
-                    
-                    // Créer un dégradé pour l'effet doré
-                    const gradient = ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
-                    gradient.addColorStop(0, goldColors[i % goldColors.length]);
-                    gradient.addColorStop(1, goldColors[(i + 1) % goldColors.length]);
-                    
-                    ctx.beginPath();
-                    ctx.moveTo(p1.x, p1.y);
-                    
-                    // Dessiner un arc de cercle
-                    const startAngle = Math.atan2(p1.y, p1.x);
-                    const endAngle = Math.atan2(p2.y, p2.x);
-                    ctx.arc(0, 0, p1.radius, startAngle, endAngle, false);
-                    
-                    ctx.lineWidth = 3 + (i * 0.1);
-                    ctx.strokeStyle = gradient;
-                    ctx.stroke();
-                    
-                    // Ajouter des points pour un effet plus riche
-                    if (i % 3 === 0) {
-                        ctx.beginPath();
-                        ctx.arc(p1.x, p1.y, 2 + (i * 0.02), 0, Math.PI * 2);
-                        ctx.fillStyle = goldColors[i % goldColors.length];
-                        ctx.fill();
-                    }
-                }
-                
-                ctx.restore();
-                
-                // Dessiner les carrés de la séquence de Fibonacci
-                ctx.save();
-                ctx.translate(centerX, centerY);
-                ctx.rotate(rotation);
-                
-                let fibPrev = 1;
-                let fibCurr = 1;
-                let squareAngle = 0;
-                
-                for (let i = 0; i < 8; i++) {
-                    const nextFib = fibPrev + fibCurr;
-                    
-                    // Couleur du carré avec transparence
-                    ctx.fillStyle = `rgba(239, 198, 68, ${0.2 + (i * 0.05)})`;
-                    ctx.strokeStyle = goldColors[i % goldColors.length];
-                    ctx.lineWidth = 1;
-                    
-                    // Dessiner le carré
-                    ctx.save();
-                    ctx.rotate(squareAngle);
-                    ctx.beginPath();
-                    ctx.rect(0, 0, fibCurr * 5, fibCurr * 5);
-                    ctx.fill();
-                    ctx.stroke();
-                    ctx.restore();
-                    
-                    // Déplacer pour le prochain carré
-                    ctx.translate(fibCurr * 5, 0);
-                    squareAngle += Math.PI / 2;
-                    
-                    // Mettre à jour la séquence de Fibonacci
-                    const temp = fibCurr;
-                    fibCurr = nextFib;
-                    fibPrev = temp;
-                }
-                
-                ctx.restore();
-                
-                requestAnimationFrame(drawGoldenSpiral);
-            }
-            
-            // Initialisation
-            window.addEventListener('resize', resizeCanvas);
-            resizeCanvas();
-            
-            // Animation du texte
-            const elements = document.querySelectorAll('.slide-in-left');
-            elements.forEach((el, index) => {
-                el.style.transform = 'translateY(30px)';
-                el.style.animationDelay = `${index * 0.1}s`;
+        const title = document.getElementById('title');
+        const colorToggle = document.getElementById('colorToggle');
+        const colorOptions = document.getElementById('colorOptions');
+        
+        // Liste des couleurs prédéfinies (correspondant aux options)
+        const colors = [
+            'text-[#E5E7E6]', // Argent
+            'text-[#A4B8A8]', // Vert grisé
+            'text-[#5D7B94]', // Bleu acier
+            'text-[#C4A45A]', // Or mat
+            'text-[#A3B8C5]', // Bleu glacier
+            'text-[#D4AF37]', // Or
+            'text-[#7C908E]', // Vert argenté
+            'text-[#B89F67]', // Or rose
+            'text-[#5C8D7E]', // Vert luxe
+            'text-[#F0EDE5]'  // Émail blanc
+        ];
+        
+        let currentColorIndex = 0;
+        
+        // Fonction pour changer la couleur
+        function changeColor() {
+            // Retire toutes les classes de couleur
+            colors.forEach(colorClass => {
+                title.classList.remove(colorClass);
             });
+            
+            // Ajoute la nouvelle couleur
+            title.classList.add(colors[currentColorIndex]);
+            
+            // Incrémente l'index ou revient à 0
+            currentColorIndex = (currentColorIndex + 1) % colors.length;
+        }
+        
+        // Bouton principal - Change automatiquement
+        colorToggle.addEventListener('click', changeColor);
+        
+        // Options de couleur - Choix manuel
+        document.querySelectorAll('.color-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const colorClass = this.getAttribute('data-color');
+                // Retire toutes les classes de couleur
+                colors.forEach(c => {
+                    title.classList.remove(c);
+                });
+                // Ajoute la couleur sélectionnée
+                title.classList.add(colorClass);
+            });
+        });
+        
+        // Affiche les options au survol
+        colorToggle.addEventListener('mouseenter', () => {
+            colorOptions.style.display = 'grid';
+        });
+        
+        colorOptions.addEventListener('mouseleave', () => {
+            colorOptions.style.display = 'none';
         });
     </script>
 </body>
