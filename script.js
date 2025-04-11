@@ -12,6 +12,36 @@ document.addEventListener('DOMContentLoaded', function() {
     animateOnScroll();
     window.addEventListener('scroll', animateOnScroll);
 
+    // Animation des sections au scroll
+    const animateSectionsOnScroll = () => {
+        const sections = document.querySelectorAll('.animate-section');
+        const windowHeight = window.innerHeight;
+        const triggerBottom = windowHeight * 0.85;
+
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            
+            if (sectionTop < triggerBottom) {
+                section.classList.add('visible');
+            }
+        });
+    };
+
+    // Détection initiale
+    animateSectionsOnScroll();
+    
+    // Écouteur d'événement pour le scroll
+    window.addEventListener('scroll', animateSectionsOnScroll);
+
+    // Optimisation pour mobile - désactivation des animations si l'utilisateur préfère moins de mouvement
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.animate-section').forEach(section => {
+            section.style.transition = 'none';
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
+        });
+    }
+
     // Highlights (dans la section #about)
     const aboutSection = document.querySelector('#about');
     if (aboutSection) {

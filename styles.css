@@ -1096,3 +1096,81 @@ a {
 .bg-main-accent\/10 {
     display: none !important;
 }
+/* Nouveaux styles pour les animations directionnelles */
+.animate-section {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Animation spécifique pour chaque section */
+#philosophie-section {
+    transform: translateX(-30px);
+}
+
+#technique-section {
+    transform: translateX(30px);
+}
+
+#design-section {
+    transform: translateY(30px);
+}
+
+#storytelling-section {
+    transform: translateX(-30px);
+}
+
+#resultat-section {
+    transform: translateX(30px);
+}
+
+/* États visibles */
+#philosophie-section.visible {
+    transform: translateX(0);
+    opacity: 1;
+    transition-delay: 0.1s;
+}
+
+#technique-section.visible {
+    transform: translateX(0);
+    opacity: 1;
+    transition-delay: 0.2s;
+}
+
+#design-section.visible {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 0.3s;
+}
+
+#storytelling-section.visible {
+    transform: translateX(0);
+    opacity: 1;
+    transition-delay: 0.4s;
+}
+
+#resultat-section.visible {
+    transform: translateX(0);
+    opacity: 1;
+    transition-delay: 0.5s;
+}
+
+/* Adaptations pour mobile */
+@media (max-width: 768px) {
+    .animate-section {
+        transform: translateY(20px) !important; /* Simplification pour mobile */
+    }
+    
+    .animate-section.visible {
+        transform: translateY(0) !important;
+        transition-delay: 0s !important;
+    }
+}
+
+/* Désactivation si préférence de réduction de mouvement */
+@media (prefers-reduced-motion: reduce) {
+    .animate-section {
+        transform: none !important;
+        opacity: 1 !important;
+        transition: none !important;
+    }
+}
