@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /assets/raw/
+
+# Permettre à tous les robots d'indexer tout le contenu
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://eventhorizon.ch/sitemap.xml 

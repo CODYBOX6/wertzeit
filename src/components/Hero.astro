@@ -1,0 +1,124 @@
+---
+// Pas de script côté serveur nécessaire pour ce composant pour l'instant
+---
+<section class="section flex items-center justify-center relative overflow-hidden">
+    <div id="tsparticles" class="absolute inset-0 w-full h-full z-10"></div>
+    
+    <div class="absolute inset-x-20 top-1/4 bg-gradient-to-r from-transparent via-main-accent/50 to-transparent h-[2px] w-3/4 blur-sm z-10 hero-gradient"></div>
+    <div class="absolute inset-x-20 top-1/4 bg-gradient-to-r from-transparent via-main-accent/50 to-transparent h-px w-3/4 z-10 hero-gradient"></div>
+    <div class="absolute inset-x-60 top-1/3 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent h-[5px] w-1/4 blur-sm z-10 hero-gradient"></div>
+    <div class="absolute inset-x-60 top-1/3 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent h-px w-1/4 z-10 hero-gradient"></div>
+    
+    <div class="golden-spiral pulse" style="right: -30vmin; top: -30vmin;"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 relative z-20">
+        <div class="slide-in-left text-center hero-content"> {/* Ajout de hero-content pour z-index */}
+            <h1 class="text-[3.3rem] md:text-[4rem] font-light mb-6 leading-none tracking-tight">
+                <span class="text-white block opacity-90">Design.</span>
+                <span class="text-main block mt-2 opacity-95">Code.</span>
+                <span class="text-white block mt-2 opacity-90">Narrate.</span>
+            </h1>
+            
+            <div class="w-16 h-1 bg-main mx-auto my-6 opacity-90"></div>
+            
+            <div id="gooey-container" class="text-2xl text-white mb-8 max-w-2xl mx-auto leading-relaxed h-[70px] relative z-20">
+                <!-- Le contenu sera généré par gooey-text.js -->
+            </div>
+            
+            <div class="flex flex-wrap gap-4 justify-center">
+                <a href="#contact" class="px-6 py-2 text-base bg-main rounded-full font-bold btn-hover glow-effect flex items-center" aria-label="Contactez-moi">
+                    WhatsApp <i class=""></i>
+                </a>
+                <a href="#work" class="flow-button" aria-label="Mes créations">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flow-button-arrow-left" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    <span class="flow-button-text">Mes créations</span>
+                    <span class="flow-button-circle"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flow-button-arrow-right" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </a>
+            </div>
+            
+            <div id="hero-sparkles" class="relative w-72 h-20 mt-8 mx-auto overflow-hidden">
+                <div class="absolute inset-x-4 top-0 bg-gradient-to-r from-transparent via-main-accent to-transparent h-[1px] w-full blur-sm"></div>
+                <div class="absolute inset-x-4 top-0 bg-gradient-to-r from-transparent via-main-accent to-transparent h-px w-full"></div>
+            </div>
+
+            <div class="absolute inset-0 w-full h-full bg-black/10 [mask-image:radial-gradient(1100px_600px_at_center,transparent_20%,black)]"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Importer et initialiser les effets spécifiques à ce composant
+    import { createGooeyTextEffect } from '/gooey-text.js'; // Assurez-vous que le chemin est correct (depuis public/ ou src/)
+    import { createSparklesEffect } from '/sparkles.js';   // Idem
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialisation de tsParticles (si ce n'est pas déjà global dans Layout)
+        // Vous devrez peut-être adapter la configuration de particles.js pour tsParticles
+        if (window.tsParticles) {
+            window.tsParticles.load("tsparticles", {
+                // Votre configuration tsParticles ici, similaire à particles.js
+                // Exemple très basique :
+                fpsLimit: 60,
+                interactivity: {
+                    events: {
+                        onClick: { enable: true, mode: "push" },
+                        onHover: { enable: true, mode: "repulse" },
+                    },
+                    modes: {
+                        push: { quantity: 4 },
+                        repulse: { distance: 100, duration: 0.4 },
+                    },
+                },
+                particles: {
+                    color: { value: "#3ddc97" },
+                    links: { color: "#ffffff", distance: 150, enable: true, opacity: 0.1, width: 1 },
+                    move: {
+                        direction: "none",
+                        enable: true,
+                        outModes: "out",
+                        random: false,
+                        speed: 1,
+                        straight: false,
+                    },
+                    number: { density: { enable: true, area: 800 }, value: 80 },
+                    opacity: { value: 0.1 },
+                    shape: { type: "circle" },
+                    size: { value: { min: 1, max: 3 } },
+                },
+                detectRetina: true,
+            });
+        }
+
+        // Gooey Text
+        const gooeyContainer = document.getElementById('gooey-container');
+        if (gooeyContainer) {
+            // Styles appliqués directement dans gooey-text.js, mais on peut s'assurer ici
+            gooeyContainer.style.height = '70px'; 
+            gooeyContainer.style.overflow = 'visible';
+            createGooeyTextEffect('gooey-container', 
+                ['Minimaliste.', 'Performant.', 'Sans compromis.'], 
+                {
+                    morphTime: 1.2,
+                    cooldownTime: 1.5,
+                    textClass: 'text-main font-bold', // Tailwind classes
+                    fontSize: '32px' // Ou utilisez une classe Tailwind
+                }
+            );
+        }
+
+        // Sparkles
+        const sparklesContainer = document.getElementById('hero-sparkles');
+        if (sparklesContainer) {
+            createSparklesEffect('hero-sparkles', {
+                background: 'transparent',
+                minSize: 0.1,
+                maxSize: 0.4,
+                particleDensity: 80,
+                particleColor: '#3ddc97', // var(--main-color)
+                speed: 0.6,
+                zIndex: 15 // Assurez-vous que c'est cohérent avec le z-index du canvas
+            });
+        }
+    });
+</script>

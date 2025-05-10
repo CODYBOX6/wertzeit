@@ -1,0 +1,156 @@
+/* Import Tailwind base, components, and utilities if not handled by astro.config already */
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
+
+/* Your existing global styles from styles.css and the inline <style> tag */
+:root {
+    --main-color: #3ddc97; /* Example, take from your styles.css */
+    --main-color-accent: #59e8ae; /* Example */
+    --main-color-light: #8bface; /* Example */
+    --main-color-dark: #2ea875;  /* Example */
+    --blue-500: #3b82f6; /* Example */
+    /* Add other CSS variables here */
+}
+
+body {
+    /* background-color: #000; */ /* Example from your styles.css */
+    /* color: #fff; */ /* Example */
+    /* font-family: 'Syne', sans-serif; */ /* Example */
+    /* ... other body styles ... */
+}
+
+/* Espacement amélioré entre les paragraphes */
+p {
+    margin-bottom: 2.2rem !important;
+    line-height: 1.9 !important;
+    padding-bottom: 0.5rem !important;
+}
+
+/* Espacement vertical entre les sections */
+section.section { /* Added .section to be more specific if needed */
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* Espacement pour les éléments de liste */
+li {
+    margin-bottom: 1.2rem !important;
+    padding-bottom: 0.5rem !important;
+}
+
+/* Ajustement des espacements dans les cartes */
+.card-3d p, .offer-card p { /* Assuming these classes exist */
+    margin-bottom: 2rem !important;
+}
+
+/* Espacement pour les conteneurs de texte */
+.space-y-4 { /* This is a Tailwind class, usually you don't redefine it unless necessary */
+    /* margin-top: 2.5rem !important; */ /* Consider if this override is needed */
+    /* margin-bottom: 2.5rem !important; */ /* Consider if this override is needed */
+}
+
+/* Taille fixe pour les cartes d'expertise */
+.expertise-card {
+    min-height: 240px !important;
+    height: auto !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Style pour le contenu caché */
+.expertise-content.hidden {
+    display: block !important;
+    visibility: hidden !important;
+    position: absolute !important;
+    z-index: -1 !important;
+    opacity: 0 !important;
+}
+
+/* Style pour le contenu visible */
+.expertise-content:not(.hidden) {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Styles pour la FAQ interactive */
+.faq-item {
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+    position: relative;
+    z-index: 2;
+}
+
+.faq-answer {
+    position: relative;
+}
+
+/* Animation de surbrillance pour les réponses */
+.highlight-animation {
+    animation: highlightPulse 1s ease;
+}
+
+@keyframes highlightPulse {
+    0% { background-color: rgba(61, 220, 151, 0.05); }
+    50% { background-color: rgba(61, 220, 151, 0.2); }
+    100% { background-color: transparent; }
+}
+
+/* Style pour la barre de progression */
+.faq-progress {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.pulse-animation {
+    animation: progressPulse 2s infinite;
+}
+
+@keyframes progressPulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; box-shadow: 0 0 15px rgba(61, 220, 151, 0.8); }
+    100% { opacity: 0.7; }
+}
+
+/* Animation de succès */
+.completion-glow {
+    animation: successGlow 2s ease;
+}
+
+@keyframes successGlow {
+    0% { box-shadow: 0 0 0 rgba(61, 220, 151, 0); }
+    50% { box-shadow: 0 0 30px rgba(61, 220, 151, 0.3); }
+    100% { box-shadow: 0 0 0 rgba(61, 220, 151, 0); }
+}
+
+/* Add content from your old styles.css and flow-button.css here */
+/* For example, .leaf-pattern, .progress-container, .flow-button styles etc. */
+
+.progress-container {
+  width: 100%;
+  height: 5px; /* Or your desired height */
+  background-color: rgba(255, 255, 255, 0.1); /* Faint background */
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--main-color); /* Use your main accent color */
+  width: 0%;
+  transition: width 0.2s ease-out;
+  box-shadow: 0 0 10px var(--main-color), 0 0 5px var(--main-color);
+}
+
+/* You'll also need to copy styles from your existing styles.css and flow-button.css here */
+/* Ensure all necessary styles for layout elements are present */

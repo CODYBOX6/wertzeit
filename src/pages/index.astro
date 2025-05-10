@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro'; // Nous allons créer ce composant
+// Importer d'autres composants pour les sections "Work", "Contact", "FAQ", etc.
+// import WorkSection from '../components/WorkSection.astro';
+// import ContactSection from '../components/ContactSection.astro';
+// import FaqSection from '../components/FaqSection.astro';
+
+const pageTitle = "ZugZeit"; // Ou le titre que vous aviez
+const pageDescription = "Event Horizon | Sonny Callegaro : Création de sites web, photographie et réseaux sociaux à Genève. Découvrez mes offres pour portfolio, restaurants et PME.";
+---
+<Layout title={pageTitle} description={pageDescription}>
+    <Hero />
+    {/* <WorkSection /> */}
+    {/* <ContactSection /> */}
+    {/* <FaqSection /> */}
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json" is:inline>
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Event Horizon | Sonny Callegaro",
+        "description": "Création de sites web statiques performants, design graphique et storytelling digital à Genève.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Genève",
+            "addressCountry": "CH"
+        },
+        "telephone": "+41799139344",
+        "priceRange": "750CHF - 3800CHF",
+        "openingHours": "Mo-Fr 09:00-18:00",
+        "image": "", // Ajoutez une URL d'image ici
+        "url": "https://eventhorizon.ch", // Assurez-vous que c'est la bonne URL
+        "serviceType": ["Création de sites web", "Design", "Photographie"],
+        "sameAs": ["https://www.instagram.com/", "https://dribbble.com/", "https://behance.net/"]
+    }
+    </script>
+</Layout>

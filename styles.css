@@ -9,6 +9,7 @@
     --main-color-light: #5ef0c1; /* Version claire */
     --main-color-dark: #2cca61; /* Version foncée */
     --main-color-accent: #217a4a; /* Accent */
+    --blue-500: #3b82f6; /* Bleu pour les dégradés */
     
     /* Couleurs complémentaires */
     --complementary-1: #ff6b6b; /* Rouge doux */
@@ -104,15 +105,7 @@ body {
 }
 
 /* Spirale dorée avec effet de lumière */
-.golden-spiral {
-    position: absolute;
-    width: 80vmin;
-    height: 80vmin;
-    background: radial-gradient(circle at center, transparent 60%, rgba(61, 220, 151, 0.15) 60.1%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.7;
-}
+
 
 /* Effets texte améliorés */
 .text-main-stroke {
@@ -188,6 +181,7 @@ body {
     height: 100%;
     pointer-events: none;
     z-index: 1;
+    display: none; /* Masquer complètement le conteneur de particules */
 }
 
 .particle {
@@ -196,6 +190,7 @@ body {
     border-radius: 50%;
     filter: blur(1px);
     animation: float-particle linear infinite;
+    display: none; /* Masquer toutes les particules */
 }
 
 @keyframes float-particle {
@@ -411,22 +406,6 @@ body {
 @keyframes levelShine {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(100%); }
-}
-
-/* Animation de confetti */
-@keyframes confetti-fall {
-    0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-}
-
-.confetti {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    background: var(--main-color);
-    opacity: 0;
-    z-index: 9999;
-    animation: confetti-fall 3s ease-in-out forwards;
 }
 
 /* Effet de halo */
@@ -1096,81 +1075,135 @@ a {
 .bg-main-accent\/10 {
     display: none !important;
 }
-/* Nouveaux styles pour les animations directionnelles */
-.animate-section {
-    opacity: 0;
-    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+
+/* Animations de base */
+@keyframes slideLeft {
+  from { transform: translateX(-50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
-/* Animation spécifique pour chaque section */
-#philosophie-section {
-    transform: translateX(-30px);
+@keyframes slideRight {
+  from { transform: translateX(50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
-#technique-section {
-    transform: translateX(30px);
+@keyframes slideBottom {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
-#design-section {
-    transform: translateY(30px);
+/* Classes d'animation */
+.animate-card {
+  opacity: 0; /* Caché au départ */
+  animation-fill-mode: forwards;
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  will-change: transform, opacity;
 }
 
-#storytelling-section {
-    transform: translateX(-30px);
+[data-animation="slide-left"] {
+  animation-name: slideLeft;
 }
 
-#resultat-section {
-    transform: translateX(30px);
+[data-animation="slide-right"] {
+  animation-name: slideRight;
 }
 
-/* États visibles */
-#philosophie-section.visible {
-    transform: translateX(0);
-    opacity: 1;
-    transition-delay: 0.1s;
+[data-animation="slide-bottom"] {
+  animation-name: slideBottom;
 }
 
-#technique-section.visible {
-    transform: translateX(0);
-    opacity: 1;
-    transition-delay: 0.2s;
-}
+/* Délais pour effet cascade */
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
+.delay-5 { animation-delay: 1s; }
 
-#design-section.visible {
-    transform: translateY(0);
-    opacity: 1;
-    transition-delay: 0.3s;
-}
-
-#storytelling-section.visible {
-    transform: translateX(0);
-    opacity: 1;
-    transition-delay: 0.4s;
-}
-
-#resultat-section.visible {
-    transform: translateX(0);
-    opacity: 1;
-    transition-delay: 0.5s;
-}
-
-/* Adaptations pour mobile */
-@media (max-width: 768px) {
-    .animate-section {
-        transform: translateY(20px) !important; /* Simplification pour mobile */
-    }
-    
-    .animate-section.visible {
-        transform: translateY(0) !important;
-        transition-delay: 0s !important;
-    }
-}
-
-/* Désactivation si préférence de réduction de mouvement */
+/* Accessibilité */
 @media (prefers-reduced-motion: reduce) {
-    .animate-section {
-        transform: none !important;
-        opacity: 1 !important;
-        transition: none !important;
-    }
+  .animate-card {
+    animation: none !important;
+    opacity: 1;
+  }
+}
+
+/* Mobile First */
+@media (max-width: 768px) {
+  .animate-card {
+    animation-duration: 0.5s;
+  }
+}
+
+/* Effet de particules avec tsParticles */
+#tsparticles {
+    opacity: 0;
+    transition: opacity 1s ease;
+    pointer-events: none; /* Permet de cliquer à travers les particules */
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 10 !important;
+    display: block !important;
+    overflow: visible !important;
+}
+
+/* Styles pour assurer que les particules apparaissent au-dessus du fond mais en-dessous du texte */
+.hero-content {
+    position: relative;
+    z-index: 20;
+}
+
+/* Animation pour les dégradés */
+@keyframes gradientShift {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+.hero-gradient {
+    animation: gradientShift 4s infinite;
+    pointer-events: none;
+}
+
+/* Styles pour l'effet gooey text */
+#gooey-container {
+  position: relative;
+  height: 70px !important; /* Augmentation de la hauteur */
+  overflow: visible !important;
+  background: transparent !important;
+  width: 100% !important;
+  margin: 0 auto 2.5rem !important; /* Augmentation de la marge inférieure */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 !important;
+  z-index: 21 !important; /* S'assurer qu'il est au-dessus des autres éléments */
+}
+
+#gooey-container span {
+  background: transparent !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
+  will-change: filter, opacity;
+  color: inherit;
+  position: absolute !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important; /* Centrage parfait */
+  width: auto !important;
+  top: 50% !important; /* Centrage vertical */
+  margin: 0 !important; /* Réinitialisation des marges */
+  height: fit-content !important;
+  text-align: center !important;
+  line-height: 1.2 !important; /* Ajustement de l'interligne */
+  font-size: 32px !important; /* Taille fixe */
+}
+
+/* Optimisation des animations */
+@media (prefers-reduced-motion: no-preference) {
+  #gooey-container span {
+    transition: filter 0.05s linear;
+  }
 }

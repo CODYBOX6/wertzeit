@@ -12,35 +12,91 @@ document.addEventListener('DOMContentLoaded', function() {
     animateOnScroll();
     window.addEventListener('scroll', animateOnScroll);
 
-    // Animation des sections au scroll
-    const animateSectionsOnScroll = () => {
-        const sections = document.querySelectorAll('.animate-section');
-        const windowHeight = window.innerHeight;
-        const triggerBottom = windowHeight * 0.85;
+    // Animation des cartes d'expertise en effet domino au scroll
+    const scrollRevealCards = document.querySelectorAll('.scroll-reveal');
+    let revealTimeout;
 
-        sections.forEach(section => {
-            const sectionTop = section.getBoundingClientRect().top;
+    function checkScrollReveal() {
+        // Trouver le point de déclenchement (milieu de la fenêtre)
+        const triggerPoint = window.innerHeight * 0.6;
+        
+        // Vérifier si les cartes sont visibles dans ce point de déclenchement
+        let isAnyCardVisible = false;
+        
+        scrollRevealCards.forEach(card => {
+            const cardTop = card.getBoundingClientRect().top;
+            const cardBottom = card.getBoundingClientRect().bottom;
             
-            if (sectionTop < triggerBottom) {
-                section.classList.add('visible');
+            // Vérifier si la carte est dans la zone de déclenchement
+            if (cardTop < triggerPoint && cardBottom > 0) {
+                isAnyCardVisible = true;
             }
         });
-    };
-
-    // Détection initiale
-    animateSectionsOnScroll();
+        
+        // Si au moins une carte est visible, démarrer l'effet domino
+        if (isAnyCardVisible) {
+            revealCards();
+        } else {
+            // Si aucune carte n'est visible, tout refermer
+            hideCards();
+        }
+    }
     
-    // Écouteur d'événement pour le scroll
-    window.addEventListener('scroll', animateSectionsOnScroll);
-
-    // Optimisation pour mobile - désactivation des animations si l'utilisateur préfère moins de mouvement
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        document.querySelectorAll('.animate-section').forEach(section => {
-            section.style.transition = 'none';
-            section.style.opacity = '1';
-            section.style.transform = 'translateY(0)';
+    function revealCards() {
+        // Annuler tout minuteur existant
+        clearTimeout(revealTimeout);
+        
+        // Révéler les cartes en séquence
+        scrollRevealCards.forEach((card, index) => {
+            const content = card.querySelector('.expertise-content');
+            const hint = card.querySelector('.expertise-hint');
+            
+            revealTimeout = setTimeout(() => {
+                // Révéler le contenu
+                content.classList.remove('hidden');
+                
+                // Ajouter des effets visuels
+                card.classList.add('border-main-accent');
+                card.classList.add('bg-white/10');
+                
+                // Animer la flèche
+                if (hint) {
+                    hint.style.transform = 'rotate(90deg)';
+                    hint.style.color = '#3ddc97';
+                }
+            }, index * 200); // Délai progressif pour l'effet domino
         });
     }
+    
+    function hideCards() {
+        // Annuler tout minuteur existant
+        clearTimeout(revealTimeout);
+        
+        // Cacher les cartes en séquence inverse
+        [...scrollRevealCards].reverse().forEach((card, index) => {
+            const content = card.querySelector('.expertise-content');
+            const hint = card.querySelector('.expertise-hint');
+            
+            revealTimeout = setTimeout(() => {
+                // Cacher le contenu
+                content.classList.add('hidden');
+                
+                // Retirer les effets visuels
+                card.classList.remove('border-main-accent');
+                card.classList.remove('bg-white/10');
+                
+                // Réinitialiser la flèche
+                if (hint) {
+                    hint.style.transform = 'rotate(0deg)';
+                    hint.style.color = '';
+                }
+            }, index * 150); // Délai progressif pour l'effet domino inversé
+        });
+    }
+    
+    // Initialiser la vérification et configurer l'écouteur d'événement scroll
+    checkScrollReveal();
+    window.addEventListener('scroll', checkScrollReveal);
 
     // Highlights (dans la section #about)
     const aboutSection = document.querySelector('#about');
@@ -83,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const phoneNumber = '+41799139344';
             const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
             window.open(whatsappURL, '_blank');
-            createConfetti();
 
             submitBtn.innerHTML = `<i class="fas fa-check-circle mr-2"></i> Message envoyé !`;
             submitBtn.classList.replace('bg-main-gradient', 'bg-green-500');
@@ -101,45 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Particules (inchangé)
-    function createParticles(containerId, count = 30) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        for (let i = 0; i < count; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.cssText = `
-                width: ${Math.random() * 5 + 1}px;
-                height: ${Math.random() * 5 + 1}px;
-                left: ${Math.random() * 100}%;
-                bottom: -${Math.random() * 5 + 1}px;
-                background: ${['#3ddc97','#5ef0c1','#2cca61','#217a4a','#ff6b6b','#4cc9f0','#f8961e'][Math.floor(Math.random()*7)]};
-                opacity: ${Math.random() * 0.5 + 0.1};
-                animation-duration: ${Math.random() * 20 + 10}s;
-                animation-delay: ${Math.random() * 5}s;
-            `;
-            container.appendChild(particle);
-        }
-    }
-
-    // Confetti (inchangé)
-    function createConfetti() {
-        const colors = ['#3ddc97','#5ef0c1','#2cca61','#217a4a','#ff6b6b','#4cc9f0','#f8961e'];
-        for (let i = 0; i < 100; i++) {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.cssText = `
-                left: ${Math.random() * 100}vw;
-                width: ${Math.random() * 10 + 5}px;
-                height: ${Math.random() * 10 + 5}px;
-                border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
-                background-color: ${colors[Math.floor(Math.random() * colors.length)]};
-                animation-duration: ${Math.random() * 3 + 2}s;
-                animation-delay: ${Math.random() * 0.5}s;
-            `;
-            document.body.appendChild(confetti);
-            setTimeout(() => confetti.remove(), (Math.random() * 3 + 2) * 1000);
-        }
-    }
+    // createParticles('particles-js', 50); // Commenter cette ligne pour désactiver les particules
 
     // Morphing (inchangé)
     document.querySelectorAll('.morph-effect').forEach(el => {
@@ -344,9 +361,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Crée des particules (inchangé)
-    createParticles('particles-js', 50);
-
     // Animation des projets au scroll
     const projectCards = document.querySelectorAll('.project-card');
     const projectObserver = new IntersectionObserver((entries) => {
@@ -365,4 +379,157 @@ document.addEventListener('DOMContentLoaded', function() {
     projectCards.forEach(card => {
         projectObserver.observe(card);
     });
+
+    // Gestion des animations au scroll
+    const animatedElements = document.querySelectorAll('.animate-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.visibility = 'visible';
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    animatedElements.forEach(element => {
+        element.style.visibility = 'hidden';
+        observer.observe(element);
+    });
+    
+    // Gestion des sections d'expertise cliquables
+    const expertiseCards = document.querySelectorAll('.expertise-card');
+    expertiseCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const content = this.querySelector('.expertise-content');
+            const hint = this.querySelector('.expertise-hint');
+            
+            // Basculer entre visible et caché sans modifier la disposition
+            content.classList.toggle('hidden');
+            
+            // Effet visuel pour indiquer l'état actif/inactif
+            if (!content.classList.contains('hidden')) {
+                this.classList.add('border-main-accent');
+                this.classList.add('bg-white/10');
+                
+                // Animation de rotation de la flèche vers le bas (90 degrés)
+                if (hint) {
+                    hint.style.transform = 'rotate(90deg)';
+                    hint.style.color = '#3ddc97'; // Couleur d'accent plus simple pour meilleure performance
+                }
+            } else {
+                this.classList.remove('border-main-accent');
+                this.classList.remove('bg-white/10');
+                
+                // Réinitialisation de la rotation
+                if (hint) {
+                    hint.style.transform = 'rotate(0deg)';
+                    hint.style.color = '';
+                }
+            }
+        });
+    });
+    
+    // Gestion de la FAQ interactive
+    const faqItems = document.querySelectorAll('.faq-item');
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    const progressBar = document.querySelector('.faq-progress .progress-bar');
+    const faqCounter = document.querySelector('.faq-counter');
+    
+    // Pour suivre les questions vues
+    let questionsViewed = new Set();
+    let activeQuestion = null;
+    
+    faqQuestions.forEach((question, index) => {
+        question.addEventListener('click', function() {
+            const faqItem = this.closest('.faq-item');
+            const answer = faqItem.querySelector('.faq-answer');
+            const chevron = this.querySelector('.fa-chevron-down');
+            
+            // Si cette question est déjà active, on la ferme
+            if (activeQuestion === faqItem) {
+                // Fermer la réponse active
+                answer.style.maxHeight = '0';
+                chevron.style.transform = 'rotate(0deg)';
+                faqItem.classList.remove('border-main-accent');
+                faqItem.classList.remove('bg-white/10');
+                activeQuestion = null;
+                return;
+            }
+            
+            // Fermer la question active précédente, si elle existe
+            if (activeQuestion) {
+                const activeAnswer = activeQuestion.querySelector('.faq-answer');
+                const activeChevron = activeQuestion.querySelector('.fa-chevron-down');
+                
+                activeAnswer.style.maxHeight = '0';
+                activeChevron.style.transform = 'rotate(0deg)';
+                activeQuestion.classList.remove('border-main-accent');
+                activeQuestion.classList.remove('bg-white/10');
+            }
+            
+            // Ouvrir la nouvelle question
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            chevron.style.transform = 'rotate(180deg)';
+            faqItem.classList.add('border-main-accent');
+            faqItem.classList.add('bg-white/10');
+            
+            // Ajouter un effet sonore subtil
+            playSoundEffect();
+            
+            // Enregistrer cette question comme vue
+            questionsViewed.add(index);
+            
+            // Mettre à jour la barre de progression
+            updateProgress();
+            
+            // Définir cette question comme active
+            activeQuestion = faqItem;
+            
+            // Animation d'apparition
+            answer.addEventListener('transitionend', function onEnd() {
+                answer.classList.add('highlight-animation');
+                answer.removeEventListener('transitionend', onEnd);
+                
+                // Retirer l'animation après qu'elle soit terminée
+                setTimeout(() => {
+                    answer.classList.remove('highlight-animation');
+                }, 1000);
+            }, { once: true });
+        });
+    });
+    
+    // Fonction pour mettre à jour la barre de progression
+    function updateProgress() {
+        const progress = (questionsViewed.size / faqQuestions.length) * 100;
+        progressBar.style.width = `${progress}%`;
+        faqCounter.textContent = `${questionsViewed.size}/${faqQuestions.length} questions explorées`;
+        
+        // Si toutes les questions ont été vues, ajouter un effet de réussite
+        if (questionsViewed.size === faqQuestions.length) {
+            setTimeout(() => {
+                const faqSection = document.querySelector('#faq');
+                showCompletionEffect(faqSection);
+            }, 500);
+        }
+    }
+    
+    // Effet sonore pour le clic (à activer uniquement si l'utilisateur a interagi avec la page)
+    function playSoundEffect() {
+        // Cette fonction peut être développée si nécessaire pour ajouter de l'audio
+        // Pour l'instant, nous la laissons vide pour éviter d'affecter l'expérience utilisateur
+    }
+    
+    // Effet de confetti lorsque toutes les questions ont été explorées
+    function showCompletionEffect(element) {
+        faqCounter.innerHTML = `<span class="text-main font-bold">5/5 questions explorées - Félicitations ! 🎉</span>`;
+        progressBar.classList.add('pulse-animation');
+        
+        // Créer un effet de pulsation autour du conteneur FAQ
+        element.classList.add('completion-glow');
+        setTimeout(() => element.classList.remove('completion-glow'), 2000);
+    }
 });

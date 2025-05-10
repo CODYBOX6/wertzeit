@@ -4,20 +4,193 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="zoom" content="1.2">
-    <title>Sonny Callegaro | Création Site Web Statique & Design - Genève</title>
-    <meta name="description" content="Sonny Callegaro : Création de sites web statiques performants, design graphique et storytelling digital à Genève. Découvrez mes offres pour portfolio, restaurants et PME.">
-    <meta name="keywords" content="site web statique, création site web, développeur web genève, web design, portfolio en ligne, sonny callegaro, graphisme, storytelling digital, javascript, react, vuejs">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title> ZugZeit | Sonny Callegaro | Création Site Web Suisses, Photographie et réseaux sociaux - Genève</title>
+    <meta name="description" content="Event Horizon | Sonny Callegaro : Création de sites web, photographie et réseaux sociaux à Genève. Découvrez mes offres pour portfolio, restaurants et PME.">
+    <meta name="keywords" content="site web, création site web,eventhorizon.ch,développeur web genève, site web geneve, Photographe Genève, portfolio en ligne, sonny callegaro, heg, suisse">
+    
+    <!-- Optimisations pour le rendu -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#000000">
+    <meta name="color-scheme" content="dark">
+    
+    <!-- DNS Prefetch pour les domaines externes -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap" as="style">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="galaxy.avif" as="image" fetchpriority="high">
+    <link rel="preload" href="script.js" as="script">
+    
+    <!-- Chargement optimisé des styles non critiques -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <link rel="stylesheet" href="flow-button.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'">
+    
+    <!-- tsParticles pour l'effet de particules -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.6/tsparticles.slim.min.js"></script>
+    
+    <!-- Script essentiel chargé en différé -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuration Tailwind -->
     <script>
-        (function() {
-            emailjs.init("VOTRE_CLE_PUBLIQUE_EMAILJS");
-        })();
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'main-accent': 'var(--main-color-accent)',
+                        'main': 'var(--main-color)',
+                        'main-light': 'var(--main-color-light)',
+                        'main-dark': 'var(--main-color-dark)',
+                        'blue-500': 'var(--blue-500)'
+                    }
+                }
+            }
+        }
     </script>
+    
+    <!-- ParticlesJS pour l'effet de particules -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- Script pour les particules -->
+    <script src="particles.js" defer></script>
+    
+    <!-- Script pour l'effet Sparkles -->
+    <script src="sparkles.js" defer></script>
+    
+    <!-- GSAP pour les animations avancées -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    
+    <!-- GSAP ScrollTrigger pour les animations au défilement -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/ScrollTrigger.min.js"></script>
+    
+    <!-- Alpine.js pour l'interactivité légère -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
+    
+    <!-- Scripts non critiques chargés de manière asynchrone -->
+  
+
+    <style>
+        /* Espacement amélioré entre les paragraphes */
+        p {
+            margin-bottom: 2.2rem !important;
+            line-height: 1.9 !important;
+            padding-bottom: 0.5rem !important;
+        }
+        
+        /* Espacement vertical entre les sections */
+        section {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        
+        /* Espacement pour les éléments de liste */
+        li {
+            margin-bottom: 1.2rem !important;
+            padding-bottom: 0.5rem !important;
+        }
+        
+        /* Ajustement des espacements dans les cartes */
+        .card-3d p, .offer-card p {
+            margin-bottom: 2rem !important;
+        }
+        
+        /* Espacement pour les conteneurs de texte */
+        .space-y-4 {
+            margin-top: 2.5rem !important;
+            margin-bottom: 2.5rem !important;
+        }
+        
+        /* Taille fixe pour les cartes d'expertise */
+        .expertise-card {
+            min-height: 240px !important;
+            height: auto !important;
+            position: relative !important;
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        
+        /* Style pour le contenu caché */
+        .expertise-content.hidden {
+            display: block !important;
+            visibility: hidden !important;
+            position: absolute !important;
+            z-index: -1 !important;
+            opacity: 0 !important;
+        }
+        
+        /* Style pour le contenu visible */
+        .expertise-content:not(.hidden) {
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Styles pour la FAQ interactive */
+        .faq-item {
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-question {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .faq-answer {
+            position: relative;
+        }
+        
+        /* Animation de surbrillance pour les réponses */
+        .highlight-animation {
+            animation: highlightPulse 1s ease;
+        }
+        
+        @keyframes highlightPulse {
+            0% { background-color: rgba(61, 220, 151, 0.05); }
+            50% { background-color: rgba(61, 220, 151, 0.2); }
+            100% { background-color: transparent; }
+        }
+        
+        /* Style pour la barre de progression */
+        .faq-progress {
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .pulse-animation {
+            animation: progressPulse 2s infinite;
+        }
+        
+        @keyframes progressPulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; box-shadow: 0 0 15px rgba(61, 220, 151, 0.8); }
+            100% { opacity: 0.7; }
+        }
+        
+        /* Animation de succès */
+        .completion-glow {
+            animation: successGlow 2s ease;
+        }
+        
+        @keyframes successGlow {
+            0% { box-shadow: 0 0 0 rgba(61, 220, 151, 0); }
+            50% { box-shadow: 0 0 30px rgba(61, 220, 151, 0.3); }
+            100% { box-shadow: 0 0 0 rgba(61, 220, 151, 0); }
+        }
+    </style>
 </head>
 <body class="relative">
     <!-- Pattern de feuilles amélioré -->
@@ -32,14 +205,20 @@
 
     <!-- Hero Section améliorée avec effets de lumière -->
     <section class="section flex items-center justify-center relative overflow-hidden">
-        <!-- Effet de particules amélioré -->
-        <div class="particles" id="particles-js"></div>
+        <!-- Conteneur de particules -->
+        <div id="tsparticles" class="absolute inset-0 w-full h-full z-10"></div>
+        
+        <!-- Effets de dégradé subtils -->
+        <div class="absolute inset-x-20 top-1/4 bg-gradient-to-r from-transparent via-main-accent/50 to-transparent h-[2px] w-3/4 blur-sm z-10 hero-gradient"></div>
+        <div class="absolute inset-x-20 top-1/4 bg-gradient-to-r from-transparent via-main-accent/50 to-transparent h-px w-3/4 z-10 hero-gradient"></div>
+        <div class="absolute inset-x-60 top-1/3 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent h-[5px] w-1/4 blur-sm z-10 hero-gradient"></div>
+        <div class="absolute inset-x-60 top-1/3 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent h-px w-1/4 z-10 hero-gradient"></div>
         
         <!-- Suppression des halos -->
         
         <div class="golden-spiral pulse" style="right: -30vmin; top: -30vmin;"></div>
         
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-7xl mx-auto px-6 relative z-20">
             <div class="slide-in-left text-center">
                 <h1 class="text-[3.3rem] md:text-[4rem] font-light mb-6 leading-none tracking-tight">
                     <span class="text-white block opacity-90">Design.</span>
@@ -49,58 +228,305 @@
                 
                 <div class="w-16 h-1 bg-main mx-auto my-6 opacity-90"></div>
                 
-                <p class="text-2xl text-white mb-8 max-w-2xl mx-auto leading-relaxed">
-                    Minimaliste. Performant. Sans compromis.
-                </p>
+                <div id="gooey-container" class="text-2xl text-white mb-8 max-w-2xl mx-auto leading-relaxed h-[70px] relative z-20"></div>
+                
                 <div class="flex flex-wrap gap-4 justify-center">
                     <a href="#contact" class="px-6 py-2 text-base bg-main rounded-full font-bold btn-hover glow-effect flex items-center" aria-label="Contactez-moi">
-                        contact 📈  <i class=""></i>
+                        WhatsApp  <i class=""></i>
                     </a>
-                    <a href="#work" class="px-6 py-2 text-base border border-white/30 rounded-full hover:bg-white/5 transition font-medium hover:border-main-accent flex items-center" aria-label="Voir mes réalisations">
-                        Voir mes réalisations  🌌 <i class=""></i>
+                    <a href="#work" class="flow-button" aria-label="Mes créations">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="flow-button-arrow-left" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        <span class="flow-button-text">Mes créations</span>
+                        <span class="flow-button-circle"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="flow-button-arrow-right" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
                     </a>
                 </div>
                 
-              
+                <!-- Conteneur pour l'effet Sparkles - juste sous le bouton WhatsApp -->
+                <div id="hero-sparkles" class="relative w-72 h-20 mt-8 mx-auto overflow-hidden">
+                    <!-- Gradients -->
+                    <div class="absolute inset-x-4 top-0 bg-gradient-to-r from-transparent via-main-accent to-transparent h-[1px] w-full blur-sm"></div>
+                    <div class="absolute inset-x-4 top-0 bg-gradient-to-r from-transparent via-main-accent to-transparent h-px w-full"></div>
+                </div>
+
+                <!-- Effet de vignette pour adoucir les bords -->
+                <div class="absolute inset-0 w-full h-full bg-black/10 [mask-image:radial-gradient(1100px_600px_at_center,transparent_20%,black)]"></div>
             </div>
         </div>
     </section>
 
-    <!-- About Section - Version épurée et intégrée -->
-    <section id="about" class="section relative py-20">
-        <!-- Suppression du gradient -->
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <!-- Titre centré et plus discret -->
-            <div class="text-center mb-16">
-                <h2 class="text-5xl md:text-6xl font-bold mb-4 text-main">
-                    À Propos
-                </h2>
-                <div class="w-16 h-1 bg-main mx-auto"></div>
-               
+
+
+
+
+
+  <!-- Work Section avec effets de hover améliorés -->
+  <section id="work" class="section relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-16 slide-in-left">
+            <h2 class="text-6xl md:text-8xl font-bold mb-4 text-main">Projets Récents</h2>
+            <p class="text-3xl text-white max-w-2xl">
+                Voici quelques-unes de mes réalisations, incluant le site de la Pizzeria Le Borgia, le site du restaurant le café du rondeau - Yonghe au coeur de carouge et un portfolio façon Marie Kondo & Swiss Design.
+            </p>
                     </div>
+        
+        <div class="space-y-32">
+            <!-- Projet 1 - Pizzeria Le Borgia -->
+            <div class="grid md:grid-cols-2 gap-8 items-center group project-card">
+                <div class="slide-in-left relative">
+                    <a href="https://www.leborgia.ch/" target="_blank" class="block hover:no-underline" aria-label="Voir le site de la Pizzeria Le Borgia">
+                        <div class="relative group-hover:scale-95 transition-transform duration-500 card-3d">
+                        <div class="absolute -inset-2 border-main rounded-2xl transform rotate-3 opacity-70 group-hover:rotate-0 transition-all duration-500"></div>
+                        <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
+                            <img src="LeBorgia.avif"  
+                                 alt="Site web du restaurant Le Borgia"
+                                 loading="lazy"
+                                 width="1600" 
+                                 height="900"
+                                 decoding="async"
+                                 class="relative w-full h-auto object-cover rounded-xl z-10 group-hover:brightness-110 transition-all duration-500 cursor-pointer">
+                    </div>
+                    </a>
+                </div>
+                <div class="slide-in-right">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold mr-4">01</div>
+                        <h3 class="text-3xl font-bold text-main">Pizzeria Le Borgia</h3>
+                    </div>
+                    <p class="text-lg mb-6 text-white/90">
+                        Site vitrine complet pour une pizzeria genevoise avec menu interactif, galerie de photos prise sur place avec mon leica et réservation en ligne moderne via whatsapp, intégration de la carte google maps, The Fork, Instagram, et réalisation d'une applciation interne pour choisir sa pizza.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-main-accent mr-2"></i>
+                            <span>Menu interactif avec filtres</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-main-accent mr-2"></i>
+                            <span>Galerie photo professionnelle prise avec mon Leica Q3</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-main-accent mr-2"></i>
+                            <span>Système de réservation intégré via whatsapp complémentant le système téléphonique traditionel existant</span>
+                        </li>
+                    </ul>
+                
+                    <!-- Badges -->
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="badge"><i class="fas fa-mobile-alt mr-1"></i> Responsive</span>
+                        <span class="badge"><i class="fas fa-bolt mr-1"></i> Rapide</span>
+                        <span class="badge"><i class="fas fa-utensils mr-1"></i> Restaurant</span>
+                        <span class="badge"><i class="fas fa-camera mr-1"></i> Galerie</span>
+                    </div>
+                
+                    <!-- Bouton discret -->
+                    <a href="https://www.leborgia.ch/" target="_blank" 
+                       class="inline-flex items-center text-[#F4F4F4]/70 hover:text-main-light transition-all duration-300 border-b border-transparent hover:border-main-light pb-1"
+                       aria-label="Visiter le site de la Pizzeria Le Borgia">
+                        <span class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M8 3L13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        </span>
+                        <span>Visiter le site</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Projet 2 - Marie Kondo -->
+            <div class="grid md:grid-cols-2 gap-8 items-center group project-card">
+                <div class="order-2 md:order-1 slide-in-left">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold mr-4">02</div>
+                        <h3 class="text-3xl font-bold text-main">Marie Kondo & Swiss Design</h3>
+                    </div>
+                    <p class="text-lg mb-6 text-[#F4F4F4]/90">
+                        Portfolio minimaliste pour Marie Kondo, combinant esthétique Swiss Design et approche Kondo.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-main-accent mr-2"></i>
+                            <span>Galerie organisée par projets</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-main-accent mr-2"></i>
+                            <span>Design épuré et responsive</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-main-accent mr-2"></i>
+                            <span>Formulaire de contact intégré</span>
+                        </li>
+                    </ul>
+                
+                    <!-- Badges -->
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="badge"><i class="fas fa-paint-brush mr-1"></i> Design</span>
+                        <span class="badge"><i class="fas fa-user-tie mr-1"></i> Professionnel</span>
+                        <span class="badge"><i class="fas fa-mobile-alt mr-1"></i> Responsive</span>
+                        <span class="badge"><i class="fas fa-palette mr-1"></i> Minimaliste</span>
+                    </div>
+                
+                    <!-- Bouton discret -->
+                    <a href="https://mariekondoandswissdesign.netlify.app/" target="_blank" 
+                       class="inline-flex items-center text-[#F4F4F4]/70 hover:text-main-light transition-all duration-300 border-b border-transparent hover:border-main-light pb-1"
+                       aria-label="Visiter le portfolio Marie Kondo & Swiss Design">
+                        <span class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M8 3L13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        </span>
+                        <span>Visiter le site</span>
+                    </a>
+                </div>
+                <div class="order-1 md:order-2 slide-in-right relative">
+                    <a href="https://mariekondoandswissdesign.netlify.app/" target="_blank" class="block hover:no-underline" aria-label="Voir le portfolio Marie Kondo & Swiss Design">
+                        <div class="relative group-hover:scale-95 transition-transform duration-500 card-3d">
+                        <div class="absolute -inset-2 border-main rounded-2xl transform -rotate-3 opacity-70 group-hover:rotate-0 transition-all duration-500"></div>
+                        <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
+                            <img src="mariekondo.jpg" 
+                                 alt="Portfolio de Marie Kondo & Swiss Design"
+                                 loading="lazy"
+                                 width="800" 
+                                 height="450"
+                                 decoding="async"
+                                 class="relative w-full h-auto object-cover rounded-xl z-10 group-hover:brightness-110 transition-all duration-500 cursor-pointer">
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Projet 3 - Le Yonghe -->
+<div class="grid md:grid-cols-2 gap-8 items-center group project-card">
+    <!-- Image ---------------------------------------------------------------->
+    <div class="slide-in-left relative">
+        <a href="https://www.yonghe.ch/" target="_blank" class="block hover:no-underline"
+           aria-label="Voir le site du restaurant Le Yonghe">
+            <div class="relative group-hover:scale-95 transition-transform duration-500 card-3d">
+                <div class="absolute -inset-2 border-main rounded-2xl transform rotate-3 opacity-70
+                            group-hover:rotate-0 transition-all duration-500"></div>
+                <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md
+                            group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
+
+                <!-- Mets ici la miniature du site -->
+                <img src="Yonghe.avif"
+                     alt="Site web du restaurant Le Yonghe"
+                     loading="lazy"
+                     width="1600" height="900" decoding="async"
+                     class="relative w-full h-auto object-cover rounded-xl z-10
+                            group-hover:brightness-110 transition-all duration-500 cursor-pointer">
+            </div>
+        </a>
+    </div>
+
+    <!-- Contenu texte --------------------------------------------------------->
+    <div class="slide-in-right">
+        <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center
+                        text-black font-bold mr-4">03</div>
+            <h3 class="text-3xl font-bold text-main">Restaurant Le Yonghe</h3>
+        </div>
+
+        <p class="text-lg mb-6 text-white/90">
+            Ultra-populaire à Carouge (<strong>2200&nbsp;avis positifs sur The&nbsp;Fork</strong>),
+            Le Yonghe avait besoin d'un site performant et élégant.  
+            Je suis passé sur place&nbsp;: shooting photo complet au Leica, design from&nbsp;scratch,
+            achat du nom de domaine et mise en ligne <em>full-stack</em>.
+        </p>
+
+        <ul class="space-y-2 mb-6">
+            <li class="flex items-center">
+                <i class="fas fa-check-circle text-main-accent mr-2"></i>
+                <span>Menu interactif trilingue (FR/EN/CH) optimisé mobile</span>
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-check-circle text-main-accent mr-2"></i>
+                <span>Galerie photo professionnelle (shooting maison)</span>
+            </li>
+            <li class="flex items-center">
+                <i class="fas fa-check-circle text-main-accent mr-2"></i>
+                <span>Réservations en 1&nbsp;clic via WhatsApp &amp; The&nbsp;Fork</span>
+            </li>
+        </ul>
+
+        <!-- Badges -->
+        <div class="flex flex-wrap gap-2 mb-6">
+            <span class="badge"><i class="fas fa-mobile-alt mr-1"></i> Responsive</span>
+            <span class="badge"><i class="fas fa-bolt mr-1"></i> Rapide</span>
+            <span class="badge"><i class="fas fa-utensils mr-1"></i> Restaurant</span>
+            <span class="badge"><i class="fas fa-camera mr-1"></i> Galerie</span>
+        </div>
+
+        <!-- Bouton -->
+        <a href="https://www.yonghe.ch/" target="_blank"
+           class="inline-flex items-center text-[#F4F4F4]/70 hover:text-main-light transition-all
+                  duration-300 border-b border-transparent hover:border-main-light pb-1"
+           aria-label="Visiter le site du Yonghe">
+            <span class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <!-- flèche -->
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M8 3L13 8L8 13" stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round"/>
+                </svg>
+            </span>
+            <span>Visiter le site</span>
+        </a>
+    </div>
+</div>
+<!-- /Projet 3 --------------------------------------------------------------->
+
+        <!-- Call to action projets avec effet de lumière -->
+        <div class="mt-32 text-center slide-in-left" style="transition-delay: 0.2s">
+            <h3 class="text-2xl md:text-4xl font-bold mb-6">Un projet en tête ?</h3>
+            <a href="#contact" class="inline-block px-8 py-4 bg-main-gradient rounded-full font-bold btn-hover glow-effect text-lg relative overflow-hidden" aria-label="Discutons de votre projet">
+                <span class="relative z-10 flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i> Discutons de votre projet
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
                     
             <!-- Contenu centré -->
             <div class="max-w-5xl mx-auto space-y-12">
                 <!-- Bloc Présentation -->
-                <div class="bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-sm card-3d">
+                <div class="bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-sm card-3d animate-card w-11/12 sm:w-full mx-auto" data-animation="slide-left">
                     <h3 class="text-xl font-bold mb-4 text-main flex items-center justify-center">
                         Qui ? <i class="fas fa-user-tie ml-3"></i>
                     </h3>
                     <div class="space-y-4 text-white/90">
                         <p>
-                            <span class="text-main font-medium">Sonny Callegaro</span>, développeur full-stack et designer suisse basé à Genève. 🇨🇭
+                            <span class="text-main font-medium">Sonny Callegaro</span>, développeur full-stack & photographe suisse, basé à Genève. 🇨🇭
                         </p>
                         <p>
-                            Actuellement en 3ème année d'informatique de gestion à la HEG Genève, je combine expertise technique et sens artistique minimaliste pour créer des expériences digitales mémorables. 🌌
+                            Je suis en 3ème année d'informatique de gestion à la HEG Genève, je combine compétences techniques et sens artistique minimaliste pour raconter des histoires digitales mémorables. 🌌
                         </p>
                         <p>
-                            Président de l'association étudiante de la HEG, j'ai développé des contacts clés et une empathie du besoin réel de nos partenaires (bars, restaurants, cafés, etc.).  📈
+                            Président de l'association étudiante depuis 1 an, j'ai l'habitude de comprendre vite les besoins réels de nos partenaires locaux.(bars, restaurants, cafés, PME, indépendants).  📈
                         </p>
                         </div>
                     </div>
                     
                 <!-- Bloc Philosophie -->
-                <div id="philosophie-section" class="bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-sm card-3d animate-section">
+                <div class="bg-white/5 p-8 rounded-xl border border-white/10 backdrop-blur-sm card-3d animate-card w-11/12 sm:w-full mx-auto" data-animation="slide-right delay-1">
                     <h3 class="text-xl font-bold mb-4 text-main flex items-center justify-center">
                         Philosophie <i class="fas fa-lightbulb ml-3"></i>
                     </h3>
@@ -109,36 +535,50 @@
                             Je crée des <span class="text-main font-medium">solutions web épurées</span> qui mettent l'accent sur l'essentiel : votre histoire.
                         </p>
                         <p>
-                            Contrairement aux approches CMS (wordpress, wix, etc.) traditionnelles que beaucoup proposent, mes réalisations en code pur offrent :
-                        </p>
+                            Fini les templates génériques et les plateformes dépassées (WordPress, Wix...). Grâce à mes connaissances en ingénieurie logicielle, je développe des sites 100% en code, pensés pour être rapides, sûrs et uniques.                        </p>
                         <ul class="space-y-3 pl-4">
                             <ul class="space-y-2">
                         <li class="flex items-start">
                                     <!-- Rapidité de chargement -->
                                     <span class="mr-2 mt-1 text-xl">⚡</span>
-                                    <span>Une rapidité de chargement et une ergonomie optimale sur smartphone qui fait cruellement défaut à WordPress et qui est un essentiel en 2025</span>
+                                    <span>Un site qui charge en un éclair, optimisé pour <span class="text-main">mobiles</span>, à des années-lumières de la concurrence qui utilise des solutions toutes faites prêtes à l'emploi comme Wordpress, drupal, wix, webflow ...</span>
                         </li>
                         <li class="flex items-start">
                                     <!-- Déploiement instantané -->
                                     <span class="mr-2 mt-1 text-xl">🚀</span>
-                                    <span>Un déploiement instantané et une maintenance simplifiée via mes outils de développement</span>
+                                    <span>Un premier déploiement fonctionnel sous <span class="text-main">24h</span> </span>
+                        </li>
+                        <li class="flex items-start">
+                            <!-- Déploiement instantané -->
+                            <span class="mr-2 mt-1 text-xl">📸</span>
+                            <span>Je viens prendre de nouvelles photos sur place avec du matériel professionnel : <span class="text-main">Leica Q3</span></span>
                         </li>
                         <li class="flex items-start">
                                     <!-- Sécurité renforcée -->
                                     <span class="mr-2 mt-1 text-xl">🔒</span>
-                                    <span>Une sécurité renforcée grâce à mes connaissances en cybersécurité</span>
+                                    <span>Grâce à mes connaissances en <span class="text-main">cybersécurité</span>, le site est fiable et ne tombera pas en panne: Chiffrement SSL, Https, Inner.html escaped et bonnes pratiques pour éviter les failles typiques des sites WordPress des agence web (type XSS, SQL Injection, etc.)</span>
                         </li>
                         <li class="flex items-start">
                                     <!-- 0 dépendance -->
-                                    <span class="mr-2 mt-1 text-xl">⛓️‍💥</span>
-                                    <span>Aucune dépendance à une technologie spécifique</span>
+                                    <span class="mr-2 mt-1 text-xl">🕊</span>
+                                    <span><span class="text-main">Aucune dépendance</span> à une technologie spécifique ou quelconque forme d'abonnement</span>
                         </li>
+                        <!-- Code portable -->
                                 <li class="flex items-start">
                                     <!-- Code portable -->
-                                    <span class="mr-2 mt-1 text-xl">🕊</span>
-                                    <span>Le code est 100% portable et facilement améliorable par un autre développeur : la liberté créative totale et l'ouverture vers tous les horizons</span>
+                                    <span class="mr-2 mt-1 text-xl">⚖️</span>
+                                    <span>Conformité avec la loi suisse sur la <span class="text-main">protection des données</span> sur toutes mes offres.</span>
+                        </li>
+                        <li class="flex items-start">
+                                    <!-- Code portable -->
+                                    <span class="mr-2 mt-1 text-xl">🦾</span>
+                                    <span>Une maintenance simplifiée et <span class="text-main">visible instantanément</span> grâce à mes outils de développement. Le code est 100% portable et facilement améliorable.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <!-- Code portable -->
+                            <span class="mr-2 mt-1 text-xl">🇨🇭</span>
+                            <span><span class="text-main">Aucun coût caché. </span>aucun abonnement. aucun supplément. Je propose un prix <span class="text-main">unique</span> et transparent pour un travail de qualité durable.</span>
                                 </li>
-                     
                             
                      
                     </ul>
@@ -146,45 +586,73 @@
                 </div>
                 <!-- Bloc Expertise -->
                 <div class="grid md:grid-cols-2 gap-6">
-                    <div id="technique-section" class="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm card-3d animate-section">
-                        <h3 class="text-xl font-bold mb-3 text-main flex items-center justify-center">
-                            Technique <i class="fas fa-laptop-code ml-2"></i>
-                        </h3>
-                        <p class="text-white/90 text-base text-justify">
-                            Développement en JavaScript Vanilla, Vue.js et React. Hébergement optimisé avec Netlify/Vercel. Intégration continue et déploiements instantanés via GitHub.
-                    </p>
-                </div>
-                    <div id="design-section" class="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm card-3d animate-section">
-                        <h3 class="text-xl font-bold mb-3 text-main flex items-center justify-center">
-                            Design <i class="fas fa-paint-brush ml-2"></i>
-                        </h3>
-                        <p class="text-white/90 text-base text-justify">
-                            Approche minimaliste inspirée du <span class="text-white font-medium">swiss design</span> du <span class="text-white font-medium">nombre</span> <span class="text-[#FFD700] font-medium">d'or</span> et de <span class="text-pink-300 font-medium">Marie Kondo</span>. Typographie soignée, espacement généreux et hiérarchie visuelle claire.
-                        </p>
-                    </div>
-                    <div id="storytelling-section" class="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm card-3d animate-section">
-                        <h3 class="text-xl font-bold mb-3 text-main flex items-center justify-center">
-                            Storytelling <i class="fas fa-book-open ml-2"></i>
-                        </h3>
-                        <p class="text-white/90 text-base text-justify">
-                            Mise en récit de votre histoire pour créer un lien émotionnel avec votre audience.
-                        </p>
-                    </div>
-                    <div id="resultat-section" class="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm card-3d animate-section">
-                        <h3 class="text-xl font-bold mb-3 text-main flex items-center justify-center">
-                            Résultats <i class="fas fa-chart-line ml-2"></i>
-                        </h3>
-                        <p class="text-white/90 text-base text-justify">
-                            Sites conçus pour convertir. Analyse des metrics et itérations basées sur les données réelles d'utilisation.
-                        </p>
-                    </div>
+                  
                 </div>
                 
-                <!-- CTA -->
-                <div class="text-center pt-8">
-                    <a href="#contact" class="inline-flex items-center px-6 py-3 bg-main-gradient rounded-full font-medium btn-hover glow-effect">
-                        <i class="fas fa-paper-plane mr-2"></i> Discutons de votre projet
-                    </a>
+              
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Interactive "Barney" avec GSAP et Alpine.js -->
+    <section id="barney" class="section relative bg-black/50 py-20">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="mb-16 text-center slide-in-left">
+                <h2 class="text-5xl md:text-7xl font-bold mb-4 text-main text-glow-green">Expertise</h2>
+                <p class="text-xl max-w-3xl mx-auto text-white/90">
+                    Découvrez mes domaines d'expertise avec une approche interactive
+                        </p>
+                    </div>
+
+            <!-- Version simplifiée avec design épuré -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Carte Technique -->
+                <div class="expertise-card bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm hover:border-main-accent/30 transition-all duration-300 hover:bg-white/10 group">
+                    <div class="text-main text-xl mb-4 flex items-center justify-center">
+                        <i class="fas fa-laptop-code mr-2 group-hover:text-main-accent transition-colors duration-300"></i> 
+                        <span class="group-hover:text-main-accent transition-colors duration-300">Technique</span>
+                    </div>
+                    <div class="h-0.5 w-16 bg-main-accent/50 mx-auto mb-4 group-hover:w-24 transition-all duration-300"></div>
+                    <p class="text-white/90 text-base text-center leading-relaxed">
+                        Développement en JavaScript, Vue.js et React. Hébergement Netlify/Vercel.
+                        </p>
+                    </div>
+
+                <!-- Carte Design -->
+                <div class="expertise-card bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm hover:border-main-accent/30 transition-all duration-300 hover:bg-white/10 group">
+                    <div class="text-main text-xl mb-4 flex items-center justify-center">
+                        <i class="fas fa-paint-brush mr-2 group-hover:text-main-accent transition-colors duration-300"></i>
+                        <span class="group-hover:text-main-accent transition-colors duration-300">Design</span>
+                    </div>
+                    <div class="h-0.5 w-16 bg-main-accent/50 mx-auto mb-4 group-hover:w-24 transition-all duration-300"></div>
+                    <p class="text-white/90 text-base text-center leading-relaxed">
+                        Approche minimaliste inspirée du Swiss Design et du nombre d'or.
+                        </p>
+                    </div>
+
+                <!-- Carte Storytelling -->
+                <div class="expertise-card bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm hover:border-main-accent/30 transition-all duration-300 hover:bg-white/10 group">
+                    <div class="text-main text-xl mb-4 flex items-center justify-center">
+                        <i class="fas fa-book-open mr-2 group-hover:text-main-accent transition-colors duration-300"></i>
+                        <span class="group-hover:text-main-accent transition-colors duration-300">Storytelling</span>
+                    </div>
+                    <div class="h-0.5 w-16 bg-main-accent/50 mx-auto mb-4 group-hover:w-24 transition-all duration-300"></div>
+                    <p class="text-white/90 text-base text-center leading-relaxed">
+                        Mise en récit de votre histoire pour créer un lien émotionnel avec votre audience.
+                    </p>
+                </div>
+                
+                <!-- Carte Photographie -->
+                <div class="expertise-card bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm hover:border-main-accent/30 transition-all duration-300 hover:bg-white/10 group">
+                    <div class="text-main text-xl mb-4 flex items-center justify-center">
+                        <i class="fas fa-camera mr-2 group-hover:text-main-accent transition-colors duration-300"></i>
+                        <span class="group-hover:text-main-accent transition-colors duration-300">Photographie</span>
+                    </div>
+                    <div class="h-0.5 w-16 bg-main-accent/50 mx-auto mb-4 group-hover:w-24 transition-all duration-300"></div>
+                    <p class="text-white/90 text-base text-center leading-relaxed">
+                        Photos professionnelles avec Leica Q3 qui mettent en valeur votre projet.
+                    </p>
                 </div>
             </div>
         </div>
@@ -197,7 +665,7 @@
             <div class="mb-16 text-center slide-in-left">
                 <h2 class="text-5xl md:text-7xl font-bold mb-4 text-main text-glow-green">Mes Offres</h2>
                 <p class="text-xl max-w-3xl mx-auto text-white/90">
-                    Des solutions adaptées à chaque besoin, avec une approche technique simplifiée
+                    <span class="text-main">3</span> <span class="text-main">propositions</span> adaptées à chaque besoin, avec une approche technique simplifiée
                 </p>
             </div>
             
@@ -206,12 +674,12 @@
                 <!-- Offre 1 - Site Vitrine -->
                 <div class="offer-card glow-offer bg-white/5 p-8 rounded-2xl border border-blue-200/30 backdrop-blur-sm hover:shadow-lg transition-all duration-500 card-3d h-full order-3 md:order-1">
                     <div class="offer-content flex flex-col h-full">
-                        <h3 class="text-2xl font-bold mb-4 text-blue-200 flex items-center justify-center">CV/portfolio minimaliste <i class="fas fa-user-circle ml-2"></i></h3>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 text-blue-200 flex items-center justify-center">CV/portfolio minimaliste <i class="fas fa-user-circle ml-2"></i></h3>
                         <div class="price-container h-16 flex items-center justify-center mb-6">
-                            <div class="text-4xl font-bold text-center">750 CHF</div>
+                            <div class="text-3xl md:text-4xl font-bold text-center">1 400 CHF</div>
                         </div>
-                        <p class="text-white/90 mb-6 text-center text-lg leading-relaxed">
-                            Pour particuliers, CV dynamiques et petits portfolios
+                        <p class="text-base md:text-lg text-white/90 mb-6 text-center leading-relaxed">
+                            Pour particuliers, artistes indépendants et petits portfolios
                         </p>
                         <ul class="space-y-4 mb-8 flex-grow text-left">
                         <li class="flex items-start">
@@ -230,26 +698,17 @@
                                 <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
                                 <span class="text-white/90 leading-relaxed">Liens réseaux sociaux basiques</span>
                         </li>
-                        <li class="flex items-start">
-                                <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Hébergement inclus (1 an)</span>
-                        </li>
+
                         <li class="flex items-start">
                                 <i class="fas fa-plus-circle text-main-accent mr-3 mt-1"></i>
                                 <span class="text-white/90 leading-relaxed">Option API WhatsApp</span>
                             </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-shield-alt text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Sécurité basique (sans suivi régulier)</span>
-                            </li>
+                          
                             <li class="flex items-start">
                                 <i class="fas fa-mobile-alt text-main-accent mr-3 mt-1"></i>
                                 <span class="text-white/90 leading-relaxed">Design responsive standard</span>
                             </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-book text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Documentation technique basique incluse</span>
-                        </li>
+                         
                     </ul>
                         
                         <!-- Badge inclus -->
@@ -273,13 +732,13 @@
                 <div class="offer-card glow-offer bg-white/5 p-8 rounded-2xl border border-green-200/30 backdrop-blur-sm hover:shadow-lg transition-all duration-500 card-3d h-full order-2 md:order-2">
                     <div class="offer-content flex flex-col h-full">
                         <div class="flex justify-between items-start">
-                            <h3 class="text-2xl font-bold mb-4 text-green-200 flex items-center justify-center">Site Pro Complet 100% personnalisé <i class="fas fa-star ml-1"></i></h3>
+                            <h3 class="text-xl md:text-2xl font-bold mb-4 text-green-200 flex items-center justify-center">Site Pro Complet 100% personnalisé <i class="fas fa-star ml-1"></i></h3>
                             <span class="bg-green-200/20 text-green-200 px-2 py-0.5 rounded-full text-[0.6rem] font-bold">RECOMMANDÉ</span>
                         </div>
                         <div class="price-container h-16 flex items-center justify-center mb-6">
-                            <div class="text-4xl font-bold text-center">1 700 CHF</div>
+                            <div class="text-3xl md:text-4xl font-bold text-center">1 700 CHF - 2 400 CHF</div>
                         </div>
-                        <p class="text-white/90 mb-6 text-center text-lg leading-relaxed">
+                        <p class="text-base md:text-lg text-white/90 mb-6 text-center leading-relaxed">
                             Spécialement conçu pour restaurants, cafés, coiffeurs et artisans
                         </p>
                         <ul class="space-y-4 mb-8 flex-grow text-left">
@@ -289,35 +748,28 @@
                         </li>
                         <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Galerie produits/Menu interactif avec animations premium</span>
+                                <span class="text-white/90 leading-relaxed"><span class="text-main">Galerie</span> produits/Menu interactif avec animations premium</span>
                         </li>
                         <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Carte Google Maps interactive intégrée</span>
+                                <span class="text-white/90 leading-relaxed">Carte <span class="text-main">Google Maps</span> interactive intégrée</span>
                         </li>
-                        <li class="flex items-start">
-                                <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Avis clients Google actualisés automatiquement</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
-                            <span class="text-white/90 leading-relaxed">Sécurité renforcée avec micro-mises à jour régulières</span>
-                        </li>
+                        
                         <li class="flex items-start">
                             <i class="fas fa-shield-alt text-main-accent mr-3 mt-1"></i>
-                            <span class="text-white/90 leading-relaxed">100% sécurisé grâce à mes connaissances aquises et mes bonnes pratiques de code</span>
+                            <span class="text-white/90 leading-relaxed"><span class="text-main">100%</span> <span class="text-main">sécurisé</span> grâce à mes connaissances acquises et mes bonnes pratiques de code.</span>
                         </li>
                         <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Instagram feed automatique</span>
+                                <span class="text-white/90 leading-relaxed">Instagram feed <span class="text-main">automatique</span> et design adapté aux <span class="text-main">mobiles</span></span>
                         </li>
                         <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Séance photo professionnelle incluse (déplacement offert)</span>
+                                <span class="text-white/90 leading-relaxed">Je viens prendre de <span class="text-main">nouvelles photos</span> sur place avec mon Leica</span>
                             </li>
                             <li class="js-video-option-trigger cursor-pointer flex items-start hover:bg-white/5 p-2 rounded-lg transition-all duration-300">
                                 <i class="fas fa-video text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Option vidéo/photo additionnelle : +400 CHF</span>
+                                <span class="text-white/90 leading-relaxed">Option vidéo/photo shooting avec un model/influenceur possible</span>
                             </li>
                             <div class="js-video-option-details hidden pl-8 mb-4">
                                 <ul class="space-y-3 text-white/90">
@@ -327,27 +779,24 @@
                                     </li>
                                     <li class="flex items-start">
                                         <i class="fas fa-user-tie text-main-accent mr-3 mt-1"></i>
-                                        <span class="leading-relaxed">Modèle professionnel inclus</span>
+                                        <span class="leading-relaxed">Mannequin Photo inclu</span>
                                     </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-film text-main-accent mr-3 mt-1"></i>
-                                        <span class="leading-relaxed">Montage vidéo</span>
                         </li>
                     </ul>
                 </div>
                             <li class="js-pareto-option-trigger cursor-pointer flex items-start hover:bg-white/5 p-2 rounded-lg transition-all duration-300">
                                 <i class="fas fa-percent text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Option loi de Pareto : +100 CHF</span>
+                                <span class="text-white/90 leading-relaxed">Optionel: la loi de Pareto : +100 CHF</span>
                             </li>
                             <div class="js-pareto-option-details hidden pl-8 mb-4">
                                 <ul class="space-y-3 text-white/90">
                         <li class="flex items-start">
                                         <i class="fas fa-bolt text-main-accent mr-3 mt-1"></i>
-                                        <span class="leading-relaxed">80% du site en ligne et fonctionnel en 48h</span>
+                                        <span class="leading-relaxed">80% du site en ligne et fonctionnel en 72h</span>
                         </li>
                         <li class="flex items-start">
                                         <i class="fas fa-clock text-main-accent mr-3 mt-1"></i>
-                                        <span class="leading-relaxed">20% des détails la semaine suivante</span>
+                                        <span class="leading-relaxed">20% des  la semaine suivante</span>
                         </li>
                         <li class="flex items-start">
                                         <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
@@ -357,16 +806,9 @@
                             </div>
                         <li class="flex items-start">
                                 <i class="fas fa-bolt text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Modifications mineures gratuites et visibles immédiatement</span>
+                                <span class="text-white/90 leading-relaxed"><span class="text-main">Modifications mineures gratuites</span> et visibles immédiatement</span>
                         </li>
-                        <li class="flex items-start">
-                                <i class="fas fa-unlock text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Code 100% portable (aucun lock-in)</span>
-                        </li>
-                        <li class="flex items-start">
-                                <i class="fas fa-book text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Documentation technique détaillée offerte</span>
-                        </li>
+                     
                     </ul>
                         
                         <!-- Garantie améliorée -->
@@ -375,13 +817,15 @@
                                 <i class="fas fa-handshake mr-2"></i> 
                             </h4>
                             <p class="text-sm text-white/90 leading-relaxed">
-                                <span class="block mb-2"> 🔥 <strong>   offre la plus demandée   </strong>🔥 </span>
-                                <span class="block">⌚ <em>comme une bonne montre suisse : fiabilité, pensé pour durer dans le temps, sécurité continue et tranquillité d'esprit assurée sur le long terme.</em></span>
+                                <span class="block mb-2">  <strong> 🔥  le choix numéro 1 🔥  </strong> </span>
+                                <span class="block mt-4"><strong><span class="text-main">vous payez une fois = pas de frais cachés ou d'abonnement</span></strong></span>
+                                <span class="block mt-2 text-center"><strong>⚠️</strong></span>
+                                <span class="block mt-2"><em>"Un bon site vitrine c'est comme une bonne montre. On ne paie pas d'abonnement à l'horloger pour que la montre foncitonne. Une fois le calibre au poignet, il est d'une fiabilité à toute épreuve et c'est parti pour des années."</em></span>
                             </p>
                         </div>
                     </div>
-                    <div class="offer-button mt-6">
-                        <a href="#contact" class="w-full px-6 py-3 bg-main-gradient rounded-lg font-bold btn-hover glow-effect text-center block" aria-label="Solution la plus choisie">
+                    <div class="offer-button mt-6 md:mt-6">
+                        <a href="#contact" class="w-full px-6 py-3 bg-main-gradient rounded-lg font-bold btn-hover glow-effect text-center block" aria-label="Choisir cette offre">
                             Choisir cette solution
                     </a>
                 </div>
@@ -390,17 +834,17 @@
                 <!-- Offre 3 - E-Commerce -->
                 <div class="offer-card glow-offer bg-white/5 p-8 rounded-2xl border border-red-200/30 backdrop-blur-sm hover:shadow-lg transition-all duration-500 card-3d h-full order-1 md:order-3">
                     <div class="offer-content flex flex-col h-full">
-                        <h3 class="text-2xl font-bold mb-4 text-red-200 flex items-center justify-center">E-shop Pro avec backend<i class="fas fa-shopping-cart ml-2"></i></h3>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4 text-red-200 flex items-center justify-center">E-shop Pro ou CRM avec backend<i class="fas fa-shopping-cart ml-2"></i></h3>
                         <div class="price-container h-16 flex items-center justify-center mb-6">
-                            <div class="text-4xl font-bold text-center">2 800 CHF</div>
+                            <div class="text-3xl md:text-4xl font-bold text-center"> Prix sur Devis</div>
                         </div>
-                        <p class="text-white/90 mb-6 text-center text-lg leading-relaxed">
-                            Pour boutiques souhaitant vendre en ligne avec une gestion complète
+                        <p class="text-base md:text-lg text-white/90 mb-6 text-center leading-relaxed">
+                            Pour<span class="text-main"> boutique en ligne</span> souhaitant vendre avec <span class="text-main-accent glow-effect">une gestion complète</span>
                         </p>
                         <ul class="space-y-4 mb-8 flex-grow text-left">
                         <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">SPA sur mesure (Vue.js ou React)</span>
+                                <span class="text-white/90 leading-relaxed">SPA sur mesure (Vue.js ou React) ou solution no code pour petites pme</span>
                         </li>
                         <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
@@ -416,21 +860,11 @@
                         </li>
                         <li class="flex items-start">
                                 <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Délai : 2-3 semaines</span>
+                                <span class="text-white/90 leading-relaxed">Délai sur devis</span>
                             </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-sync-alt text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Maintenance annuelle complète : +7 50 CHF/an</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-code text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Transfert complet du backend : +1 000 CHF</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-book text-main-accent mr-3 mt-1"></i>
-                                <span class="text-white/90 leading-relaxed">Documentation technique complète incluse</span>
-                        </li>
-                    </ul>
+                            
+                            
+                          
                         
                         <!-- Option transfert -->
                         <div class="p-4 bg-red-900/10 rounded-lg border border-red-200/20 mt-4 text-center">
@@ -454,7 +888,7 @@
             
             <!-- Nouvelle section "Engagements" -->
             <div class="mt-16 bg-white/5 rounded-2xl border border-main-accent/30 p-8 slide-in-top" style="transition-delay: 0.3s">
-                <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center text-main">Notre Philosophie de Travail</h3>
+                <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center text-main">Ma Philosophie de Travail</h3>
                 
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-main-accent/30 transition-all duration-300 hover:scale-105 hover:bg-white/10 hover:shadow-lg hover:shadow-main-accent/20">
@@ -477,12 +911,11 @@
                     
                     <div class="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-main-accent/30 transition-all duration-300 hover:scale-105 hover:bg-white/10 hover:shadow-lg hover:shadow-main-accent/20">
                         <div class="text-main text-xl mb-3 flex items-center justify-center">
-                            Sécurité <i class="fas fa-life-ring ml-2"></i>
-                        </div>
+                            Le juste prix <i class="fas fa-tag ml-2"></i>                        </div>
                         <p class="text-white/90">
-                            Même si vous changez de prestataire, je m'assure que votre nouveau développeur ait tout le nécessaire pour prendre le relais.
-                        </p>
+                            Vous payez la qualité d'une agence de webmarketing suisse à la <span class="text-main">moitié du prix</span> (voire au quart) : pas de charge ou de loyer à payer, ni de responsable marketing, secrétaire, etc. Je suis freelance, donc je peux me permettre des coûts moindres et vous proposer un niveau de qualité de prestations équivalent, voire supérieur. Les seules offres moins chères que vous trouverez seront à l'étranger, au détriment de la fiabilité ou de la qualité du suivi la plupart du temps.
                 </div>
+                
             </div>
             
                 <!-- CTA final -->
@@ -497,154 +930,9 @@
         </div>
     </section>
 
-    <!-- Work Section avec effets de hover améliorés -->
-    <section id="work" class="section relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-16 slide-in-left">
-                <h2 class="text-6xl md:text-8xl font-bold mb-4 text-main">Projets Récents</h2>
-                <p class="text-3xl text-white max-w-2xl">
-                    Voici quelques-unes de mes réalisations, incluant le site de la Pizzeria Le Borgia et le portfolio Marie Kondo & Swiss Design.
-                </p>
-            </div>
-            
-            <div class="space-y-32">
-                <!-- Projet 1 - Pizzeria Le Borgia -->
-                <div class="grid md:grid-cols-2 gap-8 items-center group project-card">
-                    <div class="slide-in-left relative">
-                        <a href="https://leborgia.netlify.app/" target="_blank" class="block hover:no-underline" aria-label="Voir le site de la Pizzeria Le Borgia">
-                            <div class="relative group-hover:scale-95 transition-transform duration-500 card-3d">
-                            <div class="absolute -inset-2 border-main rounded-2xl transform rotate-3 opacity-70 group-hover:rotate-0 transition-all duration-500"></div>
-                            <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
-                                <img src="LeBorgia.jpg"  
-                                     alt="Site web du restaurant Le Borgia"
-                                     class="relative w-full h-auto object-cover rounded-xl z-10 group-hover:brightness-110 transition-all duration-500 cursor-pointer">
-                        </div>
-                        </a>
-                    </div>
-                    <div class="slide-in-right">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold mr-4">01</div>
-                            <h3 class="text-3xl font-bold text-main">Pizzeria Le Borgia</h3>
-                        </div>
-                        <p class="text-lg mb-6 text-white/90">
-                            Site vitrine complet pour une pizzeria genevoise avec menu interactif, galerie photo et réservation en ligne.
-                        </p>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-main-accent mr-2"></i>
-                                <span>Menu interactif avec filtres</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-main-accent mr-2"></i>
-                                <span>Galerie photo professionnelle</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-main-accent mr-2"></i>
-                                <span>Système de réservation intégré</span>
-                            </li>
-                        </ul>
-                    
-                        <!-- Badges -->
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="badge"><i class="fas fa-mobile-alt mr-1"></i> Responsive</span>
-                            <span class="badge"><i class="fas fa-bolt mr-1"></i> Rapide</span>
-                            <span class="badge"><i class="fas fa-utensils mr-1"></i> Restaurant</span>
-                            <span class="badge"><i class="fas fa-camera mr-1"></i> Galerie</span>
-                        </div>
-                    
-                        <!-- Bouton discret -->
-                        <a href="https://leborgia.netlify.app/" target="_blank" 
-                           class="inline-flex items-center text-[#F4F4F4]/70 hover:text-main-light transition-all duration-300 border-b border-transparent hover:border-main-light pb-1"
-                           aria-label="Visiter le site de la Pizzeria Le Borgia">
-                            <span class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                    <path d="M8 3L13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                            </span>
-                            <span>Visiter le site</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Projet 2 - Marie Kondo -->
-                <div class="grid md:grid-cols-2 gap-8 items-center group project-card">
-                    <div class="order-2 md:order-1 slide-in-left">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold mr-4">02</div>
-                            <h3 class="text-3xl font-bold text-main">Marie Kondo & Swiss Design</h3>
-                        </div>
-                        <p class="text-lg mb-6 text-[#F4F4F4]/90">
-                            Portfolio minimaliste pour une designer d'intérieur, combinant esthétique suisse et approche Marie Kondo.
-                        </p>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-main-accent mr-2"></i>
-                                <span>Galerie organisée par projets</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-main-accent mr-2"></i>
-                                <span>Design épuré et responsive</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check-circle text-main-accent mr-2"></i>
-                                <span>Formulaire de contact intégré</span>
-                            </li>
-                        </ul>
-                    
-                        <!-- Badges -->
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="badge"><i class="fas fa-paint-brush mr-1"></i> Design</span>
-                            <span class="badge"><i class="fas fa-user-tie mr-1"></i> Professionnel</span>
-                            <span class="badge"><i class="fas fa-mobile-alt mr-1"></i> Responsive</span>
-                            <span class="badge"><i class="fas fa-palette mr-1"></i> Minimaliste</span>
-                        </div>
-                    
-                        <!-- Bouton discret -->
-                        <a href="https://mariekondoandswissdesign.netlify.app/" target="_blank" 
-                           class="inline-flex items-center text-[#F4F4F4]/70 hover:text-main-light transition-all duration-300 border-b border-transparent hover:border-main-light pb-1"
-                           aria-label="Visiter le portfolio Marie Kondo & Swiss Design">
-                            <span class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                    <path d="M8 3L13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                            </span>
-                            <span>Visiter le site</span>
-                        </a>
-                    </div>
-                    <div class="order-1 md:order-2 slide-in-right relative">
-                        <a href="https://mariekondoandswissdesign.netlify.app/" target="_blank" class="block hover:no-underline" aria-label="Voir le portfolio Marie Kondo & Swiss Design">
-                            <div class="relative group-hover:scale-95 transition-transform duration-500 card-3d">
-                            <div class="absolute -inset-2 border-main rounded-2xl transform -rotate-3 opacity-70 group-hover:rotate-0 transition-all duration-500"></div>
-                            <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
-                                <img src="mariekondo.jpg" 
-                                     alt="Portfolio de Marie Kondo & Swiss Design"
-                                     class="relative w-full h-auto object-cover rounded-xl z-10 group-hover:brightness-110 transition-all duration-500 cursor-pointer">
-                        </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Call to action projets avec effet de lumière -->
-            <div class="mt-32 text-center slide-in-left" style="transition-delay: 0.2s">
-                <h3 class="text-2xl md:text-4xl font-bold mb-6">Un projet en tête ?</h3>
-                <p class="text-2xl text-[#F4F4F4]/90 mb-8 max-w-2xl mx-auto">
-                    Transformons ensemble vos idées en une présence digitale mémorable.
-                </p>
-                <a href="#contact" class="inline-block px-8 py-4 bg-main-gradient rounded-full font-bold btn-hover glow-effect text-lg relative overflow-hidden" aria-label="Discutons de votre projet">
-                    <span class="relative z-10 flex items-center">
-                        <i class="fas fa-lightbulb mr-2"></i> Discutons de votre projet
-                    </span>
-                </a>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section avec formulaire amélioré -->
     <section id="contact" class="section relative">
-        <div class="absolute inset-0 bg-[url('galaxy.jpg')] bg-cover bg-center bg-fixed opacity-30 backdrop-blur-sm"></div>
+    <div class="absolute inset-0 bg-[url('galaxy.avif')] bg-cover bg-center bg-fixed opacity-30 backdrop-blur-sm"></div>
         <div class="absolute inset-0 bg-black/70"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <!-- Titre de la section Contact -->
@@ -652,48 +940,17 @@
                 <h2 class="text-5xl md:text-6xl font-bold mb-4 text-main text-glow-green">Contact</h2>
                 <div class="w-16 h-1 bg-main mx-auto"></div>
                 <p class="text-2xl text-[#F4F4F4]/90 mt-4 max-w-2xl mx-auto">
-                    Choisissez votre méthode de contact préférée
-                </p>
+Contactez-moi via WhatsApp ou par téléphone directement.                </p>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- FORMULAIRE CLASSIQUE amélioré avec ouverture de l'application mail -->
-                <div class="slide-in-right">
-                    <div class="bg-white/5 p-8 rounded-xl backdrop-blur-sm border border-white/10 hover:border-main-accent/30 transition-all duration-500 card-3d">
-                        <h3 class="text-2xl font-bold mb-6 text-main flex items-center justify-center">
-                            Envoyez-moi un email <i class="fas fa-envelope ml-2"></i>
-                        </h3>
-
-                        <!-- Nom -->
-                        <div class="mb-6">
-                            <label for="name" class="block mb-2 text-[#F4F4F4]/90">Votre nom *</label>
-                            <input type="text" id="name" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-main-accent transition">
-                    </div>
-
-                        <!-- Sujet -->
-                        <div class="mb-6">
-                            <label for="subject" class="block mb-2 text-[#F4F4F4]/90">Sujet *</label>
-                            <input type="text" id="subject" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-main-accent transition">
-                </div>
-                
-                        <!-- Message -->
-                        <div class="mb-6">
-                            <label for="message" class="block mb-2 text-[#F4F4F4]/90">Votre message *</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-main-accent transition" placeholder="Décrivez votre projet..."></textarea>
-                </div>
-                
-                        <!-- Bouton d'envoi -->
-                        <button type="button" id="sendEmailBtn" class="w-full bg-main-gradient py-3 rounded-lg font-bold btn-hover glow-effect transition" aria-label="Accéder au formulaire email" onclick="document.querySelector('.bg-white\\/5.p-8.rounded-xl.backdrop-blur-sm.border.border-white\\/10').scrollIntoView({behavior: 'smooth'})">
-                            Accéder au formulaire email
-                        </button>
-                </div>
-            </div>
             
+<!-- APRÈS (à ajouter) -->
+<div class="flex justify-center items-center">
                 <!-- FORMULAIRE WHATSAPP existant -->
                 <div class="slide-in-right">
                     <form id="whatsappForm" class="bg-white/5 p-8 rounded-xl backdrop-blur-sm border border-white/10 hover:border-main-accent/30 transition-all duration-500 card-3d">
                         <h3 class="text-2xl font-bold mb-6 text-main flex items-center justify-center">
-                            Contact WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+                             WhatsApp <i class="fab fa-whatsapp ml-2"></i>
                         </h3>
 
                         <!-- Nom -->
@@ -892,25 +1149,213 @@
     <span class="badge"><i class="fas fa-instagram mr-1"></i> réseaux sociaux</span>
     <span class="badge"><i class="fas fa-book mr-1"></i> Storytelling</span>
                 </div>
-    <!-- Boutons CTA flottants -->
-    <div class="fixed bottom-6 right-6 flex flex-col space-y-3 z-50">
-        <a href="#contact" class="w-14 h-14 bg-main-gradient rounded-full flex items-center justify-center shadow-lg glow-effect animate-pulse-opacity" aria-label="Envoyer un email">
-            <i class="fas fa-envelope text-xl"></i>
-        </a>
-        <a href="tel:+41799139344" class="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg animate-pulse-opacity" style="animation-delay: 0.5s" aria-label="Passer un appel">
-            <i class="fas fa-phone text-xl"></i>
-        </a>
+
+  <!-- Nouvelle section FAQ -->
+  <section id="faq" class="py-20 bg-black/30" itemscope itemtype="https://schema.org/FAQPage">
+    <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center text-main">
+            Questions Fréquentes
+        </h2>
+        
+        <div class="space-y-8 faq-container">
+            <!-- Question 1 -->
+            <div class="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm transition-all duration-500 hover:border-main-accent/30 faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <h3 class="text-xl font-bold mb-3 text-main flex items-center justify-between cursor-pointer faq-question" itemprop="name">
+                    <span class="flex items-center">
+                        <i class="fas fa-clock mr-3 text-main-accent"></i> Quel est le délai pour la création d'un site web ?
+                    </span>
+                    <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                </h3>
+                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="faq-answer overflow-hidden max-h-0 transition-all duration-500">
+                    <p class="text-white/90 text-base pt-4" itemprop="text">
+                        J'applique la méthode Agile à base de Sprints pour livrer rapidement. Vous pouvez voir l'avancement de votre site web en temps réel via le lien que je vous envoie. Concernant les délais, un site vitrine portfolio/CV est généralement prêt en 72h, tandis qu'un site professionnel complet peut être finalisé en une semaine. Pour les projets e-commerce plus complexes, comptez 3-4 semaines. Je vous propose également un premier déploiement fonctionnel sous 24h pour que vous puissiez visualiser l'avancement.
+                    </p>
+                </div>
             </div>
     
+            <!-- Question 2 -->
+            <div class="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm transition-all duration-500 hover:border-main-accent/30 faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <h3 class="text-xl font-bold mb-3 text-main flex items-center justify-between cursor-pointer faq-question" itemprop="name">
+                    <span class="flex items-center">
+                        <i class="fas fa-credit-card mr-3 text-main-accent"></i> Y a-t-il un abonnement à payer ?
+                    </span>
+                    <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                </h3>
+                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="faq-answer overflow-hidden max-h-0 transition-all duration-500">
+                    <p class="text-white/90 text-base pt-4" itemprop="text">
+                        <span class="text-main font-medium">Non, aucun abonnement n'est à payer</span> pour mes services. Vous réglez uniquement le prix convenu au départ, sans frais cachés ni suppléments. Le seul coût récurrent sera votre nom de domaine (environ 20 CHF par an) que vous payez directement à l'hébergeur (comme Google Domains). Contrairement aux solutions comme WordPress ou Wix, vous ne payez pas d'abonnement mensuel pour que votre site fonctionne.
+                    </p>
+                        </div>
+            </div>
+            
+            <!-- Question 3 -->
+            <div class="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm transition-all duration-500 hover:border-main-accent/30 faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <h3 class="text-xl font-bold mb-3 text-main flex items-center justify-between cursor-pointer faq-question" itemprop="name">
+                    <span class="flex items-center">
+                        <i class="fas fa-tools mr-3 text-main-accent"></i> Comment fonctionnent les mises à jour après la livraison ?
+                    </span>
+                    <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                </h3>
+                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="faq-answer overflow-hidden max-h-0 transition-all duration-500">
+                    <p class="text-white/90 text-base pt-4" itemprop="text">
+                        Pour les modifications mineures qui prennent moins d'une heure, je les effectue gratuitement et sans souci. Le résultat est visible très rapidement, généralement dans les 10 minutes après que j'ai fait la modification. Pour des demandes plus importantes (refonte totale d'une partie du site ou autres changements majeurs), nous discuterons ensemble d'un tarif adapté en fonction du temps nécessaire.
+                    </p>
+                    </div>
+                </div>
+                
+            <!-- Question 4 -->
+            <div class="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm transition-all duration-500 hover:border-main-accent/30 faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <h3 class="text-xl font-bold mb-3 text-main flex items-center justify-between cursor-pointer faq-question" itemprop="name">
+                    <span class="flex items-center">
+                        <i class="fas fa-lock mr-3 text-main-accent"></i> Mon site sera-t-il sécurisé ?
+                    </span>
+                    <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                </h3>
+                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="faq-answer overflow-hidden max-h-0 transition-all duration-500">
+                    <p class="text-white/90 text-base pt-4" itemprop="text">
+                        Absolument. Grâce à mes connaissances en cybersécurité, j'applique les meilleures pratiques de sécurité comme le chiffrement SSL/HTTPS, l'échappement des données pour prévenir les attaques XSS, et bien plus. Contrairement aux sites WordPress qui sont souvent victimes de failles de sécurité à cause de plugins obsolètes, mes sites statiques sont intrinsèquement plus sécurisés et ne contiennent aucune dépendance externe pouvant compromettre la sécurité.
+                    </p>
+                    </div>
+                    </div>
+            
+            <!-- Question 5 -->
+            <div class="bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm transition-all duration-500 hover:border-main-accent/30 faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <h3 class="text-xl font-bold mb-3 text-main flex items-center justify-between cursor-pointer faq-question" itemprop="name">
+                    <span class="flex items-center">
+                        <i class="fas fa-mobile-alt mr-3 text-main-accent"></i> Le site s'affichera-t-il correctement sur mobile ?
+                    </span>
+                    <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                </h3>
+                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="faq-answer overflow-hidden max-h-0 transition-all duration-500">
+                    <p class="text-white/90 text-base pt-4" itemprop="text">
+                        Oui, tous mes sites sont entièrement responsives et optimisés pour une expérience parfaite sur tous les appareils, qu'il s'agisse de smartphones, tablettes ou ordinateurs. J'accorde une attention particulière à l'expérience mobile, essentielle aujourd'hui puisque plus de 70% du trafic web provient des appareils mobiles. Chaque élément est testé sur différentes tailles d'écran pour garantir une navigation fluide et intuitive.
+                    </p>
+                    </div>
+                </div>
+            </div>
+            
+        <div class="text-center mt-12">
+            <div class="faq-progress bg-white/10 h-2 rounded-full w-full max-w-md mx-auto overflow-hidden">
+                <div class="progress-bar h-full w-0 bg-main-accent transition-all duration-300 rounded-full"></div>
+                </div>
+            <p class="mt-4 text-white/70 text-sm faq-counter">0/5 questions explorées</p>
+            </div>
+        </div>
+  </section>
 
-    <script src="script.js"></script>
+  <script src="script.js" defer></script>
+  
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Event Horizon | Sonny Callegaro",
+    "description": "Création de sites web statiques performants, design graphique et storytelling digital à Genève.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Genève",
+      "addressCountry": "CH"
+    },
+    "telephone": "+41799139344",
+    "priceRange": "750CHF - 3800CHF",
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "image": "",
+    "url": "https://eventhorizon.ch",
+    "serviceType": ["Création de sites web", "Design", "Photographie"],
+    "sameAs": ["https://www.instagram.com/", "https://dribbble.com/", "https://behance.net/"]
+  }
+  </script>
+   
+  <!-- Script pour l'effet de particules -->
+  <script src="particles.js"></script>
+  
+  <!-- Script pour l'effet gooey-text -->
+  <script src="gooey-text.js"></script>
+  <script>
+    // Initialiser l'effet gooey-text
+    document.addEventListener('DOMContentLoaded', function() {
+      // S'assurer que le conteneur a les bonnes dimensions
+      const container = document.getElementById('gooey-container');
+      if (container) {
+        container.style.height = '70px';
+        container.style.overflow = 'visible';
+        container.style.background = 'transparent';
+        container.style.marginBottom = '2rem';
+      }
+      
+      createGooeyTextEffect('gooey-container', 
+        ['Minimaliste.', 'Performant.', 'Sans compromis.'], 
+        {
+          morphTime: 1.2,
+          cooldownTime: 1.5,
+          textClass: 'text-main font-bold',
+          fontSize: '32px'
+        }
+      );
+    });
+  </script>
+  
+  <!-- Script pour l'effet Sparkles -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialisation de l'effet Sparkles
+      const sparklesContainer = document.getElementById('hero-sparkles');
+      if (sparklesContainer) {
+        createSparklesEffect('hero-sparkles', {
+          background: 'transparent',
+          minSize: 0.1,
+          maxSize: 0.4,
+          particleDensity: 80,
+          particleColor: '#3ddc97',
+          speed: 0.6,
+          zIndex: 15
+        });
+      }
+    });
+  </script>
+  
+  <!-- Script pour l'effet de curseur fluide -->
+  <script src="fluid-cursor.js"></script>
+  
+  <!-- Script pour les animations GSAP de la section Barney -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Enregistrer le plugin ScrollTrigger
+      gsap.registerPlugin(ScrollTrigger);
+      
+      // Animation simple des cartes d'expertise au chargement
+      gsap.fromTo(".expertise-card", 
+        { 
+          y: 20, 
+          opacity: 0
+        },
+        { 
+          y: 0, 
+          opacity: 1,
+          stagger: 0.1,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: "#barney",
+            start: "top 80%"
+          }
+        }
+      );
+    });
+  </script>
 
     <footer class="py-12 text-center text-[#F4F4F4]/80 mt-16 bg-secondary">
-        <p>&copy; 2025 Sonny Callegaro. Tous droits réservés.</p>
+    <p>&copy; <time datetime="2025">2025</time> Sonny Callegaro. Tous droits réservés.</p>
        
         <div class="mt-4 space-x-4">
-            <a href="#" class="hover:text-main-light transition">Mentions Légales</a>
-            <a href="#" class="hover:text-main-light transition">Politique de Confidentialité</a>
+        <a href="#" class="hover:text-main-light transition" title="Mentions légales du site">Mentions Légales</a>
+        <a href="#" class="hover:text-main-light transition" title="Politique de confidentialité du site">Politique de Confidentialité</a>
+    </div>
+    
+    <div class="mt-6 text-xs text-[#F4F4F4]/60">
+        <p>Site créé avec <span class="text-main">❤</span> à Genève - Développeur web Genevois spécialisé en création de sites web</p>
+        <p class="mt-2">Sonny Callegaro | Genève, Suisse</p>
         </div>
     </footer>
 </body>
