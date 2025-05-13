@@ -1,101 +1,214 @@
 ---
-export interface Props {
-    title: string;
-    description?: string;
-    preloadImage?: string;
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description: string;
+	keywords: string;
 }
 
-const {
-    title,
-    description = "Event Horizon | Sonny Callegaro : Création de sites web, photographie et réseaux sociaux à Genève.",
-    preloadImage
-} = Astro.props;
-
-// Import global styles. Astro handles bundling and optimization.
-import '../styles/global.css';
+const { title, description, keywords } = Astro.props;
 ---
+
 <!DOCTYPE html>
-<html lang="fr" class="zoom-110"> {/* Consider if zoom-110 is still desired globally */}
+<html lang="fr" class="zoom-110">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- <meta name="zoom" content="1.2"> --> <!-- Generally not recommended for accessibility, viewport handles zoom -->
-    <title>{title} | Sonny Callegaro | Création Site Web Suisses, Photographie et réseaux sociaux - Genève</title>
+    <meta name="zoom" content="1.2">
+    <title>{title}</title>
     <meta name="description" content={description}>
-    <meta name="keywords" content="site web, création site web,eventhorizon.ch,développeur web genève, site web geneve, Photographe Genève, portfolio en ligne, sonny callegaro, heg, suisse">
-
+    <meta name="keywords" content={keywords}>
+    
+    <!-- Optimisations pour le rendu -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#000000">
     <meta name="color-scheme" content="dark">
-
+    
+    <!-- DNS Prefetch pour les domaines externes -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-
-    <!-- Preload critical resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap" as="style" />
-    {preloadImage && <link rel="preload" href={preloadImage} as="image" fetchpriority="high" />}
-    <!-- Astro handles JS preloading/deferring effectively with its bundling -->
-
+    
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap" as="style">
+    <link rel="preload" href="/css/styles.css" as="style">
+    <link rel="preload" href="/galaxy.avif" as="image" fetchpriority="high">
+    <link rel="preload" href="/js/script.js" as="script">
+    
+    <!-- Chargement optimisé des styles non critiques -->
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap" rel="stylesheet">
-    <!-- global.css is imported above, so styles.css and flow-button.css contents should be in it -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/flow-button.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'">
-
-    <!-- tsParticles for the particle effect -->
-    <!-- Loaded in Hero.astro or here if truly global and needed before Hero script -->
-    <!-- <script is:inline src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.6/tsparticles.slim.min.js"></script> -->
-
-    <!-- Tailwind CSS is handled by the Astro integration, no <script src="https://cdn.tailwindcss.com"></script> needed -->
-    <!-- Tailwind config is in tailwind.config.mjs -->
-
-    <!-- GSAP for advanced animations -->
-    <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
-    <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/ScrollTrigger.min.js"></script>
-
-    <!-- Alpine.js for lightweight interactivity -->
-    <script is:inline src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
-
-    <!-- fluid-cursor.js - if it's a global effect -->
-    <script src="/fluid-cursor.js" defer></script> <!-- Place fluid-cursor.js in public/ -->
-
-    <script>
-        // Navigation progress bar logic
-        // This could also be a client-side component with client:visible if more complex
-        document.addEventListener('DOMContentLoaded', () => {
-            const progressBar = document.getElementById('nav-progress');
-            if (progressBar) {
-                const updateProgressBar = () => {
-                    const scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                    const scrolled = window.scrollY;
-                    const progress = (scrolled / scrollTotal) * 100;
-                    progressBar.style.width = `${progress}%`;
-                };
-                window.addEventListener('scroll', updateProgressBar);
-                updateProgressBar(); // Initial call
+    
+    <!-- tsParticles pour l'effet de particules -->
+    <script is:inline src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.6/tsparticles.slim.min.js"></script>
+    
+    <!-- Script essentiel chargé en différé -->
+    <script is:inline src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuration Tailwind -->
+    <script is:inline>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'main-accent': 'var(--main-color-accent)',
+                        'main': 'var(--main-color)',
+                        'main-light': 'var(--main-color-light)',
+                        'main-dark': 'var(--main-color-dark)',
+                        'blue-500': 'var(--blue-500)'
+                    }
+                }
             }
-        });
+        }
     </script>
+    
+    <!-- ParticlesJS pour l'effet de particules -->
+    <script is:inline src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- GSAP pour les animations avancées -->
+    <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    
+    <!-- GSAP ScrollTrigger pour les animations au défilement -->
+    <script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/ScrollTrigger.min.js"></script>
+    
+    <!-- Alpine.js pour l'interactivité légère -->
+    <script is:inline src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
+    
+    <style is:global>
+        /* Espacement amélioré entre les paragraphes */
+        p {
+            margin-bottom: 2.2rem !important;
+            line-height: 1.9 !important;
+            padding-bottom: 0.5rem !important;
+        }
+        
+        /* Espacement vertical entre les sections */
+        section {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        
+        /* Espacement pour les éléments de liste */
+        li {
+            margin-bottom: 1.2rem !important;
+            padding-bottom: 0.5rem !important;
+        }
+        
+        /* Ajustement des espacements dans les cartes */
+        .card-3d p, .offer-card p {
+            margin-bottom: 2rem !important;
+        }
+        
+        /* Espacement pour les conteneurs de texte */
+        .space-y-4 {
+            margin-top: 2.5rem !important;
+            margin-bottom: 2.5rem !important;
+        }
+        
+        /* Taille fixe pour les cartes d'expertise */
+        .expertise-card {
+            min-height: 240px !important;
+            height: auto !important;
+            position: relative !important;
+            display: flex !important;
+            flex-direction: column !important;
+        }
+        
+        /* Style pour le contenu caché */
+        .expertise-content.hidden {
+            display: block !important;
+            visibility: hidden !important;
+            position: absolute !important;
+            z-index: -1 !important;
+            opacity: 0 !important;
+        }
+        
+        /* Style pour le contenu visible */
+        .expertise-content:not(.hidden) {
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Styles pour la FAQ interactive */
+        .faq-item {
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-question {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .faq-answer {
+            position: relative;
+        }
+        
+        /* Animation de surbrillance pour les réponses */
+        .highlight-animation {
+            animation: highlightPulse 1s ease;
+        }
+        
+        @keyframes highlightPulse {
+            0% { border-left: 2px solid rgba(61, 220, 151, 0.3); }
+            50% { border-left: 2px solid rgba(61, 220, 151, 0.8); }
+            100% { border-left: 2px solid rgba(61, 220, 151, 0.3); }
+        }
+        
+        /* Style spécifique pour le texte des réponses FAQ */
+        .faq-answer p {
+            padding-left: 10px;
+            border-left: 2px solid transparent;
+            transition: border-left 0.3s ease;
+        }
+        
+        /* Style pour la barre de progression */
+        .faq-progress {
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .pulse-animation {
+            animation: progressPulse 2s infinite;
+        }
+        
+        @keyframes progressPulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; box-shadow: 0 0 15px rgba(61, 220, 151, 0.8); }
+            100% { opacity: 0.7; }
+        }
+        
+        /* Animation de succès */
+        .completion-glow {
+            animation: successGlow 2s ease;
+        }
+        
+        @keyframes successGlow {
+            0% { box-shadow: 0 0 0 rgba(61, 220, 151, 0); }
+            50% { box-shadow: 0 0 30px rgba(61, 220, 151, 0.3); }
+            100% { box-shadow: 0 0 0 rgba(61, 220, 151, 0); }
+        }
+    </style>
 </head>
-<body class="relative"> {/* Ensure body classes from styles.css are applied or handled by Tailwind */}
-    <!-- Leaf pattern -->
-    <div class="leaf-pattern"></div> {/* Ensure .leaf-pattern styles are in global.css */}
-
-    <!-- Navigation - Progress bar -->
-    <nav class="fixed w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10">
-        <div class="progress-container">
-            <div class="progress-bar" id="nav-progress"></div>
-        </div>
-    </nav>
-
-    <main>
-        <slot /> <!-- Page-specific content will be injected here -->
-    </main>
-
-    {/*
-      Global scripts that need to run after DOM content or are not component-specific.
-      Many scripts from your original index.html (like particles.js, sparkles.js, script.js)
-      will be broken down and moved into specific components or client-side scripts in Astro.
-    */}
+<body class="relative">
+    <slot />
+    <!-- Scripts non critiques chargés à la fin -->
+    <script src="/js/particles.js" defer></script>
+    <script src="/js/sparkles.js" defer></script>
+    <script src="/js/gooey-text.js" defer></script>
+    <script src="/js/fluid-cursor.js" defer></script>
+    <script src="/js/script.js" defer></script>
 </body>
-</html>
+</html> 

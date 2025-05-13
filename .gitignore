@@ -1,0 +1,40 @@
+# Node modules (très lourd, jamais à versionner)
+**/node_modules/
+
+# Fichiers de build
+**/dist/
+**/.astro/
+
+# Lock files (optionnel selon ton gestionnaire, mais évite les conflits)
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# .env ou variables sensibles
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Systèmes & éditeurs
+.DS_Store
+.vscode/
+*.log
+
+# Backup HTML ou tests
+*.backup.html
+backup*.html
+*.swp
+
+# Fichiers de cache
+.cache/
+.temp/
+
+# Logs
+logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Output des builds locaux
+.output/

@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../Sonny/node_modules"
+		},
+		{
+			"path": "../Sonny/SonnyBlog"
+		},
+		{
+			"path": "../Sonny/src"
+		},
+		{
+			"path": "../Sonny/src/components"
+		},
+		{
+			"path": "../Sonny/src/components/blocks"
+		},
+		{
+			"path": "../Sonny/src/components/ui"
+		},
+		{
+			"path": "../Sonny/src/lib"
+		}
+	],
+	"settings": {}
+}
