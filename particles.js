@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     particlesJS("tsparticles", {
         "particles": {
             "number": {
-                "value": 80,
+                "value": 15,
                 "density": {
                     "enable": true,
                     "value_area": 800
@@ -20,21 +20,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             },
             "opacity": {
-                "value": 0.9,
+                "value": 0.8,
                 "random": true,
                 "anim": {
                     "enable": true,
-                    "speed": 1.5,
+                    "speed": 1.2,
                     "opacity_min": 0.3,
                     "sync": false
                 }
             },
             "size": {
-                "value": 2.5,
+                "value": 2,
                 "random": true,
                 "anim": {
                     "enable": true,
-                    "speed": 3,
+                    "speed": 2,
                     "size_min": 0.3,
                     "sync": false
                 }
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             "move": {
                 "enable": true,
-                "speed": 1.2,
+                "speed": 0.8,
                 "direction": "none",
                 "random": true,
                 "straight": false,
@@ -67,15 +67,15 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             "modes": {
                 "repulse": {
-                    "distance": 100,
+                    "distance": 80,
                     "duration": 0.4
                 },
                 "push": {
-                    "particles_nb": 10
+                    "particles_nb": 5
                 }
             }
         },
-        "retina_detect": true
+        "retina_detect": false
     });
 
     // Rendre les particules visibles après chargement

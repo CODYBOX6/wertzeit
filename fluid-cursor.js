@@ -38,7 +38,15 @@ document.addEventListener('DOMContentLoaded', function() {
   const canvas = document.getElementById('fluid-cursor');
   
   // Vérifier si WebGL est disponible
-  const gl = canvas.getContext('webgl2') || canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  const gl = canvas.getContext('webgl2', { 
+    alpha: true,
+    premultipliedAlpha: false,
+    antialias: false
+  }) || canvas.getContext('webgl', {
+    alpha: true,
+    premultipliedAlpha: false,
+    antialias: false
+  });
   
   if (!gl) {
     console.warn('WebGL non supporté - Effet de curseur désactivé');
@@ -50,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const { width, height } = canvas.getBoundingClientRect();
     
     // Utiliser un ratio plus bas pour de meilleures performances
-    const dpr = Math.min(window.devicePixelRatio, 1.5);
+    const dpr = Math.min(window.devicePixelRatio, 1);
     canvas.width = Math.floor(width * dpr);
     canvas.height = Math.floor(height * dpr);
     gl.viewport(0, 0, canvas.width, canvas.height);
@@ -117,24 +125,31 @@ document.addEventListener('DOMContentLoaded', function() {
   gl.useProgram(shaderProgram);
   
   // Points de base pour un cercle (représentant une goutte de fluide)
-  const circleVertices = [];
-  const segments = 30;
+  const segments = 20; // Réduit pour éviter les problèmes de buffer
+  const circleVertices = new Float32Array((segments + 2) * 2);
+  
+  // Point central du cercle
+  circleVertices[0] = 0;
+  circleVertices[1] = 0;
+  
   for (let i = 0; i <= segments; i++) {
     const theta = (i / segments) * Math.PI * 2;
-    const x = Math.cos(theta);
-    const y = Math.sin(theta);
-    circleVertices.push(x, y);
+    const x = Math.cos(theta) * 0.5; // Rayon réduit à 0.5
+    const y = Math.sin(theta) * 0.5;
+    circleVertices[(i + 1) * 2] = x;
+    circleVertices[(i + 1) * 2 + 1] = y;
   }
   
   // Créer le buffer pour le cercle
   const vertexBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(circleVertices), gl.STATIC_DRAW);
+  gl.bufferData(gl.ARRAY_BUFFER, circleVertices, gl.STATIC_DRAW);
   
   // Obtenir les attributs et uniformes
   const positionAttrib = gl.getAttribLocation(shaderProgram, 'position');
   const colorUniform = gl.getUniformLocation(shaderProgram, 'color');
   
+  // Configuration des attributs
   gl.enableVertexAttribArray(positionAttrib);
   gl.vertexAttribPointer(positionAttrib, 2, gl.FLOAT, false, 0, 0);
 
@@ -148,12 +163,22 @@ document.addEventListener('DOMContentLoaded', function() {
     gl.clearColor(0, 0, 0, 0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     
-    // Définir la couleur et dessiner
+    // Définir la couleur
     gl.uniform3f(colorUniform, pointerColor.r, pointerColor.g, pointerColor.b);
     
-    // Dessiner le cercle
+    // S'assurer que le bon buffer est lié avant de dessiner
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+    
+    // Réactiver et configurer l'attribut de position
+    gl.enableVertexAttribArray(positionAttrib);
+    gl.vertexAttribPointer(positionAttrib, 2, gl.FLOAT, false, 0, 0);
+
+    // Dessiner le cercle (triangle fan)
     gl.drawArrays(gl.TRIANGLE_FAN, 0, segments + 2);
     
+    // Désactiver l'attribut après le dessin pour la propreté (souvent facultatif mais bonne pratique)
+    gl.disableVertexAttribArray(positionAttrib);
+
     // Mettre à jour les positions précédentes
     prevPointerX = pointerX;
     prevPointerY = pointerY;

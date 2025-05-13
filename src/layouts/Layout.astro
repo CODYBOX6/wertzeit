@@ -29,7 +29,8 @@ const { title, description, keywords } = Astro.props;
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-    
+    <link rel="stylesheet" href="/css/tailwind-full.css" />
+
     <!-- Préchargement des ressources critiques -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap" as="style">
     <link rel="preload" href="/css/styles.css" as="style">
@@ -46,25 +47,9 @@ const { title, description, keywords } = Astro.props;
     <!-- tsParticles pour l'effet de particules -->
     <script is:inline src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.6/tsparticles.slim.min.js"></script>
     
-    <!-- Script essentiel chargé en différé -->
-    <script is:inline src="https://cdn.tailwindcss.com"></script>
+    <!-- Script essentiel chargé en différé  -->
     
-    <!-- Configuration Tailwind -->
-    <script is:inline>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'main-accent': 'var(--main-color-accent)',
-                        'main': 'var(--main-color)',
-                        'main-light': 'var(--main-color-light)',
-                        'main-dark': 'var(--main-color-dark)',
-                        'blue-500': 'var(--blue-500)'
-                    }
-                }
-            }
-        }
-    </script>
+   
     
     <!-- ParticlesJS pour l'effet de particules -->
     <script is:inline src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -208,7 +193,6 @@ const { title, description, keywords } = Astro.props;
     <script src="/js/particles.js" defer></script>
     <script src="/js/sparkles.js" defer></script>
     <script src="/js/gooey-text.js" defer></script>
-    <script src="/js/fluid-cursor.js" defer></script>
     <script src="/js/script.js" defer></script>
 </body>
 </html> 
