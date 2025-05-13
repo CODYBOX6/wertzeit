@@ -85,7 +85,8 @@ export default function RadialOrbitalTimeline({
     function handleResize() {
       const w = window.innerWidth;
       const h = window.innerHeight;
-      setRadius(Math.max(120, Math.min(w, h) / 4));
+      // Réduction de 20% du rayon
+      setRadius(Math.max(96, Math.min(w, h) / 5)); // 120 * 0.8 = 96, division par 5 au lieu de 4
     }
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -224,15 +225,16 @@ export default function RadialOrbitalTimeline({
 
   return (
     <div
-      className="w-full min-h-[900px] md:min-h-[1000px] flex flex-col items-center justify-start overflow-visible p-4"
+      // Réduction de 20% des hauteurs
+      className="w-full min-h-[720px] md:min-h-[800px] flex flex-col items-center justify-start overflow-visible p-4"
       ref={containerRef}
       onClick={handleContainerClick}
       style={{ backgroundColor: 'transparent' }}
     >
       {/* Contenu en deux parties: orbite et carte fixe en bas */}
       <div className="flex flex-col h-full w-full max-w-4xl">
-        {/* Orbite */}
-        <div className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center mt-8">
+        {/* Orbite - réduction de 20% des hauteurs */}
+        <div className="relative w-full h-[320px] md:h-[400px] flex items-center justify-center mt-8">
           <div
             className="absolute w-full h-full flex items-center justify-center"
             ref={orbitRef}
@@ -283,7 +285,7 @@ export default function RadialOrbitalTimeline({
 
                   <div
                     className={`
-                    w-10 h-10 rounded-full flex items-center justify-center
+                    w-8 h-8 rounded-full flex items-center justify-center
                     ${
                       isExpanded
                         ? "bg-white text-black"
@@ -303,12 +305,12 @@ export default function RadialOrbitalTimeline({
                     ${isExpanded ? "scale-125" : ""} 
                   `}
                   >
-                    <Icon size={16} />
+                    <Icon size={13} />
                   </div>
 
                   <div
                     className={`
-                    absolute top-12 whitespace-nowrap
+                    absolute top-10 whitespace-nowrap
                     text-xs font-semibold tracking-wider
                     transition-all duration-300
                     ${isExpanded ? "text-white" : "text-white/70"}
@@ -324,8 +326,8 @@ export default function RadialOrbitalTimeline({
           </div>
         </div>
         
-        {/* Carte fixe en bas */}
-        <div className="w-full mt-72 md:mt-96 mb-24">
+        {/* Carte fixe en bas - ajustement des marges pour correspondre à la nouvelle taille */}
+        <div className="w-full mt-56 md:mt-72 mb-20">
           {selectedContent && (
             <ShineBorder
               borderWidth={2}
