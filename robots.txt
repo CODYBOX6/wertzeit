@@ -9,4 +9,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://eventhorizon.ch/sitemap.xml 
+Sitemap: https://wertzeit.ch/sitemap.xml 
