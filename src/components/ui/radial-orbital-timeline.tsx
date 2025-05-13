@@ -3,6 +3,43 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+// Interface pour ShineBorder
+interface ShineBorderProps {
+  borderRadius?: number;
+  borderWidth?: number;
+  duration?: number;
+  color?: string | string[];
+  className?: string;
+  children: React.ReactNode;
+}
+
+// Composant ShineBorder simplifié pour la bordure lumineuse
+function ShineBorder({
+  borderRadius = 8,
+  borderWidth = 1,
+  duration = 14,
+  color = "#000000",
+  className,
+  children,
+}: ShineBorderProps) {
+  // Convertir le tableau de couleurs en une chaîne utilisable dans un gradient
+  const colorStr = color instanceof Array ? color.join(", ") : color;
+  
+  return (
+    <div
+      className={`relative rounded-xl ${className} overflow-hidden p-[3px]`}
+      style={{
+        background: `linear-gradient(90deg, ${colorStr} 0%, transparent 40%, transparent 60%, ${colorStr} 100%)`,
+        backgroundSize: "200% 100%",
+        animation: `shine ${duration}s linear infinite`,
+        borderRadius: `${borderRadius}px`,
+      }}
+    >
+      <div className="relative rounded-xl overflow-hidden h-full w-full">{children}</div>
+    </div>
+  );
+}
+
 interface TimelineItem {
   id: number;
   title: string;
@@ -152,7 +189,13 @@ export default function RadialOrbitalTimeline({
       Math.min(1, 0.4 + 0.6 * ((1 + Math.sin(radian)) / 2))
     );
 
-    return { x, y, angle, zIndex, opacity };
+    return { 
+      x: Math.round(x * 100) / 100, 
+      y: Math.round(y * 100) / 100, 
+      angle: Math.round(angle * 100) / 100, 
+      zIndex, 
+      opacity: Number(opacity.toFixed(2)) 
+    };
   };
 
   const getRelatedItems = (itemId: number): number[] => {
@@ -228,9 +271,7 @@ export default function RadialOrbitalTimeline({
                   }}
                 >
                   <div
-                    className={`absolute rounded-full -inset-1 ${
-                      isPulsing ? "animate-pulse duration-1000" : ""
-                    }`}
+                    className="absolute rounded-full -inset-1"
                     style={{
                       background: `radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)`,
                       width: `${item.energy * 0.5 + 40}px`,
@@ -255,7 +296,7 @@ export default function RadialOrbitalTimeline({
                       isExpanded
                         ? "border-white shadow-lg shadow-white/30"
                         : isRelated
-                        ? "border-white animate-pulse"
+                        ? "border-white"
                         : "border-white/40"
                     }
                     transition-all duration-300 transform
@@ -286,22 +327,30 @@ export default function RadialOrbitalTimeline({
         {/* Carte fixe en bas */}
         <div className="w-full mt-72 md:mt-96 mb-24">
           {selectedContent && (
-            <Card 
-              className="w-full mx-auto bg-black/95 backdrop-blur-lg border-white/10 shadow-2xl shadow-black/40 rounded-xl transition-all duration-500 max-w-3xl"
+            <ShineBorder
+              borderWidth={2}
+              borderRadius={12}
+              duration={10}
+              color={["#3ddc97", "#5ef0c1", "#a2fff3"]}
+              className="w-full mx-auto max-w-3xl"
             >
-              <CardHeader className="pb-1 pt-6 bg-transparent">
-                <div className="flex justify-between items-center">
-                  <CardTitle className="text-xl font-semibold text-white text-center w-full">
-                    {selectedTitle}
-                  </CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent className="text-base text-white/90 pt-2 px-8 pb-10">
-                {selectedContent.split('\n').map((line, i) => (
-                  <p key={i} className="my-2 text-left leading-relaxed">{line}</p>
-                ))}
-              </CardContent>
-            </Card>
+              <Card 
+                className="w-full bg-black/95 backdrop-blur-lg border-transparent shadow-2xl shadow-black/40 rounded-xl transition-all duration-500 overflow-hidden"
+              >
+                <CardHeader className="pb-1 pt-6 bg-transparent">
+                  <div className="flex justify-between items-center">
+                    <CardTitle className="text-xl font-semibold text-white text-center w-full">
+                      {selectedTitle}
+                    </CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent className="text-base text-white/90 pt-2 px-8 pb-10">
+                  {selectedContent.split('\n').map((line, i) => (
+                    <p key={i} className="my-2 text-left leading-relaxed">{line}</p>
+                  ))}
+                </CardContent>
+              </Card>
+            </ShineBorder>
           )}
         </div>
       </div>

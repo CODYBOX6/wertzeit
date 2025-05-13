@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let revealTimeout;
 
     function checkScrollReveal() {
+        // Vérifier d'abord s'il y a des éléments à animer
+        if (scrollRevealCards.length === 0) return;
+        
         // Trouver le point de déclenchement (milieu de la fenêtre)
         const triggerPoint = window.innerHeight * 0.6;
         
@@ -43,12 +46,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function revealCards() {
+        // Vérifier à nouveau si les éléments existent
+        if (scrollRevealCards.length === 0) return;
+        
         // Annuler tout minuteur existant
         clearTimeout(revealTimeout);
         
         // Révéler les cartes en séquence
         scrollRevealCards.forEach((card, index) => {
             const content = card.querySelector('.expertise-content');
+            // Vérifier que content existe avant d'y accéder
+            if (!content) return;
             const hint = card.querySelector('.expertise-hint');
             
             revealTimeout = setTimeout(() => {
@@ -69,12 +77,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function hideCards() {
+        // Vérifier que les cartes existent
+        if (scrollRevealCards.length === 0) return;
+        
         // Annuler tout minuteur existant
         clearTimeout(revealTimeout);
         
         // Cacher les cartes en séquence inverse
         [...scrollRevealCards].reverse().forEach((card, index) => {
             const content = card.querySelector('.expertise-content');
+            // Vérifier que content existe avant d'y accéder
+            if (!content) return;
             const hint = card.querySelector('.expertise-hint');
             
             revealTimeout = setTimeout(() => {
@@ -94,9 +107,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Initialiser la vérification et configurer l'écouteur d'événement scroll
-    checkScrollReveal();
-    window.addEventListener('scroll', checkScrollReveal);
+    // Uniquement initialiser et ajouter l'écouteur si nécessaire
+    if (scrollRevealCards.length > 0) {
+        checkScrollReveal();
+        window.addEventListener('scroll', checkScrollReveal);
+    }
 
     // Highlights (dans la section #about)
     const aboutSection = document.querySelector('#about');
