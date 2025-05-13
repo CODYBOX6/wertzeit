@@ -46,7 +46,25 @@ const { title, description, keywords } = Astro.props;
     <!-- tsParticles pour l'effet de particules -->
     <script is:inline src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.6/tsparticles.slim.min.js"></script>
     
-    <!-- Configuration Tailwind est maintenant gérée via les fichiers de configuration Astro et le plugin PostCSS -->
+    <!-- Script essentiel chargé en différé -->
+    <script is:inline src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuration Tailwind -->
+    <script is:inline>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'main-accent': 'var(--main-color-accent)',
+                        'main': 'var(--main-color)',
+                        'main-light': 'var(--main-color-light)',
+                        'main-dark': 'var(--main-color-dark)',
+                        'blue-500': 'var(--blue-500)'
+                    }
+                }
+            }
+        }
+    </script>
     
     <!-- ParticlesJS pour l'effet de particules -->
     <script is:inline src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>

@@ -1,8 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Styles de l'ancien fichier styles.css intégrés ci-dessous */
 :root {
     --primary: #0a0f1a;   /* Fond bleu nuit */
     --secondary: #0e1525; /* Fond secondaire */
@@ -75,25 +70,6 @@ body {
     overflow: hidden;
 }
 
-/* Animations scroll améliorées */
-.slide-in-left {
-    opacity: 0;
-    transform: translateX(-30vw);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.slide-in-right {
-    opacity: 0;
-    transform: translateX(30vw);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.slide-in-top {
-    opacity: 0;
-    transform: translateY(-30px);
-    transition: all 0.8s ease-out;
-}
-
 .is-visible {
     opacity: 1;
     transform: translateX(0) translateY(0);
@@ -108,9 +84,6 @@ body {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
 }
-
-/* Spirale dorée avec effet de lumière */
-
 
 /* Effets texte améliorés */
 .text-main-stroke {
@@ -175,33 +148,6 @@ body {
     background: linear-gradient(var(--primary), var(--primary)) padding-box,
                 var(--main-gradient) border-box;
     border-radius: 0.5rem;
-}
-
-/* Effet de particules amélioré */
-.particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    display: none; /* Masquer complètement le conteneur de particules */
-}
-
-.particle {
-    position: absolute;
-    background: rgba(61, 220, 151, 0.6);
-    border-radius: 50%;
-    filter: blur(1px);
-    animation: float-particle linear infinite;
-    display: none; /* Masquer toutes les particules */
-}
-
-@keyframes float-particle {
-    0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
-    50% { transform: translateY(-50vh) rotate(180deg) scale(1.2); opacity: 0.8; }
-    100% { transform: translateY(-100vh) rotate(360deg) scale(1); opacity: 0; }
 }
 
 /* Effet de lumière amélioré */
@@ -325,7 +271,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     animation: progressShine 2s infinite;
 }
 
@@ -404,23 +350,13 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
     animation: levelShine 3s infinite;
 }
 
 @keyframes levelShine {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(100%); }
-}
-
-/* Effet de halo */
-.halo {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(20px);
-    opacity: 0.3;
-    z-index: 0;
-    display: none !important;
 }
 
 /* Effet de morphing */
@@ -727,11 +663,6 @@ body {
     opacity: 0;
     transform: translateY(-30px);
     transition: all 0.8s ease-out;
-}
-
-.is-visible {
-    opacity: 1;
-    transform: translateX(0) translateY(0);
 }
 
 /* Style spécifique pour la section about */
@@ -1074,13 +1005,6 @@ a {
     }
 }
 
-/* Désactivation des effets de luminosité */
-.bg-gradient-to-br, 
-.bg-gradient-to-b,
-.bg-main-accent\/10 {
-    display: none !important;
-}
-
 /* Animations de base */
 @keyframes slideLeft {
   from { transform: translateX(-50px); opacity: 0; }
@@ -1171,44 +1095,4 @@ a {
 .hero-gradient {
     animation: gradientShift 4s infinite;
     pointer-events: none;
-}
-
-/* Styles pour l'effet gooey text */
-#gooey-container {
-  position: relative;
-  height: 70px !important; /* Augmentation de la hauteur */
-  overflow: visible !important;
-  background: transparent !important;
-  width: 100% !important;
-  margin: 0 auto 2.5rem !important; /* Augmentation de la marge inférieure */
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  padding: 0 !important;
-  z-index: 21 !important; /* S'assurer qu'il est au-dessus des autres éléments */
-}
-
-#gooey-container span {
-  background: transparent !important;
-  display: inline-block !important;
-  white-space: nowrap !important;
-  will-change: filter, opacity;
-  color: inherit;
-  position: absolute !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important; /* Centrage parfait */
-  width: auto !important;
-  top: 50% !important; /* Centrage vertical */
-  margin: 0 !important; /* Réinitialisation des marges */
-  height: fit-content !important;
-  text-align: center !important;
-  line-height: 1.2 !important; /* Ajustement de l'interligne */
-  font-size: 32px !important; /* Taille fixe */
-}
-
-/* Optimisation des animations */
-@media (prefers-reduced-motion: no-preference) {
-  #gooey-container span {
-    transition: filter 0.05s linear;
-  }
-}
+} 

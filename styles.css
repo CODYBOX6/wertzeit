@@ -1,8 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Styles de l'ancien fichier styles.css intégrés ci-dessous */
 :root {
     --primary: #0a0f1a;   /* Fond bleu nuit */
     --secondary: #0e1525; /* Fond secondaire */
@@ -325,7 +320,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     animation: progressShine 2s infinite;
 }
 
@@ -404,7 +399,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
     animation: levelShine 3s infinite;
 }
 
