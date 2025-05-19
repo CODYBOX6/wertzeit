@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import { RadialOrbitalTimelineDemo } from '@/components/RadialOrbitalTimelineDemo';
 import { AnimatedHeroIntegration } from '@/components/AnimatedHeroIntegration';
-import ExpertiseGallery from '@/components/ExpertiseGallery';
 
 ---
 
@@ -236,11 +235,48 @@ import ExpertiseGallery from '@/components/ExpertiseGallery';
                 Découvrez mes domaines d'expertise avec une approche interactive
             </p>
         </div>
-        
-        <!-- Intégration du nouveau composant de galerie d'expertise animée -->
-        <ExpertiseGallery client:visible />
-        
-        <!-- Ancien grid supprimé et remplacé par notre composant -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="expertise-card bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm hover:border-main-accent/30 transition-all duration-300 hover:bg-white/10 group">
+                <div class="text-main text-xl mb-4 flex items-center justify-center">
+                    <i class="fas fa-laptop-code mr-2 group-hover:text-main-accent transition-colors duration-300"></i> 
+                    <span class="group-hover:text-main-accent transition-colors duration-300">Technique</span>
+                </div>
+                <div class="h-0.5 w-16 bg-main-accent/50 mx-auto mb-4 group-hover:w-24 transition-all duration-300"></div>
+                <p class="text-white/90 text-base text-center leading-relaxed">
+                    Développement en JavaScript, Vue.js et React. Hébergement Netlify/Vercel.
+                </p>
+            </div>
+            <div class="expertise-card bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm hover:border-main-accent/30 transition-all duration-300 hover:bg-white/10 group">
+                <div class="text-main text-xl mb-4 flex items-center justify-center">
+                    <i class="fas fa-paint-brush mr-2 group-hover:text-main-accent transition-colors duration-300"></i>
+                    <span class="group-hover:text-main-accent transition-colors duration-300">Design</span>
+                </div>
+                <div class="h-0.5 w-16 bg-main-accent/50 mx-auto mb-4 group-hover:w-24 transition-all duration-300"></div>
+                <p class="text-white/90 text-base text-center leading-relaxed">
+                    Approche minimaliste inspirée du Swiss Design et du nombre d'or.
+                </p>
+            </div>
+            <div class="expertise-card bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm hover:border-main-accent/30 transition-all duration-300 hover:bg-white/10 group">
+                <div class="text-main text-xl mb-4 flex items-center justify-center">
+                    <i class="fas fa-book-open mr-2 group-hover:text-main-accent transition-colors duration-300"></i>
+                    <span class="group-hover:text-main-accent transition-colors duration-300">Storytelling</span>
+                </div>
+                <div class="h-0.5 w-16 bg-main-accent/50 mx-auto mb-4 group-hover:w-24 transition-all duration-300"></div>
+                <p class="text-white/90 text-base text-center leading-relaxed">
+                    Mise en récit de votre histoire pour créer un lien émotionnel avec votre audience.
+                </p>
+            </div>
+            <div class="expertise-card bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm hover:border-main-accent/30 transition-all duration-300 hover:bg-white/10 group">
+                <div class="text-main text-xl mb-4 flex items-center justify-center">
+                    <i class="fas fa-camera mr-2 group-hover:text-main-accent transition-colors duration-300"></i>
+                    <span class="group-hover:text-main-accent transition-colors duration-300">Photographie</span>
+                </div>
+                <div class="h-0.5 w-16 bg-main-accent/50 mx-auto mb-4 group-hover:w-24 transition-all duration-300"></div>
+                <p class="text-white/90 text-base text-center leading-relaxed">
+                    Photos professionnelles avec Leica Q3 qui mettent en valeur votre projet.
+                </p>
+            </div>
+        </div>
     </div>
 </section>
 
