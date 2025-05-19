@@ -9,6 +9,7 @@ export default {
         'main': '#3ddc97',
         'main-light': '#5ef0c1',
         'main-lighter': '#a2fff3',
+        'spektr-cyan-50': '#3ddc97',
       },
       animation: {
         "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",

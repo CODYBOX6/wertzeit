@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Animation au scroll
+    // Animation au scroll - Amélioré pour éviter les conflits
     const animateOnScroll = () => {
         document.querySelectorAll('.slide-in-left, .slide-in-right, .slide-in-top').forEach(element => {
+            // Ne pas animer les éléments dans les project-cards (ils ont leur propre animation)
+            if (element.closest('.project-card')) return;
+            
             const elementTop = element.getBoundingClientRect().top;
             const elementVisible = 150;
             if (elementTop < window.innerHeight - elementVisible) {
@@ -376,24 +379,117 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Animation des projets au scroll
+    // Animation des projets - nouvelle approche plus simple et directe
     const projectCards = document.querySelectorAll('.project-card');
-    const projectObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            } else {
-                entry.target.classList.remove('is-visible');
-            }
-        });
-    }, {
-        threshold: 0.3,
-        rootMargin: '0px 0px -100px 0px'
-    });
+    
+    if (projectCards.length > 0) {
+        console.log('Initialisation des animations de projet avec la nouvelle approche');
+        
+        // Créer un observateur pour toutes les plateformes
+        const projectObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Activer l'animation dès que la carte est visible
+                if (entry.isIntersecting) {
+                    // Sélectionner tous les éléments à animer dans cette carte
+                    const card = entry.target;
+                    
+                    // Carte principale
+                    const mainContainer = card.querySelector('.relative[class*="group-hover:scale-95"]');
+                    if (mainContainer) mainContainer.style.transform = 'scale(0.95)';
+                    
+                    // Bordure
+                    const border = card.querySelector('.absolute[class*="-inset-2"][class*="border-main"]');
+                    if (border) {
+                        border.style.transform = 'rotate(0deg)';
+                        border.style.opacity = '1';
+                    }
+                    
+                    // Flou d'arrière-plan
+                    const blur = card.querySelector('.absolute[class*="bg-main-accent"]');
+                    if (blur) blur.style.opacity = '1';
+                    
+                    // Image
+                    const image = card.querySelector('img');
+                    if (image) image.style.filter = 'brightness(1.1)';
+                    
+                    console.log(`Carte animée: ${card.id || 'sans-id'}`);
 
-    projectCards.forEach(card => {
-        projectObserver.observe(card);
-    });
+                    // Optionnel: empêcher de réanimer plusieurs fois
+                    projectObserver.unobserve(card);
+                }
+            });
+        }, {
+            rootMargin: '0px',
+            threshold: 0.15
+        });
+        
+        // Observer chaque carte de projet
+        projectCards.forEach(card => {
+            // Ajouter une classe pour gérer les transitions CSS
+            card.classList.add('animated-card');
+            
+            // Configurer les transitions pour tous les éléments
+            const elements = [
+                card.querySelector('.relative[class*="group-hover:scale-95"]'),
+                card.querySelector('.absolute[class*="-inset-2"][class*="border-main"]'),
+                card.querySelector('.absolute[class*="bg-main-accent"]'),
+                card.querySelector('img')
+            ];
+            
+            elements.forEach(el => {
+                if (el) {
+                    el.style.transition = 'all 0.5s ease-out';
+                }
+            });
+            
+            // Ajouter au système d'observation
+            projectObserver.observe(card);
+        });
+        
+        // Maintenir l'effet hover sur desktop
+        if (window.innerWidth >= 768) {
+            console.log('Configuration du comportement hover sur desktop');
+            
+            projectCards.forEach(card => {
+                // Fonction pour réinitialiser les styles
+                const resetStyles = () => {
+                    const mainContainer = card.querySelector('.relative[class*="group-hover:scale-95"]');
+                    const border = card.querySelector('.absolute[class*="-inset-2"][class*="border-main"]');
+                    const blur = card.querySelector('.absolute[class*="bg-main-accent"]');
+                    const image = card.querySelector('img');
+                    
+                    // Ne réinitialiser que si on n'est pas en train de survoler
+                    if (!card.matches(':hover')) {
+                        if (mainContainer) mainContainer.style.transform = '';
+                        if (border) {
+                            border.style.transform = '';
+                            border.style.opacity = '0.7';
+                        }
+                        if (blur) blur.style.opacity = '0';
+                        if (image) image.style.filter = '';
+                    }
+                };
+                
+                // Événements de souris pour desktop
+                card.addEventListener('mouseenter', () => {
+                    const mainContainer = card.querySelector('.relative[class*="group-hover:scale-95"]');
+                    const border = card.querySelector('.absolute[class*="-inset-2"][class*="border-main"]');
+                    const blur = card.querySelector('.absolute[class*="bg-main-accent"]');
+                    const image = card.querySelector('img');
+                    
+                    if (mainContainer) mainContainer.style.transform = 'scale(0.95)';
+                    if (border) {
+                        border.style.transform = 'rotate(0deg)';
+                        border.style.opacity = '1';
+                    }
+                    if (blur) blur.style.opacity = '1';
+                    if (image) image.style.filter = 'brightness(1.1)';
+                });
+                
+                card.addEventListener('mouseleave', resetStyles);
+            });
+        }
+    }
 
     // Gestion des animations au scroll
     const animatedElements = document.querySelectorAll('.animate-card');

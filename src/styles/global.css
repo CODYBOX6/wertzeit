@@ -75,28 +75,31 @@ body {
     overflow: hidden;
 }
 
-/* Animations scroll améliorées */
+/* Animation des sections */
 .slide-in-left {
     opacity: 0;
-    transform: translateX(-30vw);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-30px);
+    transition: all 0.8s ease-out;
+    will-change: opacity, transform;
 }
 
 .slide-in-right {
     opacity: 0;
-    transform: translateX(30vw);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(30px);
+    transition: all 0.8s ease-out;
+    will-change: opacity, transform;
 }
 
 .slide-in-top {
     opacity: 0;
     transform: translateY(-30px);
     transition: all 0.8s ease-out;
+    will-change: opacity, transform;
 }
 
 .is-visible {
-    opacity: 1;
-    transform: translateX(0) translateY(0);
+    opacity: 1 !important;
+    transform: translateX(0) translateY(0) !important;
 }
 
 /* Animation flottement améliorée */
@@ -1055,30 +1058,29 @@ a {
     transition: all 0.5s ease;
 }
 
-.project-card.is-visible {
-    transform: scale(0.95) rotate(0deg);
-}
-
-.project-card.is-visible img {
-    filter: brightness(1.1);
-}
-
-.project-card.is-visible .border-main {
-    transform: rotate(0deg);
-    opacity: 1;
-}
-
-@media (max-width: 768px) {
-    .project-card.is-visible {
-        transform: scale(0.95);
-    }
-}
-
 /* Désactivation des effets de luminosité */
 .bg-gradient-to-br, 
 .bg-gradient-to-b,
 .bg-main-accent\/10 {
     display: none !important;
+}
+
+/* Nouvelle approche d'animation des cartes de projet */
+.animated-card .relative[class*="group-hover:scale-95"],
+.animated-card .absolute[class*="-inset-2"][class*="border-main"],
+.animated-card .absolute[class*="bg-main-accent"],
+.animated-card img {
+    transition: all 0.5s ease-out !important;
+}
+
+/* Styliser spécifiquement les transitions pour mobile */
+@media (max-width: 768px) {
+    .animated-card .relative[class*="group-hover:scale-95"],
+    .animated-card .absolute[class*="-inset-2"][class*="border-main"],
+    .animated-card .absolute[class*="bg-main-accent"],
+    .animated-card img {
+        transition: all 0.3s ease-out !important; /* Plus rapide sur mobile */
+    }
 }
 
 /* Animations de base */
@@ -1308,4 +1310,69 @@ a {
 
 .flow-button:hover .flow-button-arrow-right {
   right: -25%;
+}
+
+/* Animations au survol groupe pour les projets - version mobile et desktop */
+/* Toutes règles supprimées pour éviter les conflits */
+
+/* Désactivation des effets de luminosité */
+.bg-gradient-to-br, 
+.bg-gradient-to-b,
+.bg-main-accent\/10 {
+    display: none !important;
+}
+
+/* Style pour forcer les animations au scroll sur mobile */
+@media (max-width: 768px) {
+  /* Tous les anciens styles sont supprimés car ils causent des conflits */
+}
+
+/* Animations au survol groupe pour les projets - version mobile et desktop */
+/* Toutes règles supprimées pour éviter les conflits */
+
+/* Style pour forcer les animations au scroll sur mobile et desktop */
+/* Tous les anciens styles sont supprimés car ils causent des conflits */
+
+/* Version spécifique mobile avec transitions plus rapides */
+@media (max-width: 768px) {
+  /* Tous les anciens styles sont supprimés car ils causent des conflits */
+}
+
+/* Animations au survol groupe pour les projets - version mobile et desktop */
+/* Toutes règles supprimées pour éviter les conflits */
+
+/* Styles pour l'animation automatique au scroll qui remplace hover */
+/* Tous les anciens styles sont supprimés car ils causent des conflits */
+
+/* Version mobile avec transitions plus rapides */
+@media (max-width: 768px) {
+  /* Tous les anciens styles sont supprimés car ils causent des conflits */
+}
+
+/* Style pour forcer les animations au scroll sur mobile et desktop */
+/* Tous les anciens styles sont supprimés car ils causent des conflits */
+
+/* Forcer l'effet hover sur tous les projets sans survoler */
+/* Tous les anciens styles sont supprimés car ils causent des conflits */
+
+/* Désactiver l'effet de carte 3D natif au hover qui entrerait en conflit avec l'effet permanent */
+/* Tous les anciens styles sont supprimés car ils causent des conflits */
+
+@media (max-width: 768px) {
+  /* Tous les anciens styles sont supprimés car ils causent des conflits */
 } 
+/* --- HOTFIX : on désactive le zoom auto au scroll --- */
+.project-card.is-visible   { transform: none !important; }
+.project-card.is-visible > img { filter: none !important; }
+
+/* --- HOTFIX pour l'espacement du timeline radial --- */
+.timeline-card-spacing {
+  /* Ces valeurs sont déjà appliquées directement dans le composant */
+  /* mais cette classe permet de les modifier facilement sans toucher au TSX */
+  margin-top: 4rem !important;      /* mobile - mt-16 */
+}
+@media (min-width: 768px) {
+  .timeline-card-spacing {
+    margin-top: 7rem !important;    /* desktop - mt-28 */
+  }
+}

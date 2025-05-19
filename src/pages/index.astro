@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { RadialOrbitalTimelineDemo } from '@/components/RadialOrbitalTimelineDemo';
+import { AnimatedHeroIntegration } from '@/components/AnimatedHeroIntegration';
+import ExpertiseGallery from '@/components/ExpertiseGallery';
 
 ---
 
@@ -33,8 +35,11 @@ import { RadialOrbitalTimelineDemo } from '@/components/RadialOrbitalTimelineDem
                     <span class="text-white block mt-2 opacity-90">Narrate.</span>
                 </h1>
                 <div class="w-16 h-1 bg-main mx-auto my-6 opacity-90"></div>
-                <div id="gooey-container" class="text-2xl text-white mb-8 max-w-2xl mx-auto leading-relaxed h-[70px] relative z-20"></div>
-                <div class="flex flex-wrap gap-4 justify-center">
+                
+                <!-- Nouveau composant Hero animé -->
+                <AnimatedHeroIntegration client:load />
+                
+                <div class="flex flex-wrap gap-4 justify-center mt-8">
                     <a href="#contact" class="px-6 py-2 text-base bg-main rounded-full font-bold btn-hover glow-effect flex items-center" aria-label="Contactez-moi">
                         WhatsApp  <i class=""></i>
                     </a>
@@ -44,10 +49,6 @@ import { RadialOrbitalTimelineDemo } from '@/components/RadialOrbitalTimelineDem
                         <span class="flow-button-circle"></span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="flow-button-arrow-right" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
                     </a>
-                </div>
-                <div id="hero-sparkles" class="relative w-72 h-20 mt-8 mx-auto overflow-hidden">
-                    <div class="absolute inset-x-4 top-0 bg-gradient-to-r from-transparent via-main-accent to-transparent h-[1px] w-full blur-sm"></div>
-                    <div class="absolute inset-x-4 top-0 bg-gradient-to-r from-transparent via-main-accent to-transparent h-px w-full"></div>
                 </div>
                 <div class="absolute inset-0 w-full h-full bg-black/10 [mask-image:radial-gradient(1100px_600px_at_center,transparent_20%,black)]"></div>
             </div>
@@ -64,7 +65,7 @@ import { RadialOrbitalTimelineDemo } from '@/components/RadialOrbitalTimelineDem
         </div>
         
         <div class="space-y-32">
-            <div class="grid md:grid-cols-2 gap-8 items-center group project-card">
+            <div class="grid md:grid-cols-2 gap-8 items-center group project-card" id="project-01" data-scroll-effect="scale-rotate-blur">
                 <div class="slide-in-left relative">
                     <a href="https://www.leborgia.ch/" target="_blank" class="block hover:no-underline" aria-label="Voir le site de la Pizzeria Le Borgia">
                         <div class="relative group-hover:scale-95 transition-transform duration-500 card-3d">
@@ -113,7 +114,7 @@ import { RadialOrbitalTimelineDemo } from '@/components/RadialOrbitalTimelineDem
                     </a>
                 </div>
             </div>
-            <div class="grid md:grid-cols-2 gap-8 items-center group project-card">
+            <div class="grid md:grid-cols-2 gap-8 items-center group project-card" id="project-02" data-scroll-effect="scale-rotate-blur">
                 <div class="order-2 md:order-1 slide-in-left">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full bg-main-gradient flex items-center justify-center text-black font-bold mr-4">02</div>
@@ -163,7 +164,7 @@ import { RadialOrbitalTimelineDemo } from '@/components/RadialOrbitalTimelineDem
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 items-center group project-card">
+            <div class="grid md:grid-cols-2 gap-8 items-center group project-card" id="project-03" data-scroll-effect="scale-rotate-blur">
                 <div class="slide-in-left relative">
                     <a href="https://www.yonghe.ch/" target="_blank" class="block hover:no-underline" aria-label="Voir le site du restaurant Le Yonghe">
                         <div class="relative group-hover:scale-95 transition-transform duration-500 card-3d">
@@ -235,59 +236,22 @@ import { RadialOrbitalTimelineDemo } from '@/components/RadialOrbitalTimelineDem
                 Découvrez mes domaines d'expertise avec une approche interactive
             </p>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="expertise-card bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm hover:border-main-accent/30 transition-all duration-300 hover:bg-white/10 group">
-                <div class="text-main text-xl mb-4 flex items-center justify-center">
-                    <i class="fas fa-laptop-code mr-2 group-hover:text-main-accent transition-colors duration-300"></i> 
-                    <span class="group-hover:text-main-accent transition-colors duration-300">Technique</span>
-                </div>
-                <div class="h-0.5 w-16 bg-main-accent/50 mx-auto mb-4 group-hover:w-24 transition-all duration-300"></div>
-                <p class="text-white/90 text-base text-center leading-relaxed">
-                    Développement en JavaScript, Vue.js et React. Hébergement Netlify/Vercel.
-                </p>
-            </div>
-            <div class="expertise-card bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm hover:border-main-accent/30 transition-all duration-300 hover:bg-white/10 group">
-                <div class="text-main text-xl mb-4 flex items-center justify-center">
-                    <i class="fas fa-paint-brush mr-2 group-hover:text-main-accent transition-colors duration-300"></i>
-                    <span class="group-hover:text-main-accent transition-colors duration-300">Design</span>
-                </div>
-                <div class="h-0.5 w-16 bg-main-accent/50 mx-auto mb-4 group-hover:w-24 transition-all duration-300"></div>
-                <p class="text-white/90 text-base text-center leading-relaxed">
-                    Approche minimaliste inspirée du Swiss Design et du nombre d'or.
-                </p>
-            </div>
-            <div class="expertise-card bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm hover:border-main-accent/30 transition-all duration-300 hover:bg-white/10 group">
-                <div class="text-main text-xl mb-4 flex items-center justify-center">
-                    <i class="fas fa-book-open mr-2 group-hover:text-main-accent transition-colors duration-300"></i>
-                    <span class="group-hover:text-main-accent transition-colors duration-300">Storytelling</span>
-                </div>
-                <div class="h-0.5 w-16 bg-main-accent/50 mx-auto mb-4 group-hover:w-24 transition-all duration-300"></div>
-                <p class="text-white/90 text-base text-center leading-relaxed">
-                    Mise en récit de votre histoire pour créer un lien émotionnel avec votre audience.
-                </p>
-            </div>
-            <div class="expertise-card bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm hover:border-main-accent/30 transition-all duration-300 hover:bg-white/10 group">
-                <div class="text-main text-xl mb-4 flex items-center justify-center">
-                    <i class="fas fa-camera mr-2 group-hover:text-main-accent transition-colors duration-300"></i>
-                    <span class="group-hover:text-main-accent transition-colors duration-300">Photographie</span>
-                </div>
-                <div class="h-0.5 w-16 bg-main-accent/50 mx-auto mb-4 group-hover:w-24 transition-all duration-300"></div>
-                <p class="text-white/90 text-base text-center leading-relaxed">
-                    Photos professionnelles avec Leica Q3 qui mettent en valeur votre projet.
-                </p>
-            </div>
-        </div>
+        
+        <!-- Intégration du nouveau composant de galerie d'expertise animée -->
+        <ExpertiseGallery client:visible />
+        
+        <!-- Ancien grid supprimé et remplacé par notre composant -->
     </div>
 </section>
 
 <!-- Section pour RadialOrbitalTimelineDemo ajustée -->
-<section id="radial-timeline-section" class="section relative py-32 mt-20 mb-20" style="overflow: visible;">
+<section id="radial-timeline-section" class="section relative py-8 mt-0 mb-0" style="overflow: visible;">
     <div class="max-w-7xl mx-auto px-6 text-center">
         <RadialOrbitalTimelineDemo client:visible />
     </div>
 </section>
 
-<section class="section relative">
+<section class="section relative pt-0 mt-0">
     <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="mb-16 text-center slide-in-left">
             <h2 class="text-5xl md:text-7xl font-bold mb-4 text-main text-glow-green">Mes Offres</h2>
@@ -312,23 +276,23 @@ import { RadialOrbitalTimelineDemo } from '@/components/RadialOrbitalTimelineDem
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
-                            <span class="text-white/90 leading-relaxed">Mini-galerie ou liste de services basique</span>
+                            <span class="text-white/90 leading-relaxed">Mini-galerie ou liste de service</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
-                            <span class="text-white/90 leading-relaxed">Contact simple par email</span>
+                            <span class="text-white/90 leading-relaxed">Contact simple par email ou whatsapp</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
-                            <span class="text-white/90 leading-relaxed">Liens réseaux sociaux basiques</span>
+                            <span class="text-white/90 leading-relaxed">Liens réseaux sociaux</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-plus-circle text-main-accent mr-3 mt-1"></i>
-                            <span class="text-white/90 leading-relaxed">Option API WhatsApp</span>
+                            <span class="text-white/90 leading-relaxed">Option shooting photo Leica Q3</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-mobile-alt text-main-accent mr-3 mt-1"></i>
-                            <span class="text-white/90 leading-relaxed">Design responsive standard</span>
+                            <span class="text-white/90 leading-relaxed">Design responsive</span>
                         </li>
                     </ul>
                     <div class="p-4 bg-blue-900/10 rounded-lg border border-blue-200/20 mt-4 text-center">
@@ -353,7 +317,7 @@ import { RadialOrbitalTimelineDemo } from '@/components/RadialOrbitalTimelineDem
                         <span class="bg-green-200/20 text-green-200 px-2 py-0.5 rounded-full text-[0.6rem] font-bold">RECOMMANDÉ</span>
                     </div>
                     <div class="price-container h-16 flex items-center justify-center mb-6">
-                        <div class="text-3xl md:text-4xl font-bold text-center">1 750 CHF - 2 320 CHF</div>
+                        <div class="text-3xl md:text-4xl font-bold text-center">1 700 CHF - 2 300 CHF</div>
                     </div>
                     <p class="text-base md:text-lg text-white/90 mb-6 text-center leading-relaxed">
                         Spécialement conçu pour restaurants, cafés, coiffeurs et artisans
@@ -382,6 +346,10 @@ import { RadialOrbitalTimelineDemo } from '@/components/RadialOrbitalTimelineDem
                         <li class="flex items-start">
                             <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
                             <span class="text-white/90 leading-relaxed">Je viens prendre de <span class="text-main">nouvelles photos</span> sur place avec mon Leica</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-main-accent mr-3 mt-1"></i>
+                            <span class="text-white/90 leading-relaxed">optimisation de votre site profesionnelle : <span class="text-main">élements interactifs, ux/ui design, gamedesign, </span> -> tout est pensé pour convertir</span>
                         </li>
                         <li class="js-video-option-trigger cursor-pointer flex items-start hover:bg-white/5 p-2 rounded-lg transition-all duration-300">
                             <i class="fas fa-video text-main-accent mr-3 mt-1"></i>
@@ -431,8 +399,6 @@ import { RadialOrbitalTimelineDemo } from '@/components/RadialOrbitalTimelineDem
                         <p class="text-sm text-white/90 leading-relaxed">
                             <span class="block mb-2">  <strong> 🔥  le choix numéro 1 🔥  </strong> </span>
                             <span class="block mt-4"><strong><span class="text-main">vous payez une fois = pas de frais cachés ou d'abonnement</span></strong></span>
-                            <span class="block mt-2 text-center"><strong>⚠️</strong></span>
-                            <span class="block mt-2"><em>"Un bon site vitrine c'est comme une bonne montre. On ne paie pas d'abonnement à l'horloger pour que la montre foncitonne. Une fois le calibre au poignet, il est d'une fiabilité à toute épreuve et c'est parti pour des années."</em></span>
                         </p>
                     </div>
                 </div>
@@ -751,8 +717,8 @@ import { RadialOrbitalTimelineDemo } from '@/components/RadialOrbitalTimelineDem
         container.style.background = 'transparent';
         container.style.marginBottom = '2.5rem';
       }
-      createGooeyTextEffect('gooey-container', 
-        ['Minimaliste.', 'Performant.', 'Sans compromis.'], 
+              createGooeyTextEffect('gooey-container', 
+        ['amazing', 'new', 'wonderful', 'beautiful', 'smart'], 
         {
           morphTime: 1.2,
           cooldownTime: 1.5,

@@ -225,16 +225,16 @@ export default function RadialOrbitalTimeline({
 
   return (
     <div
-      // Réduction de 20% des hauteurs
-      className="w-full min-h-[720px] md:min-h-[800px] flex flex-col items-center justify-start overflow-visible p-4"
+      // Réduction de la hauteur minimale
+      className="w-full min-h-[600px] md:min-h-[640px] flex flex-col items-center justify-start overflow-visible p-4"
       ref={containerRef}
       onClick={handleContainerClick}
       style={{ backgroundColor: 'transparent' }}
     >
       {/* Contenu en deux parties: orbite et carte fixe en bas */}
       <div className="flex flex-col h-full w-full max-w-4xl">
-        {/* Orbite - réduction de 20% des hauteurs */}
-        <div className="relative w-full h-[320px] md:h-[400px] flex items-center justify-center mt-8">
+        {/* Orbite - hauteur ajustée */}
+        <div className="relative w-full h-[320px] md:h-[360px] flex items-center justify-center mt-4">
           <div
             className="absolute w-full h-full flex items-center justify-center"
             ref={orbitRef}
@@ -326,8 +326,8 @@ export default function RadialOrbitalTimeline({
           </div>
         </div>
         
-        {/* Carte fixe en bas - ajustement des marges pour correspondre à la nouvelle taille */}
-        <div className="w-full mt-56 md:mt-72 mb-20">
+        {/* Carte fixe en bas - réduction significative des marges */}
+        <div className="w-full mt-16 md:mt-28 mb-12 timeline-card-spacing">
           {selectedContent && (
             <ShineBorder
               borderWidth={2}
