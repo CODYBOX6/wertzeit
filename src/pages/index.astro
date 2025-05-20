@@ -10,6 +10,63 @@ import { AnimatedHeroIntegration } from '@/components/AnimatedHeroIntegration';
     description="Wertzeit | Sonny Callegaro : Création de sites web, photographie et réseaux sociaux à Genève. Découvrez mes offres pour portfolio, restaurants et PME."
     keywords="site web, création site web, wertzeit.ch, développeur web genève, site web geneve, Photographe Genève, portfolio en ligne, sonny callegaro, heg, suisse"
 >
+    <!-- Styles pour les animations au défilement -->
+    <style is:inline>
+        /* Styles de base pour les cards des projets */
+        .project-card-image {
+            transform: translateZ(0);
+            transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .project-card-border {
+            transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.7s ease;
+        }
+        .project-card-glow {
+            transition: opacity 0.7s ease;
+        }
+        .project-card-img {
+            transition: filter 0.7s ease;
+        }
+        .project-arrow {
+            transition: opacity 0.3s ease;
+        }
+        
+        /* États animés */
+        .scale-95 {
+            transform: scale(0.95);
+        }
+        .rotate-0 {
+            transform: rotate(0deg) !important;
+        }
+        .opacity-100 {
+            opacity: 1 !important;
+        }
+        .brightness-110 {
+            filter: brightness(1.1);
+        }
+        
+        /* Animation générale de slide-in */
+        .slide-in-left, .slide-in-right, .slide-in-top {
+            opacity: 0;
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), 
+                        opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .slide-in-left {
+            transform: translateX(-40px);
+        }
+        .slide-in-right {
+            transform: translateX(40px);
+        }
+        .slide-in-top {
+            transform: translateY(-40px);
+        }
+        .slide-in-left.is-visible, 
+        .slide-in-right.is-visible, 
+        .slide-in-top.is-visible {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+        }
+    </style>
+
     <!-- Contenu de l'ancien body ici -->
     <div class="leaf-pattern"></div>
 
@@ -67,10 +124,10 @@ import { AnimatedHeroIntegration } from '@/components/AnimatedHeroIntegration';
             <div class="grid md:grid-cols-2 gap-8 items-center group project-card" id="project-01" data-scroll-effect="scale-rotate-blur">
                 <div class="slide-in-left relative">
                     <a href="https://www.leborgia.ch/" target="_blank" class="block hover:no-underline" aria-label="Voir le site de la Pizzeria Le Borgia">
-                        <div class="relative group-hover:scale-95 transition-transform duration-500 card-3d">
-                        <div class="absolute -inset-2 border-main rounded-2xl transform rotate-3 opacity-70 group-hover:rotate-0 transition-all duration-500"></div>
-                        <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
-                            <img src="/LeBorgia.avif" alt="Site web du restaurant Le Borgia" loading="lazy" width="1600" height="900" decoding="async" class="relative w-full h-auto object-cover rounded-xl z-10 group-hover:brightness-110 transition-all duration-500 cursor-pointer">
+                        <div class="relative transition-transform duration-500 card-3d project-card-image">
+                        <div class="absolute -inset-2 border-main rounded-2xl transform -rotate-3 opacity-70 transition-all duration-500 project-card-border"></div>
+                        <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md opacity-0 transition-opacity duration-500 project-card-glow"></div>
+                            <img src="/LeBorgia.avif" alt="Site web du restaurant Le Borgia" loading="lazy" width="1600" height="900" decoding="async" class="relative w-full h-auto object-cover rounded-xl z-10 transition-all duration-500 cursor-pointer project-card-img">
                     </div>
                     </a>
                 </div>
@@ -103,7 +160,7 @@ import { AnimatedHeroIntegration } from '@/components/AnimatedHeroIntegration';
                         <span class="badge"><i class="fas fa-camera mr-1"></i> Galerie</span>
                     </div>
                     <a href="https://www.leborgia.ch/" target="_blank" class="inline-flex items-center text-[#F4F4F4]/70 hover:text-main-light transition-all duration-300 border-b border-transparent hover:border-main-light pb-1" aria-label="Visiter le site de la Pizzeria Le Borgia">
-                        <span class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="mr-2 opacity-0 project-arrow transition-opacity duration-300">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                                 <path d="M8 3L13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
@@ -143,7 +200,7 @@ import { AnimatedHeroIntegration } from '@/components/AnimatedHeroIntegration';
                         <span class="badge"><i class="fas fa-palette mr-1"></i> Minimaliste</span>
                     </div>
                     <a href="https://mariekondoandswissdesign.netlify.app/" target="_blank" class="inline-flex items-center text-[#F4F4F4]/70 hover:text-main-light transition-all duration-300 border-b border-transparent hover:border-main-light pb-1" aria-label="Visiter le portfolio Marie Kondo & Swiss Design">
-                        <span class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="mr-2 opacity-0 project-arrow transition-opacity duration-300">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                                 <path d="M8 3L13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
@@ -154,10 +211,10 @@ import { AnimatedHeroIntegration } from '@/components/AnimatedHeroIntegration';
                 </div>
                 <div class="order-1 md:order-2 slide-in-right relative">
                     <a href="https://mariekondoandswissdesign.netlify.app/" target="_blank" class="block hover:no-underline" aria-label="Voir le portfolio Marie Kondo & Swiss Design">
-                        <div class="relative group-hover:scale-95 transition-transform duration-500 card-3d">
-                        <div class="absolute -inset-2 border-main rounded-2xl transform -rotate-3 opacity-70 group-hover:rotate-0 transition-all duration-500"></div>
-                        <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
-                            <img src="/mariekondo.jpg" alt="Portfolio de Marie Kondo & Swiss Design" loading="lazy" width="800" height="450" decoding="async" class="relative w-full h-auto object-cover rounded-xl z-10 group-hover:brightness-110 transition-all duration-500 cursor-pointer">
+                        <div class="relative transition-transform duration-500 card-3d project-card-image">
+                        <div class="absolute -inset-2 border-main rounded-2xl transform -rotate-3 opacity-70 transition-all duration-500 project-card-border"></div>
+                        <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md opacity-0 transition-opacity duration-500 project-card-glow"></div>
+                            <img src="/mariekondo.jpg" alt="Portfolio de Marie Kondo & Swiss Design" loading="lazy" width="800" height="450" decoding="async" class="relative w-full h-auto object-cover rounded-xl z-10 transition-all duration-500 cursor-pointer project-card-img">
                     </div>
                     </a>
                 </div>
@@ -166,10 +223,10 @@ import { AnimatedHeroIntegration } from '@/components/AnimatedHeroIntegration';
             <div class="grid md:grid-cols-2 gap-8 items-center group project-card" id="project-03" data-scroll-effect="scale-rotate-blur">
                 <div class="slide-in-left relative">
                     <a href="https://www.yonghe.ch/" target="_blank" class="block hover:no-underline" aria-label="Voir le site du restaurant Le Yonghe">
-                        <div class="relative group-hover:scale-95 transition-transform duration-500 card-3d">
-                            <div class="absolute -inset-2 border-main rounded-2xl transform rotate-3 opacity-70 group-hover:rotate-0 transition-all duration-500"></div>
-                            <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md group-hover:opacity-100 opacity-0 transition-opacity duration-500"></div>
-                            <img src="/Yonghe.avif" alt="Site web du restaurant Le Yonghe" loading="lazy" width="1600" height="900" decoding="async" class="relative w-full h-auto object-cover rounded-xl z-10 group-hover:brightness-110 transition-all duration-500 cursor-pointer">
+                        <div class="relative transition-transform duration-500 card-3d project-card-image">
+                            <div class="absolute -inset-2 border-main rounded-2xl transform -rotate-3 opacity-70 transition-all duration-500 project-card-border"></div>
+                            <div class="absolute inset-0 bg-main-accent/10 rounded-xl blur-md opacity-0 transition-opacity duration-500 project-card-glow"></div>
+                            <img src="/Yonghe.avif" alt="Site web du restaurant Le Yonghe" loading="lazy" width="1600" height="900" decoding="async" class="relative w-full h-auto object-cover rounded-xl z-10 transition-all duration-500 cursor-pointer project-card-img">
                         </div>
                     </a>
                 </div>
@@ -205,7 +262,7 @@ import { AnimatedHeroIntegration } from '@/components/AnimatedHeroIntegration';
                         <span class="badge"><i class="fas fa-camera mr-1"></i> Galerie</span>
                     </div>
                     <a href="https://www.yonghe.ch/" target="_blank" class="inline-flex items-center text-[#F4F4F4]/70 hover:text-main-light transition-all duration-300 border-b border-transparent hover:border-main-light pb-1" aria-label="Visiter le site du Yonghe">
-                        <span class="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="mr-2 opacity-0 project-arrow transition-opacity duration-300">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3 8H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                                 <path d="M8 3L13 8L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
@@ -745,59 +802,6 @@ import { AnimatedHeroIntegration } from '@/components/AnimatedHeroIntegration';
 </script>
    
 <script is:inline>
-    
-    document.addEventListener('DOMContentLoaded', function() {
-      const container = document.getElementById('gooey-container');
-      if (container) {
-        container.style.height = '70px';
-        container.style.overflow = 'visible';
-        container.style.background = 'transparent';
-        container.style.marginBottom = '2.5rem';
-      }
-              createGooeyTextEffect('gooey-container', 
-        ['amazing', 'new', 'wonderful', 'beautiful', 'smart'], 
-        {
-          morphTime: 1.2,
-          cooldownTime: 1.5,
-          textClass: 'text-main font-bold',
-          fontSize: '32px'
-        }
-      );
-
-      const sparklesContainer = document.getElementById('hero-sparkles');
-      if (sparklesContainer) {
-        createSparklesEffect('hero-sparkles', {
-          background: 'transparent',
-          minSize: 0.1,
-          maxSize: 0.4,
-          particleDensity: 80,
-          particleColor: '#3ddc97',
-          speed: 0.6,
-          zIndex: 15
-        });
-      }
-
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.fromTo(".expertise-card", 
-        { 
-          y: 20, 
-          opacity: 0
-        },
-        { 
-          y: 0, 
-          opacity: 1,
-          stagger: 0.1,
-          duration: 0.6,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: "#barney",
-            start: "top 80%"
-          }
-        }
-      );
-    });
-</script>
-<script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
       /* ─────────  ANIMATIONS AU SCROLL  ───────── */
       const els = document.querySelectorAll(
@@ -841,6 +845,86 @@ import { AnimatedHeroIntegration } from '@/components/AnimatedHeroIntegration';
           zIndex: 15,
         });
       }
+    
+      /* ─────────  ANIMATION PROJETS  ───────── */
+      const projectCards = document.querySelectorAll('.project-card');
+      
+      const projectObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const card = entry.target;
+            // Anime l'image
+            const image = card.querySelector('.project-card-image');
+            if (image) {
+              image.classList.add('scale-95');
+            }
+            
+            // Anime la bordure
+            const border = card.querySelector('.project-card-border');
+            if (border) {
+              border.classList.add('rotate-0');
+            }
+            
+            // Anime le glow
+            const glow = card.querySelector('.project-card-glow');
+            if (glow) {
+              glow.classList.add('opacity-100');
+            }
+            
+            // Anime l'image
+            const img = card.querySelector('.project-card-img');
+            if (img) {
+              img.classList.add('brightness-110');
+            }
+            
+            // Anime la flèche
+            const arrow = card.querySelector('.project-arrow');
+            if (arrow) {
+              arrow.classList.add('opacity-100');
+            }
+            
+            // Continue à observer pour les animations lors du défilement
+            // (optionnel, à enlever si vous voulez que l'animation ne se produise qu'une fois)
+            // projectObserver.unobserve(card);
+          } else {
+            // Si les éléments sortent du viewport, on retire les classes
+            const card = entry.target;
+            
+            // Retire les animations quand l'élément n'est plus visible
+            const image = card.querySelector('.project-card-image');
+            if (image) {
+              image.classList.remove('scale-95');
+            }
+            
+            const border = card.querySelector('.project-card-border');
+            if (border) {
+              border.classList.remove('rotate-0');
+            }
+            
+            const glow = card.querySelector('.project-card-glow');
+            if (glow) {
+              glow.classList.remove('opacity-100');
+            }
+            
+            const img = card.querySelector('.project-card-img');
+            if (img) {
+              img.classList.remove('brightness-110');
+            }
+            
+            const arrow = card.querySelector('.project-arrow');
+            if (arrow) {
+              arrow.classList.remove('opacity-100');
+            }
+          }
+        });
+      }, { 
+        threshold: 0.03,
+        rootMargin: '150px 0px -150px 0px'
+      });
+      
+      projectCards.forEach(card => {
+        projectObserver.observe(card);
+      });
     
       /* ─────────  GSAP EXPERTISE  ───────── */
       if (window.gsap && window.ScrollTrigger) {
