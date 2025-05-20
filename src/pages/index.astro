@@ -29,9 +29,9 @@ import { AnimatedHeroIntegration } from '@/components/AnimatedHeroIntegration';
         <div class="max-w-7xl mx-auto px-6 relative z-20">
             <div class="slide-in-left text-center">
                 <h1 class="text-[3.3rem] md:text-[4rem] font-light mb-6 leading-none tracking-tight">
-                    <span class="text-white block opacity-90">Design.</span>
+                    <span class="text-white block opacity-90">Clean.</span>
                     <span class="text-main block mt-2 opacity-95">Code.</span>
-                    <span class="text-white block mt-2 opacity-90">Narrate.</span>
+                    <span class="text-white block mt-2 opacity-90">Create.</span>
                 </h1>
                 <div class="w-16 h-1 bg-main mx-auto my-6 opacity-90"></div>
                 
@@ -62,7 +62,7 @@ import { AnimatedHeroIntegration } from '@/components/AnimatedHeroIntegration';
                 Voici quelques-unes de mes réalisations, incluant le site de la Pizzeria Le Borgia, le site du restaurant le café du rondeau - Yonghe au coeur de carouge et un portfolio façon Marie Kondo & Swiss Design.
             </p>
         </div>
-        
+        <!-- ici -->
         <div class="space-y-32">
             <div class="grid md:grid-cols-2 gap-8 items-center group project-card" id="project-01" data-scroll-effect="scale-rotate-blur">
                 <div class="slide-in-left relative">
@@ -243,17 +243,17 @@ import { AnimatedHeroIntegration } from '@/components/AnimatedHeroIntegration';
                 </div>
                 <div class="h-0.5 w-16 bg-main-accent/50 mx-auto mb-4 group-hover:w-24 transition-all duration-300"></div>
                 <p class="text-white/90 text-base text-center leading-relaxed">
-                    Développement en JavaScript, Vue.js et React. Hébergement Netlify/Vercel.
+                    Développement en JavaScript, Astro.js, Vue.js et React. Hébergement Netlify/Vercel.
                 </p>
             </div>
             <div class="expertise-card bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm hover:border-main-accent/30 transition-all duration-300 hover:bg-white/10 group">
                 <div class="text-main text-xl mb-4 flex items-center justify-center">
                     <i class="fas fa-paint-brush mr-2 group-hover:text-main-accent transition-colors duration-300"></i>
                     <span class="group-hover:text-main-accent transition-colors duration-300">Design</span>
-                </div>
+                </div,
                 <div class="h-0.5 w-16 bg-main-accent/50 mx-auto mb-4 group-hover:w-24 transition-all duration-300"></div>
                 <p class="text-white/90 text-base text-center leading-relaxed">
-                    Approche minimaliste inspirée du Swiss Design et du nombre d'or.
+                    Approche minimaliste inspirée du Swiss Design, la suite de Fibonacci (1,618 :),.
                 </p>
             </div>
             <div class="expertise-card bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm hover:border-main-accent/30 transition-all duration-300 hover:bg-white/10 group">
@@ -745,6 +745,7 @@ import { AnimatedHeroIntegration } from '@/components/AnimatedHeroIntegration';
 </script>
    
 <script is:inline>
+    
     document.addEventListener('DOMContentLoaded', function() {
       const container = document.getElementById('gooey-container');
       if (container) {
@@ -796,6 +797,70 @@ import { AnimatedHeroIntegration } from '@/components/AnimatedHeroIntegration';
       );
     });
 </script>
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      /* ─────────  ANIMATIONS AU SCROLL  ───────── */
+      const els = document.querySelectorAll(
+        '.slide-in-left, .slide-in-right, .slide-in-top'
+      );
+      if (els.length) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: .15, rootMargin: '0px 0px -80px 0px' });
+    
+        els.forEach(el => io.observe(el));
+      }
+    
+      /* ─────────  GOOEY + SPARKLES  ───────── */
+      const container = document.getElementById('gooey-container');
+      if (container) {
+        container.style.height = '70px';
+        container.style.overflow = 'visible';
+        container.style.background = 'transparent';
+        container.style.marginBottom = '2.5rem';
+        createGooeyTextEffect('gooey-container',
+          ['amazing', 'new', 'wonderful', 'beautiful', 'smart'],
+          { morphTime: 1.2, cooldownTime: 1.5, textClass: 'text-main font-bold', fontSize: '32px' }
+        );
+      }
+    
+      const sparklesContainer = document.getElementById('hero-sparkles');
+      if (sparklesContainer) {
+        createSparklesEffect('hero-sparkles', {
+          background: 'transparent',
+          minSize: 0.1,
+          maxSize: 0.4,
+          particleDensity: 80,
+          particleColor: '#3ddc97',
+          speed: 0.6,
+          zIndex: 15,
+        });
+      }
+    
+      /* ─────────  GSAP EXPERTISE  ───────── */
+      if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.fromTo(
+          '.expertise-card',
+          { y: 20, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            stagger: 0.1,
+            duration: 0.6,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '#barney', start: 'top 80%' },
+          }
+        );
+      }
+    });
+    </script>   <!-- ← ← ←  FERME BIEN LA BALISE -->
+    
 
 <footer class="py-12 text-center text-[#F4F4F4]/80 mt-16 bg-secondary">
     <p>&copy; <time datetime="2025">2025</time> Sonny Callegaro. Tous droits réservés.</p>

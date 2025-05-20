@@ -8,7 +8,10 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    server: {
+      allowedHosts: ["devserver-preview--wertzeit.netlify.app"]
+    }
   },
 
   integrations: [react()]
